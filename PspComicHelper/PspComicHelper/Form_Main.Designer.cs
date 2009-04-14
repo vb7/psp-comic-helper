@@ -36,7 +36,6 @@
 			this.panel_Left = new System.Windows.Forms.Panel();
 			this.listView_FileList = new System.Windows.Forms.ListView();
 			this.columnHeader_Path = new System.Windows.Forms.ColumnHeader();
-			this.columnHeader_Size = new System.Windows.Forms.ColumnHeader();
 			this.columnHeader_Status = new System.Windows.Forms.ColumnHeader();
 			this.panel_Left_Bottom = new System.Windows.Forms.Panel();
 			this.textBox_Output = new System.Windows.Forms.TextBox();
@@ -103,19 +102,18 @@
 			this.panel_Left.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel_Left.Location = new System.Drawing.Point( 3, 3 );
 			this.panel_Left.Name = "panel_Left";
-			this.panel_Left.Size = new System.Drawing.Size( 371, 280 );
+			this.panel_Left.Size = new System.Drawing.Size( 370, 280 );
 			this.panel_Left.TabIndex = 4;
 			// 
 			// listView_FileList
 			// 
 			this.listView_FileList.Columns.AddRange( new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader_Path,
-            this.columnHeader_Size,
             this.columnHeader_Status} );
 			this.listView_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listView_FileList.Location = new System.Drawing.Point( 0, 0 );
 			this.listView_FileList.Name = "listView_FileList";
-			this.listView_FileList.Size = new System.Drawing.Size( 371, 246 );
+			this.listView_FileList.Size = new System.Drawing.Size( 370, 246 );
 			this.listView_FileList.TabIndex = 0;
 			this.listView_FileList.UseCompatibleStateImageBehavior = false;
 			this.listView_FileList.View = System.Windows.Forms.View.Details;
@@ -123,15 +121,12 @@
 			// columnHeader_Path
 			// 
 			this.columnHeader_Path.Text = "路径";
-			this.columnHeader_Path.Width = 247;
-			// 
-			// columnHeader_Size
-			// 
-			this.columnHeader_Size.Text = "大小";
+			this.columnHeader_Path.Width = 300;
 			// 
 			// columnHeader_Status
 			// 
 			this.columnHeader_Status.Text = "状态";
+			this.columnHeader_Status.Width = 66;
 			// 
 			// panel_Left_Bottom
 			// 
@@ -140,7 +135,7 @@
 			this.panel_Left_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel_Left_Bottom.Location = new System.Drawing.Point( 0, 246 );
 			this.panel_Left_Bottom.Name = "panel_Left_Bottom";
-			this.panel_Left_Bottom.Size = new System.Drawing.Size( 371, 34 );
+			this.panel_Left_Bottom.Size = new System.Drawing.Size( 370, 34 );
 			this.panel_Left_Bottom.TabIndex = 1;
 			// 
 			// textBox_Output
@@ -167,16 +162,16 @@
 			this.panel_right.Controls.Add( this.button_AddFile );
 			this.panel_right.Controls.Add( this.button_AddFolder );
 			this.panel_right.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel_right.Location = new System.Drawing.Point( 374, 3 );
+			this.panel_right.Location = new System.Drawing.Point( 373, 3 );
 			this.panel_right.Name = "panel_right";
-			this.panel_right.Size = new System.Drawing.Size( 87, 280 );
+			this.panel_right.Size = new System.Drawing.Size( 88, 280 );
 			this.panel_right.TabIndex = 3;
 			// 
 			// button_SetOutput
 			// 
-			this.button_SetOutput.Location = new System.Drawing.Point( 6, 61 );
+			this.button_SetOutput.Location = new System.Drawing.Point( 3, 61 );
 			this.button_SetOutput.Name = "button_SetOutput";
-			this.button_SetOutput.Size = new System.Drawing.Size( 75, 23 );
+			this.button_SetOutput.Size = new System.Drawing.Size( 85, 23 );
 			this.button_SetOutput.TabIndex = 4;
 			this.button_SetOutput.Text = "输出路径";
 			this.button_SetOutput.UseVisualStyleBackColor = true;
@@ -184,9 +179,9 @@
 			// 
 			// button_Start
 			// 
-			this.button_Start.Location = new System.Drawing.Point( 6, 90 );
+			this.button_Start.Location = new System.Drawing.Point( 3, 90 );
 			this.button_Start.Name = "button_Start";
-			this.button_Start.Size = new System.Drawing.Size( 75, 23 );
+			this.button_Start.Size = new System.Drawing.Size( 85, 23 );
 			this.button_Start.TabIndex = 3;
 			this.button_Start.Text = "开始";
 			this.button_Start.UseVisualStyleBackColor = true;
@@ -194,19 +189,19 @@
 			// 
 			// button_AddFile
 			// 
-			this.button_AddFile.Location = new System.Drawing.Point( 6, 3 );
+			this.button_AddFile.Location = new System.Drawing.Point( 3, 3 );
 			this.button_AddFile.Name = "button_AddFile";
-			this.button_AddFile.Size = new System.Drawing.Size( 75, 23 );
+			this.button_AddFile.Size = new System.Drawing.Size( 85, 23 );
 			this.button_AddFile.TabIndex = 1;
-			this.button_AddFile.Text = "添加文件";
+			this.button_AddFile.Text = "添加压缩文档";
 			this.button_AddFile.UseVisualStyleBackColor = true;
 			this.button_AddFile.Click += new System.EventHandler( this.button_AddFile_Click );
 			// 
 			// button_AddFolder
 			// 
-			this.button_AddFolder.Location = new System.Drawing.Point( 6, 32 );
+			this.button_AddFolder.Location = new System.Drawing.Point( 3, 32 );
 			this.button_AddFolder.Name = "button_AddFolder";
-			this.button_AddFolder.Size = new System.Drawing.Size( 75, 23 );
+			this.button_AddFolder.Size = new System.Drawing.Size( 85, 23 );
 			this.button_AddFolder.TabIndex = 2;
 			this.button_AddFolder.Text = "添加目录";
 			this.button_AddFolder.UseVisualStyleBackColor = true;
@@ -224,6 +219,7 @@
 			// 
 			// openFileDialog_AddFile
 			// 
+			this.openFileDialog_AddFile.Filter = "压缩文档(*.zip;*.rar)|*.zip;*.rar";
 			this.openFileDialog_AddFile.Multiselect = true;
 			// 
 			// Form_Main
@@ -237,6 +233,7 @@
 			this.MinimumSize = new System.Drawing.Size( 480, 360 );
 			this.Name = "Form_Main";
 			this.Text = "PSP Comic Helper";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler( this.Form_Main_FormClosing );
 			this.statusStrip_MainStatus.ResumeLayout( false );
 			this.statusStrip_MainStatus.PerformLayout();
 			this.tabControl_Main.ResumeLayout( false );
@@ -265,7 +262,6 @@
 		private System.Windows.Forms.Panel panel_right;
 		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_AddFolder;
 		private System.Windows.Forms.Button button_Start;
-		private System.Windows.Forms.ColumnHeader columnHeader_Size;
 		private System.Windows.Forms.ColumnHeader columnHeader_Status;
 		private System.Windows.Forms.Panel panel_Left;
 		private System.Windows.Forms.Panel panel_Left_Bottom;
