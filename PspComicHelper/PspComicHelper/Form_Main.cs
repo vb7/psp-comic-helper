@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -17,20 +18,32 @@ namespace PspComicHelper
 		private delegate void ComicProgressCallback( int index, string status );
 
 		// 处理进度回调
-		private ComicProgressCallback callback;
+		private ComicProgressCallback _callback;
 
 		// 需要处理的总数
-		private int processCount;
+		private int _processCount;
 		// 处理完成的总数
-		private int completeCount;
+		private int _completeCount;
 		
-		//private Queue<UpdateStatusArg> updateQueue = new Queue<UpdateStatusArg>();
+		// 预设宽度
+		private List<ComboBoxItem> _widthDic = new List<ComboBoxItem>()
+		{
+			new ComboBoxItem() { Name = "请选择...", Value = 0 },
+			new ComboBoxItem() { Name = "PSP (480px)", Value = 480 },
+			new ComboBoxItem() { Name = "PSP*2 (960px)", Value = 960 },
+			new ComboBoxItem() { Name = "魅族M8 (720px)", Value = 720 }
+		};
 		
 
 		public Form_Main()
 		{
 			InitializeComponent();
-			callback = new ComicProgressCallback( UpdateStatus );
+			_callback = new ComicProgressCallback( UpdateStatus );
+			ComicHelper.AppPath = Application.StartupPath;
+
+			comboBox_setting_presetWidth.DataSource = _widthDic;
+			comboBox_setting_presetWidth.DisplayMember = "Name";
+			comboBox_setting_presetWidth.ValueMember = "Value";
 		}
 
 		/// <summary>
@@ -104,9 +117,9 @@ namespace PspComicHelper
 					continue;
 				}
 
-				this.Invoke( callback, new object[]{ i, "处理中..." } );
+				this.Invoke( _callback, new object[]{ i, "处理中..." } );
 				result = ComicHelper.ProgressComicPath( list[i][0] );
-				this.Invoke( callback, new object[]{ i, result } );
+				this.Invoke( _callback, new object[]{ i, result } );
 			}
 		}
 
@@ -125,20 +138,20 @@ namespace PspComicHelper
 		/// </summary>
 		private void StartComicProcess()
 		{
-			processCount = 0;
-			completeCount = 0;
+			_processCount = 0;
+			_completeCount = 0;
 			List<string[]> list = new List<string[]>();
 
 			foreach ( ListViewItem item in listView_FileList.Items )
 			{
 				if ( item.SubItems[1].Text == "准备" )
 				{
-					processCount++;
+					_processCount++;
 					list.Add( new string[] { item.Text, item.SubItems[1].Text } );
 				}
 				else
 				{
-					completeCount++;
+					_completeCount++;
 				}
 			}
 			ThreadPool.QueueUserWorkItem( new WaitCallback( ComicProcess ), list.ToArray() );
@@ -165,7 +178,7 @@ namespace PspComicHelper
 			}
 
 			ComicHelper.OutputPath = textBox_Output.Text.Trim();
-			ComicHelper.AppPath = Application.StartupPath;
+			
 
 			ComicHelper.Width = 480;
 			ComicHelper.Archive = true;
@@ -196,15 +209,16 @@ namespace PspComicHelper
 			}
 		}
 
-		/// <summary>
-		/// 更新状态参数对象
-		/// </summary>
-		private class UpdateStatusArg
-		{
-			internal int Index { get; set; }
 
-			internal string Status { get; set; }
+
+		private class ComboBoxItem
+		{
+			public string Name { get; set; }
+			public int Value { get; set; }
 		}
+
+		
+
 	}
 
 	
