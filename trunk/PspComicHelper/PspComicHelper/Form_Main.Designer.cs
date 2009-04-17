@@ -52,9 +52,10 @@
 			this.openFileDialog_AddFile = new System.Windows.Forms.OpenFileDialog();
 			this.folderBrowserDialog_AddFolder = new System.Windows.Forms.FolderBrowserDialog();
 			this.folderBrowserDialog_Output = new System.Windows.Forms.FolderBrowserDialog();
-			this.label_setting_quantity = new System.Windows.Forms.Label();
+			this.label_setting_quality = new System.Windows.Forms.Label();
 			this.label_setting_split = new System.Windows.Forms.Label();
 			this.label_setting_sequence = new System.Windows.Forms.Label();
+			this.textBox_setting_quality = new System.Windows.Forms.TextBox();
 			this.statusStrip_MainStatus.SuspendLayout();
 			this.tabControl_Main.SuspendLayout();
 			this.tabPage_App.SuspendLayout();
@@ -216,9 +217,10 @@
 			// 
 			// tabPage_Setting
 			// 
+			this.tabPage_Setting.Controls.Add( this.textBox_setting_quality );
 			this.tabPage_Setting.Controls.Add( this.label_setting_sequence );
 			this.tabPage_Setting.Controls.Add( this.label_setting_split );
-			this.tabPage_Setting.Controls.Add( this.label_setting_quantity );
+			this.tabPage_Setting.Controls.Add( this.label_setting_quality );
 			this.tabPage_Setting.Controls.Add( this.comboBox_setting_presetWidth );
 			this.tabPage_Setting.Controls.Add( this.textBox_setting_width );
 			this.tabPage_Setting.Controls.Add( this.label_setting_width );
@@ -259,14 +261,14 @@
 			this.openFileDialog_AddFile.Filter = "压缩文档(*.zip;*.rar)|*.zip;*.rar";
 			this.openFileDialog_AddFile.Multiselect = true;
 			// 
-			// label_setting_quantity
+			// label_setting_quality
 			// 
-			this.label_setting_quantity.AutoSize = true;
-			this.label_setting_quantity.Location = new System.Drawing.Point( 6, 42 );
-			this.label_setting_quantity.Name = "label_setting_quantity";
-			this.label_setting_quantity.Size = new System.Drawing.Size( 29, 12 );
-			this.label_setting_quantity.TabIndex = 3;
-			this.label_setting_quantity.Text = "质量";
+			this.label_setting_quality.AutoSize = true;
+			this.label_setting_quality.Location = new System.Drawing.Point( 6, 49 );
+			this.label_setting_quality.Name = "label_setting_quality";
+			this.label_setting_quality.Size = new System.Drawing.Size( 29, 12 );
+			this.label_setting_quality.TabIndex = 3;
+			this.label_setting_quality.Text = "质量";
 			// 
 			// label_setting_split
 			// 
@@ -285,6 +287,13 @@
 			this.label_setting_sequence.Size = new System.Drawing.Size( 53, 12 );
 			this.label_setting_sequence.TabIndex = 5;
 			this.label_setting_sequence.Text = "阅读顺序";
+			// 
+			// textBox_setting_quality
+			// 
+			this.textBox_setting_quality.Location = new System.Drawing.Point( 69, 42 );
+			this.textBox_setting_quality.Name = "textBox_setting_quality";
+			this.textBox_setting_quality.Size = new System.Drawing.Size( 50, 21 );
+			this.textBox_setting_quality.TabIndex = 6;
 			// 
 			// Form_Main
 			// 
@@ -339,8 +348,9 @@
 		private System.Windows.Forms.TextBox textBox_setting_width;
 		private System.Windows.Forms.ComboBox comboBox_setting_presetWidth;
 		private System.Windows.Forms.Label label_setting_split;
-		private System.Windows.Forms.Label label_setting_quantity;
+		private System.Windows.Forms.Label label_setting_quality;
 		private System.Windows.Forms.Label label_setting_sequence;
+		private System.Windows.Forms.TextBox textBox_setting_quality;
 
 	}
 }
