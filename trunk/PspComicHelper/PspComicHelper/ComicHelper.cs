@@ -2,6 +2,7 @@
 using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using ICSharpCode.SharpZipLib.Zip;
 
 namespace PspComicHelper
@@ -22,18 +23,18 @@ namespace PspComicHelper
 		public static string ProgressComicPath( string path )
 		{
 			// 创建临时目录
-			if ( Directory.Exists( ComicHelper.TempPath ) )
+			if ( Directory.Exists( Setting.TempPath ) )
 			{
 				try
 				{
-					Directory.Delete( ComicHelper.TempPath, true );
+					Directory.Delete( Setting.TempPath, true );
 				}
 				catch ( IOException )
 				{
 					// 删除临时目录失败
 				}
 			}
-			Directory.CreateDirectory( ComicHelper.TempPath );
+			Directory.CreateDirectory( Setting.TempPath );
 
 			string result;
 
@@ -53,11 +54,11 @@ namespace PspComicHelper
 			}
 
 			// 删除临时目录
-			if ( Directory.Exists( ComicHelper.TempPath ) )
+			if ( Directory.Exists( Setting.TempPath ) )
 			{
 				try
 				{
-					Directory.Delete( ComicHelper.TempPath, true );
+					Directory.Delete( Setting.TempPath, true );
 				}
 				catch ( IOException )
 				{
@@ -76,7 +77,7 @@ namespace PspComicHelper
 		private static string ProgressComicArchive( string path )
 		{
 
-			string unzipTempPath = Path.Combine( TempPath, UNZIP_TEMP_FOLDER );
+			string unzipTempPath = Path.Combine( Setting.TempPath, UNZIP_TEMP_FOLDER );
 			unzipTempPath = Path.Combine( unzipTempPath, Path.GetFileNameWithoutExtension( path ) );
 			string ext = Path.GetExtension( path ).ToLower();
 			string result;
@@ -108,7 +109,7 @@ namespace PspComicHelper
 				string args = string.Format( "x -o+ \"{0}\" \"{1}\\\"", path, unzipTempPath );
 				using ( System.Diagnostics.Process rar = new System.Diagnostics.Process() )
 				{
-					rar.StartInfo.FileName = Path.Combine( AppPath, "rar.exe" );
+					rar.StartInfo.FileName = Path.Combine( Setting.AppPath, "rar.exe" );
 					rar.StartInfo.Arguments = args;
 					rar.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
 					rar.Start();
@@ -163,7 +164,7 @@ namespace PspComicHelper
 			}
 
 			// 输出文件夹
-			string tempOutput = Path.Combine( TempPath, Path.GetFileName( path ) );
+			string tempOutput = Path.Combine( Setting.TempPath, Path.GetFileName( path ) );
 			string originalOutput = tempOutput;
 			for ( int i = 1; Directory.Exists( tempOutput ); i++ )
 			{
@@ -175,7 +176,7 @@ namespace PspComicHelper
 			// 把图片缩放并存放到临时目录
 			for ( int i = 0; i < files.Count; i++ )
 			{
-				ProgressComicFile( files[i], Path.Combine( tempOutput, i.ToString( "d6" ) + Path.GetExtension( files[i] ) ) );
+				ProgressComicFile( files[i], Path.Combine( tempOutput, i.ToString( "d6" ) + ".jpg" ) );
 				//File.Copy( files[i], Path.Combine( output, Path.GetFileName( files[i] ) ) );
 			}
 
@@ -194,13 +195,13 @@ namespace PspComicHelper
 		/// </summary>
 		private static void ProgressComicToOutput( string temp )
 		{
-			if ( Archive )
+			if ( Setting.OutputZip )
 			{
 				// 使用 SharpZipLib 生成压缩文档
 				FastZip fz = new FastZip();
 				fz.CreateEmptyDirectories = true;
-				
-				string zipfilePath = Path.Combine( OutputPath, Path.GetFileName( temp ) );
+
+				string zipfilePath = Path.Combine( Setting.OutputPath, Path.GetFileName( temp ) );
 				string originalZipFilePath = zipfilePath;
 				for ( int i = 1; File.Exists( zipfilePath + ".zip" ); i++ )
 				{
@@ -212,7 +213,7 @@ namespace PspComicHelper
 			}
 			else
 			{
-				string outputPath = Path.Combine( OutputPath, Path.GetFileName( temp ) );
+				string outputPath = Path.Combine( Setting.OutputPath, Path.GetFileName( temp ) );
 				string originalOutput = outputPath;
 				for ( int i = 1; Directory.Exists( outputPath ); i++ )
 				{
@@ -231,11 +232,36 @@ namespace PspComicHelper
 		private static void ProgressComicFile( string source, string dest )
 		{
 			Bitmap bitmap = new Bitmap( source );
-			if ( Width > 0 )
+			if ( Setting.Width > 0 )
 			{
-				bitmap = ImageHelper.Resize( bitmap, Width, 0, ImageHelper.ResizeMode.Scale );
-				ImageHelper.SaveAsJpeg( bitmap, dest, 80 );
-				bitmap.Dispose();
+				if ( Setting.SplitTowPage && ( bitmap.Width > bitmap.Height ) )
+				{
+					Bitmap left = ImageHelper.Cut( bitmap, 0, 0, bitmap.Width / 2, bitmap.Height );
+					Bitmap right = ImageHelper.Cut( bitmap, bitmap.Width / 2, 0, bitmap.Width / 2, bitmap.Height );
+					left = ImageHelper.Resize( left, Setting.Width, 0, ImageHelper.ResizeMode.Scale );
+					right = ImageHelper.Resize( right, Setting.Width, 0, ImageHelper.ResizeMode.Scale );
+
+					if ( Setting.ReadOrder == ReadOrderEnum.RightToLeft )
+					{
+						ImageHelper.SaveAsJpeg( right, dest, Setting.Quality );
+						ImageHelper.SaveAsJpeg( left, Regex.Replace( dest, "\\.jpg$", "b.jpg" ), Setting.Quality );
+					}
+					else
+					{
+						ImageHelper.SaveAsJpeg( left, dest, Setting.Quality );
+						ImageHelper.SaveAsJpeg( right, Regex.Replace( dest, "\\.jpg$", "b.jpg" ), Setting.Quality );
+					}
+					left.Dispose();
+					right.Dispose();
+					bitmap.Dispose();
+
+				}
+				else
+				{
+					bitmap = ImageHelper.Resize( bitmap, Setting.Width, 0, ImageHelper.ResizeMode.Scale );
+					ImageHelper.SaveAsJpeg( bitmap, dest, Setting.Quality );
+					bitmap.Dispose();
+				}
 			}
 			else
 			{
@@ -243,84 +269,6 @@ namespace PspComicHelper
 			}
 		}
 
-		/// <summary>
-		/// 输出目录
-		/// </summary>
-		public static string OutputPath { get; set; }
 
-		/// <summary>
-		/// 程序目录
-		/// </summary>
-		public static string AppPath { get; set; }
-
-		/// <summary>
-		/// 临时目录
-		/// </summary>
-		public static string TempPath
-		{
-			get
-			{
-				return Path.Combine( AppPath, "temp" );
-			}
-		}
-
-		public static int _quality = 89;
-		/// <summary>
-		/// 质量
-		/// </summary>
-		public static int Quality
-		{
-			get
-			{
-				if ( _quality <= 0 || _quality > 100 )
-				{
-					return 89;
-				}
-				else
-				{
-					return _quality;
-				}
-			}
-			set
-			{
-				_quality = value;
-			}
-		}
-
-		/// <summary>
-		/// 是否输出成压缩文件
-		/// </summary>
-		public static bool Archive { get; set; }
-
-		/// <summary>
-		/// 缩放宽度, 0为保持原大
-		/// </summary>
-		public static int Width { get; set; }
-
-		/// <summary>
-		/// 是否切割双页漫画
-		/// </summary>
-		public static bool SplitTowPage { get; set; }
-
-		/// <summary>
-		/// 阅读顺序
-		/// </summary>
-		public static ReadOrderEnum ReadOrder { get; set; }
-
-		/// <summary>
-		/// 阅读顺序枚举
-		/// </summary>
-		public enum ReadOrderEnum
-		{
-			/// <summary>
-			/// 从右到左(日本漫画)
-			/// </summary>
-			RightToLeft,
-
-			/// <summary>
-			/// 从左到右(美漫,港漫)
-			/// </summary>
-			LeftToRight
-		}
 	}
 }

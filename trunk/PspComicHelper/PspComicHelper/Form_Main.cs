@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
-using System.Collections.Generic;
 
 namespace PspComicHelper
 {
@@ -39,68 +38,13 @@ namespace PspComicHelper
 		{
 			InitializeComponent();
 			_callback = new ComicProgressCallback( UpdateStatus );
-			ComicHelper.AppPath = Application.StartupPath;
+			InitSetting();
 
 			comboBox_setting_presetWidth.DataSource = _widthDic;
 			comboBox_setting_presetWidth.DisplayMember = "Name";
 			comboBox_setting_presetWidth.ValueMember = "Value";
 		}
 
-		/// <summary>
-		/// 添加文件按钮点击
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void button_AddFile_Click( object sender, EventArgs e )
-		{
-			if ( openFileDialog_AddFile.ShowDialog() == DialogResult.OK )
-			{
-				foreach ( string file in openFileDialog_AddFile.FileNames )
-				{
-					listView_FileList.Items.Add( new ListViewItem( new string[] { file, "准备" } ) );
-				}
-
-			}
-		}
-
-		/// <summary>
-		/// 添加目录文件夹点击
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void button_AddDir_Click( object sender, EventArgs e )
-		{
-			if ( folderBrowserDialog_AddFolder.ShowDialog() == DialogResult.OK )
-			{
-				listView_FileList.Items.Add( new ListViewItem( new string[] { folderBrowserDialog_AddFolder.SelectedPath, "准备" } ) );
-			}
-		}
-
-		/// <summary>
-		/// 设置输出路径按钮点击
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void button_SetOutput_Click( object sender, EventArgs e )
-		{
-			if ( folderBrowserDialog_Output.ShowDialog() == DialogResult.OK )
-			{
-				textBox_Output.Text = folderBrowserDialog_Output.SelectedPath;
-			}
-		}
-
-		/// <summary>
-		/// 双击输出路径文本框
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void textBox_Output_DoubleClick( object sender, EventArgs e )
-		{
-			if ( folderBrowserDialog_Output.ShowDialog() == DialogResult.OK )
-			{
-				textBox_Output.Text = folderBrowserDialog_Output.SelectedPath;
-			}
-		}
 
 		/// <summary>
 		/// 漫画处理
@@ -159,13 +103,169 @@ namespace PspComicHelper
 
 
 		/// <summary>
+		/// 初始化设置
+		/// </summary>
+		private void InitSetting()
+		{
+			Setting.AppPath = Application.StartupPath;
+			Setting.Load();
+
+			textBox_setting_width.Text = Setting.Width.ToString();
+			textBox_setting_quality.Text = Setting.Quality.ToString();
+			checkBox_setting_split.Checked = Setting.SplitTowPage;
+			radioButton_setting_sequence_right.Checked = ( Setting.ReadOrder == ReadOrderEnum.RightToLeft );
+			radioButton_setting_sequence_left.Checked = ( Setting.ReadOrder == ReadOrderEnum.LeftToRight );
+			checkBox_setting_zip.Checked = Setting.OutputZip;
+			textBox_Output.Text = Setting.OutputPath;
+		}
+
+		/// <summary>
+		/// 判断是否数字
+		/// </summary>
+		/// <param name="text"></param>
+		/// <returns></returns>
+		private bool IsNumeric( string text )
+		{
+			return System.Text.RegularExpressions.Regex.IsMatch( text, "^\\d+$" );
+		}
+
+		/// <summary>
+		/// 更新设置
+		/// </summary>
+		private void UpdateSetting()
+		{
+			if( IsNumeric( textBox_setting_width.Text ) )
+				Setting.Width = Convert.ToInt32( textBox_setting_width.Text );
+
+			if( IsNumeric( textBox_setting_quality.Text ) )
+				Setting.Quality = Convert.ToInt32( textBox_setting_quality.Text );
+
+			Setting.SplitTowPage = checkBox_setting_split.Checked;
+
+			if( radioButton_setting_sequence_right.Checked )
+				Setting.ReadOrder = ReadOrderEnum.RightToLeft;
+			else if( radioButton_setting_sequence_left.Checked )
+				Setting.ReadOrder = ReadOrderEnum.LeftToRight;
+
+			Setting.OutputZip = checkBox_setting_zip.Checked;
+			Setting.OutputPath = textBox_Output.Text;
+		}
+
+		/// <summary>
+		/// 添加文件按钮点击
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void button_AddFile_Click( object sender, EventArgs e )
+		{
+			if ( openFileDialog_AddFile.ShowDialog() == DialogResult.OK )
+			{
+				int addCount = 0;
+				bool duplicate = false;
+
+				foreach ( string file in openFileDialog_AddFile.FileNames )
+				{
+					duplicate = false;
+					foreach ( ListViewItem item in listView_FileList.Items )
+					{
+						if ( item.Text == file )
+						{
+							duplicate = true;
+						}
+					}
+					if( duplicate )
+						continue;
+
+					listView_FileList.Items.Add( new ListViewItem( new string[] { file, "准备" } ) );
+					addCount++;
+				}
+
+				if ( addCount == 0 )
+				{
+					MessageBox.Show( "请勿重复添加" );
+				}
+			}
+		}
+
+		/// <summary>
+		/// 添加目录文件夹点击
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void button_AddDir_Click( object sender, EventArgs e )
+		{
+			if ( folderBrowserDialog_AddFolder.ShowDialog() == DialogResult.OK )
+			{
+				bool duplicate = false;
+				foreach ( ListViewItem item in listView_FileList.Items )
+				{
+					if ( item.Text == folderBrowserDialog_AddFolder.SelectedPath )
+					{
+						duplicate = true;
+					}
+				}
+				if ( duplicate )
+				{
+					MessageBox.Show( "请勿重复添加" );
+				}
+				else
+				{
+					listView_FileList.Items.Add( new ListViewItem( new string[] { folderBrowserDialog_AddFolder.SelectedPath, "准备" } ) );
+				}
+			}
+		}
+
+		/// <summary>
+		/// 删除选中项
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void button_deletePath_Click( object sender, EventArgs e )
+		{
+			foreach ( ListViewItem item in listView_FileList.SelectedItems )
+			{
+				listView_FileList.Items.Remove( item );
+			}
+		}
+
+
+		/// <summary>
+		/// 设置输出路径按钮点击
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void button_SetOutput_Click( object sender, EventArgs e )
+		{
+			if ( folderBrowserDialog_Output.ShowDialog() == DialogResult.OK )
+			{
+				textBox_Output.Text = folderBrowserDialog_Output.SelectedPath;
+			}
+		}
+
+		/// <summary>
+		/// 双击输出路径文本框
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void textBox_Output_DoubleClick( object sender, EventArgs e )
+		{
+			if ( folderBrowserDialog_Output.ShowDialog() == DialogResult.OK )
+			{
+				textBox_Output.Text = folderBrowserDialog_Output.SelectedPath;
+			}
+		}
+
+
+
+
+		/// <summary>
 		/// 开始按钮点击
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void button_Start_Click( object sender, EventArgs e )
 		{
-			if ( string.IsNullOrEmpty( textBox_Output.Text.Trim() ) )
+			if( string.IsNullOrEmpty( textBox_Output.Text.Trim() ) )
 			{
 				if ( folderBrowserDialog_Output.ShowDialog() == DialogResult.OK )
 				{
@@ -177,14 +277,8 @@ namespace PspComicHelper
 				}
 			}
 
-			ComicHelper.OutputPath = textBox_Output.Text.Trim();
-			
-
-			ComicHelper.Width = 480;
-			ComicHelper.Archive = true;
-
+			UpdateSetting();
 			StartComicProcess();
-
 		}
 
 		/// <summary>
@@ -195,11 +289,11 @@ namespace PspComicHelper
 		private void Form_Main_FormClosing( object sender, FormClosingEventArgs e )
 		{
 			// 删除临时目录
-			if ( Directory.Exists( ComicHelper.TempPath ) )
+			if ( Directory.Exists( Setting.TempPath ) )
 			{
 				try
 				{
-					Directory.Delete( ComicHelper.TempPath, true );
+					Directory.Delete( Setting.TempPath, true );
 				}
 				catch ( IOException ioe )
 				{
@@ -207,6 +301,7 @@ namespace PspComicHelper
 					MessageBox.Show( "删除临时目录失败，您可以手工删除程序文件夹下的temp目录。" );
 				}
 			}
+			Setting.Save();
 		}
 
 
@@ -217,6 +312,42 @@ namespace PspComicHelper
 			public int Value { get; set; }
 		}
 
+		/// <summary>
+		/// 控制宽度只能是数字
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void textBox_setting_width_KeyPress( object sender, KeyPressEventArgs e )
+		{
+		}
+
+		/// <summary>
+		/// 控制质量只能是数字
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void textBox_setting_quality_KeyPress( object sender, KeyPressEventArgs e )
+		{
+			if ( e.KeyChar > 57 || ( e.KeyChar > 8 && e.KeyChar < 47 ) || e.KeyChar < 8 )
+			{
+				e.Handled = true;
+			}
+
+		}
+
+		/// <summary>
+		/// 控制质量不能大于100
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void textBox_setting_quality_KeyUp( object sender, KeyEventArgs e )
+		{
+			TextBox textbox = sender as TextBox;
+			if ( ( textbox.Text.Length > 2 ) && ( Convert.ToInt32( textbox.Text ) > 100 ) )
+			{
+				textbox.Text = "100";
+			}
+		}
 		
 
 	}

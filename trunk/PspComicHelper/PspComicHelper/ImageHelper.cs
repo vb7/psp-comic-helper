@@ -24,7 +24,7 @@ namespace PspComicHelper
             return null;
         }
 
-		//// <summary>
+		/// <summary>
         /// 保存为JPEG格式，支持压缩质量选项
         /// </summary>
         /// <param name="bmp"></param>
@@ -159,6 +159,7 @@ namespace PspComicHelper
 
 			return bmpOut;
 		}
+
 
 		/// <summary>
 		/// 图片缩放模式
