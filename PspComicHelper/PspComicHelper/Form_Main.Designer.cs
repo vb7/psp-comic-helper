@@ -41,21 +41,27 @@
 			this.textBox_Output = new System.Windows.Forms.TextBox();
 			this.label_Output = new System.Windows.Forms.Label();
 			this.panel_right = new System.Windows.Forms.Panel();
+			this.button_deletePath = new System.Windows.Forms.Button();
 			this.button_SetOutput = new System.Windows.Forms.Button();
 			this.button_Start = new System.Windows.Forms.Button();
 			this.button_AddFile = new System.Windows.Forms.Button();
 			this.button_AddFolder = new System.Windows.Forms.Button();
 			this.tabPage_Setting = new System.Windows.Forms.TabPage();
+			this.checkBox_setting_zip = new System.Windows.Forms.CheckBox();
+			this.radioButton_setting_sequence_right = new System.Windows.Forms.RadioButton();
+			this.radioButton_setting_sequence_left = new System.Windows.Forms.RadioButton();
+			this.checkBox_setting_split = new System.Windows.Forms.CheckBox();
+			this.label_setting_zip = new System.Windows.Forms.Label();
+			this.textBox_setting_quality = new System.Windows.Forms.TextBox();
+			this.label_setting_sequence = new System.Windows.Forms.Label();
+			this.label_setting_split = new System.Windows.Forms.Label();
+			this.label_setting_quality = new System.Windows.Forms.Label();
 			this.comboBox_setting_presetWidth = new System.Windows.Forms.ComboBox();
 			this.textBox_setting_width = new System.Windows.Forms.TextBox();
 			this.label_setting_width = new System.Windows.Forms.Label();
 			this.openFileDialog_AddFile = new System.Windows.Forms.OpenFileDialog();
 			this.folderBrowserDialog_AddFolder = new System.Windows.Forms.FolderBrowserDialog();
 			this.folderBrowserDialog_Output = new System.Windows.Forms.FolderBrowserDialog();
-			this.label_setting_quality = new System.Windows.Forms.Label();
-			this.label_setting_split = new System.Windows.Forms.Label();
-			this.label_setting_sequence = new System.Windows.Forms.Label();
-			this.textBox_setting_quality = new System.Windows.Forms.TextBox();
 			this.statusStrip_MainStatus.SuspendLayout();
 			this.tabControl_Main.SuspendLayout();
 			this.tabPage_App.SuspendLayout();
@@ -69,16 +75,16 @@
 			// 
 			this.statusStrip_MainStatus.Items.AddRange( new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel_StatusLabel} );
-			this.statusStrip_MainStatus.Location = new System.Drawing.Point( 0, 302 );
+			this.statusStrip_MainStatus.Location = new System.Drawing.Point( 0, 311 );
 			this.statusStrip_MainStatus.Name = "statusStrip_MainStatus";
-			this.statusStrip_MainStatus.Size = new System.Drawing.Size( 464, 22 );
+			this.statusStrip_MainStatus.Size = new System.Drawing.Size( 472, 22 );
 			this.statusStrip_MainStatus.TabIndex = 0;
 			// 
 			// toolStripStatusLabel_StatusLabel
 			// 
 			this.toolStripStatusLabel_StatusLabel.Name = "toolStripStatusLabel_StatusLabel";
-			this.toolStripStatusLabel_StatusLabel.Size = new System.Drawing.Size( 32, 17 );
-			this.toolStripStatusLabel_StatusLabel.Text = "状态";
+			this.toolStripStatusLabel_StatusLabel.Size = new System.Drawing.Size( 29, 17 );
+			this.toolStripStatusLabel_StatusLabel.Text = "就绪";
 			// 
 			// tabControl_Main
 			// 
@@ -88,17 +94,17 @@
 			this.tabControl_Main.Location = new System.Drawing.Point( 0, 0 );
 			this.tabControl_Main.Name = "tabControl_Main";
 			this.tabControl_Main.SelectedIndex = 0;
-			this.tabControl_Main.Size = new System.Drawing.Size( 464, 302 );
+			this.tabControl_Main.Size = new System.Drawing.Size( 472, 311 );
 			this.tabControl_Main.TabIndex = 1;
 			// 
 			// tabPage_App
 			// 
 			this.tabPage_App.Controls.Add( this.panel_Left );
 			this.tabPage_App.Controls.Add( this.panel_right );
-			this.tabPage_App.Location = new System.Drawing.Point( 4, 22 );
+			this.tabPage_App.Location = new System.Drawing.Point( 4, 21 );
 			this.tabPage_App.Name = "tabPage_App";
 			this.tabPage_App.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tabPage_App.Size = new System.Drawing.Size( 456, 276 );
+			this.tabPage_App.Size = new System.Drawing.Size( 464, 286 );
 			this.tabPage_App.TabIndex = 0;
 			this.tabPage_App.Text = "操作";
 			this.tabPage_App.UseVisualStyleBackColor = true;
@@ -110,7 +116,7 @@
 			this.panel_Left.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel_Left.Location = new System.Drawing.Point( 3, 3 );
 			this.panel_Left.Name = "panel_Left";
-			this.panel_Left.Size = new System.Drawing.Size( 362, 270 );
+			this.panel_Left.Size = new System.Drawing.Size( 370, 280 );
 			this.panel_Left.TabIndex = 4;
 			// 
 			// listView_FileList
@@ -121,7 +127,7 @@
 			this.listView_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listView_FileList.Location = new System.Drawing.Point( 0, 0 );
 			this.listView_FileList.Name = "listView_FileList";
-			this.listView_FileList.Size = new System.Drawing.Size( 362, 236 );
+			this.listView_FileList.Size = new System.Drawing.Size( 370, 246 );
 			this.listView_FileList.TabIndex = 0;
 			this.listView_FileList.UseCompatibleStateImageBehavior = false;
 			this.listView_FileList.View = System.Windows.Forms.View.Details;
@@ -129,7 +135,7 @@
 			// columnHeader_Path
 			// 
 			this.columnHeader_Path.Text = "路径";
-			this.columnHeader_Path.Width = 292;
+			this.columnHeader_Path.Width = 300;
 			// 
 			// columnHeader_Status
 			// 
@@ -141,9 +147,9 @@
 			this.panel_Left_Bottom.Controls.Add( this.textBox_Output );
 			this.panel_Left_Bottom.Controls.Add( this.label_Output );
 			this.panel_Left_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel_Left_Bottom.Location = new System.Drawing.Point( 0, 236 );
+			this.panel_Left_Bottom.Location = new System.Drawing.Point( 0, 246 );
 			this.panel_Left_Bottom.Name = "panel_Left_Bottom";
-			this.panel_Left_Bottom.Size = new System.Drawing.Size( 362, 34 );
+			this.panel_Left_Bottom.Size = new System.Drawing.Size( 370, 34 );
 			this.panel_Left_Bottom.TabIndex = 1;
 			// 
 			// textBox_Output
@@ -165,19 +171,30 @@
 			// 
 			// panel_right
 			// 
+			this.panel_right.Controls.Add( this.button_deletePath );
 			this.panel_right.Controls.Add( this.button_SetOutput );
 			this.panel_right.Controls.Add( this.button_Start );
 			this.panel_right.Controls.Add( this.button_AddFile );
 			this.panel_right.Controls.Add( this.button_AddFolder );
 			this.panel_right.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel_right.Location = new System.Drawing.Point( 365, 3 );
+			this.panel_right.Location = new System.Drawing.Point( 373, 3 );
 			this.panel_right.Name = "panel_right";
-			this.panel_right.Size = new System.Drawing.Size( 88, 270 );
+			this.panel_right.Size = new System.Drawing.Size( 88, 280 );
 			this.panel_right.TabIndex = 3;
+			// 
+			// button_deletePath
+			// 
+			this.button_deletePath.Location = new System.Drawing.Point( 3, 61 );
+			this.button_deletePath.Name = "button_deletePath";
+			this.button_deletePath.Size = new System.Drawing.Size( 85, 23 );
+			this.button_deletePath.TabIndex = 5;
+			this.button_deletePath.Text = "删除选中项";
+			this.button_deletePath.UseVisualStyleBackColor = true;
+			this.button_deletePath.Click += new System.EventHandler( this.button_deletePath_Click );
 			// 
 			// button_SetOutput
 			// 
-			this.button_SetOutput.Location = new System.Drawing.Point( 3, 61 );
+			this.button_SetOutput.Location = new System.Drawing.Point( 3, 90 );
 			this.button_SetOutput.Name = "button_SetOutput";
 			this.button_SetOutput.Size = new System.Drawing.Size( 85, 23 );
 			this.button_SetOutput.TabIndex = 4;
@@ -187,7 +204,7 @@
 			// 
 			// button_Start
 			// 
-			this.button_Start.Location = new System.Drawing.Point( 3, 90 );
+			this.button_Start.Location = new System.Drawing.Point( 3, 119 );
 			this.button_Start.Name = "button_Start";
 			this.button_Start.Size = new System.Drawing.Size( 85, 23 );
 			this.button_Start.TabIndex = 3;
@@ -217,6 +234,11 @@
 			// 
 			// tabPage_Setting
 			// 
+			this.tabPage_Setting.Controls.Add( this.checkBox_setting_zip );
+			this.tabPage_Setting.Controls.Add( this.radioButton_setting_sequence_right );
+			this.tabPage_Setting.Controls.Add( this.radioButton_setting_sequence_left );
+			this.tabPage_Setting.Controls.Add( this.checkBox_setting_split );
+			this.tabPage_Setting.Controls.Add( this.label_setting_zip );
 			this.tabPage_Setting.Controls.Add( this.textBox_setting_quality );
 			this.tabPage_Setting.Controls.Add( this.label_setting_sequence );
 			this.tabPage_Setting.Controls.Add( this.label_setting_split );
@@ -224,28 +246,116 @@
 			this.tabPage_Setting.Controls.Add( this.comboBox_setting_presetWidth );
 			this.tabPage_Setting.Controls.Add( this.textBox_setting_width );
 			this.tabPage_Setting.Controls.Add( this.label_setting_width );
-			this.tabPage_Setting.Location = new System.Drawing.Point( 4, 22 );
+			this.tabPage_Setting.Location = new System.Drawing.Point( 4, 21 );
 			this.tabPage_Setting.Name = "tabPage_Setting";
 			this.tabPage_Setting.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tabPage_Setting.Size = new System.Drawing.Size( 456, 276 );
+			this.tabPage_Setting.Size = new System.Drawing.Size( 464, 286 );
 			this.tabPage_Setting.TabIndex = 1;
 			this.tabPage_Setting.Text = "设置";
 			this.tabPage_Setting.UseVisualStyleBackColor = true;
 			// 
+			// checkBox_setting_zip
+			// 
+			this.checkBox_setting_zip.AutoSize = true;
+			this.checkBox_setting_zip.Location = new System.Drawing.Point( 78, 151 );
+			this.checkBox_setting_zip.Name = "checkBox_setting_zip";
+			this.checkBox_setting_zip.Size = new System.Drawing.Size( 15, 14 );
+			this.checkBox_setting_zip.TabIndex = 11;
+			this.checkBox_setting_zip.UseVisualStyleBackColor = true;
+			// 
+			// radioButton_setting_sequence_right
+			// 
+			this.radioButton_setting_sequence_right.AutoSize = true;
+			this.radioButton_setting_sequence_right.Location = new System.Drawing.Point( 78, 116 );
+			this.radioButton_setting_sequence_right.Name = "radioButton_setting_sequence_right";
+			this.radioButton_setting_sequence_right.Size = new System.Drawing.Size( 59, 16 );
+			this.radioButton_setting_sequence_right.TabIndex = 10;
+			this.radioButton_setting_sequence_right.TabStop = true;
+			this.radioButton_setting_sequence_right.Text = "左←右";
+			this.radioButton_setting_sequence_right.UseVisualStyleBackColor = true;
+			// 
+			// radioButton_setting_sequence_left
+			// 
+			this.radioButton_setting_sequence_left.AutoSize = true;
+			this.radioButton_setting_sequence_left.Location = new System.Drawing.Point( 143, 116 );
+			this.radioButton_setting_sequence_left.Name = "radioButton_setting_sequence_left";
+			this.radioButton_setting_sequence_left.Size = new System.Drawing.Size( 59, 16 );
+			this.radioButton_setting_sequence_left.TabIndex = 9;
+			this.radioButton_setting_sequence_left.TabStop = true;
+			this.radioButton_setting_sequence_left.Text = "左→右";
+			this.radioButton_setting_sequence_left.UseVisualStyleBackColor = true;
+			// 
+			// checkBox_setting_split
+			// 
+			this.checkBox_setting_split.AutoSize = true;
+			this.checkBox_setting_split.Location = new System.Drawing.Point( 78, 82 );
+			this.checkBox_setting_split.Name = "checkBox_setting_split";
+			this.checkBox_setting_split.Size = new System.Drawing.Size( 15, 14 );
+			this.checkBox_setting_split.TabIndex = 8;
+			this.checkBox_setting_split.UseVisualStyleBackColor = true;
+			// 
+			// label_setting_zip
+			// 
+			this.label_setting_zip.AutoSize = true;
+			this.label_setting_zip.Location = new System.Drawing.Point( 6, 153 );
+			this.label_setting_zip.Name = "label_setting_zip";
+			this.label_setting_zip.Size = new System.Drawing.Size( 65, 12 );
+			this.label_setting_zip.TabIndex = 7;
+			this.label_setting_zip.Text = "输出压缩包";
+			// 
+			// textBox_setting_quality
+			// 
+			this.textBox_setting_quality.Location = new System.Drawing.Point( 78, 40 );
+			this.textBox_setting_quality.MaxLength = 3;
+			this.textBox_setting_quality.Name = "textBox_setting_quality";
+			this.textBox_setting_quality.Size = new System.Drawing.Size( 50, 21 );
+			this.textBox_setting_quality.TabIndex = 6;
+			this.textBox_setting_quality.KeyUp += new System.Windows.Forms.KeyEventHandler( this.textBox_setting_quality_KeyUp );
+			this.textBox_setting_quality.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_quality_KeyPress );
+			// 
+			// label_setting_sequence
+			// 
+			this.label_setting_sequence.AutoSize = true;
+			this.label_setting_sequence.Location = new System.Drawing.Point( 6, 118 );
+			this.label_setting_sequence.Name = "label_setting_sequence";
+			this.label_setting_sequence.Size = new System.Drawing.Size( 53, 12 );
+			this.label_setting_sequence.TabIndex = 5;
+			this.label_setting_sequence.Text = "阅读顺序";
+			// 
+			// label_setting_split
+			// 
+			this.label_setting_split.AutoSize = true;
+			this.label_setting_split.Location = new System.Drawing.Point( 6, 84 );
+			this.label_setting_split.Name = "label_setting_split";
+			this.label_setting_split.Size = new System.Drawing.Size( 53, 12 );
+			this.label_setting_split.TabIndex = 4;
+			this.label_setting_split.Text = "分割双页";
+			// 
+			// label_setting_quality
+			// 
+			this.label_setting_quality.AutoSize = true;
+			this.label_setting_quality.Location = new System.Drawing.Point( 6, 49 );
+			this.label_setting_quality.Name = "label_setting_quality";
+			this.label_setting_quality.Size = new System.Drawing.Size( 29, 12 );
+			this.label_setting_quality.TabIndex = 3;
+			this.label_setting_quality.Text = "质量";
+			// 
 			// comboBox_setting_presetWidth
 			// 
 			this.comboBox_setting_presetWidth.FormattingEnabled = true;
-			this.comboBox_setting_presetWidth.Location = new System.Drawing.Point( 132, 7 );
+			this.comboBox_setting_presetWidth.Location = new System.Drawing.Point( 134, 6 );
 			this.comboBox_setting_presetWidth.Name = "comboBox_setting_presetWidth";
 			this.comboBox_setting_presetWidth.Size = new System.Drawing.Size( 110, 20 );
 			this.comboBox_setting_presetWidth.TabIndex = 2;
 			// 
 			// textBox_setting_width
 			// 
-			this.textBox_setting_width.Location = new System.Drawing.Point( 69, 6 );
+			this.textBox_setting_width.Location = new System.Drawing.Point( 78, 6 );
+			this.textBox_setting_width.MaxLength = 4;
 			this.textBox_setting_width.Name = "textBox_setting_width";
 			this.textBox_setting_width.Size = new System.Drawing.Size( 50, 21 );
 			this.textBox_setting_width.TabIndex = 1;
+			this.textBox_setting_width.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_width_KeyPress );
 			// 
 			// label_setting_width
 			// 
@@ -261,45 +371,11 @@
 			this.openFileDialog_AddFile.Filter = "压缩文档(*.zip;*.rar)|*.zip;*.rar";
 			this.openFileDialog_AddFile.Multiselect = true;
 			// 
-			// label_setting_quality
-			// 
-			this.label_setting_quality.AutoSize = true;
-			this.label_setting_quality.Location = new System.Drawing.Point( 6, 49 );
-			this.label_setting_quality.Name = "label_setting_quality";
-			this.label_setting_quality.Size = new System.Drawing.Size( 29, 12 );
-			this.label_setting_quality.TabIndex = 3;
-			this.label_setting_quality.Text = "质量";
-			// 
-			// label_setting_split
-			// 
-			this.label_setting_split.AutoSize = true;
-			this.label_setting_split.Location = new System.Drawing.Point( 6, 79 );
-			this.label_setting_split.Name = "label_setting_split";
-			this.label_setting_split.Size = new System.Drawing.Size( 53, 12 );
-			this.label_setting_split.TabIndex = 4;
-			this.label_setting_split.Text = "分割双页";
-			// 
-			// label_setting_sequence
-			// 
-			this.label_setting_sequence.AutoSize = true;
-			this.label_setting_sequence.Location = new System.Drawing.Point( 6, 131 );
-			this.label_setting_sequence.Name = "label_setting_sequence";
-			this.label_setting_sequence.Size = new System.Drawing.Size( 53, 12 );
-			this.label_setting_sequence.TabIndex = 5;
-			this.label_setting_sequence.Text = "阅读顺序";
-			// 
-			// textBox_setting_quality
-			// 
-			this.textBox_setting_quality.Location = new System.Drawing.Point( 69, 42 );
-			this.textBox_setting_quality.Name = "textBox_setting_quality";
-			this.textBox_setting_quality.Size = new System.Drawing.Size( 50, 21 );
-			this.textBox_setting_quality.TabIndex = 6;
-			// 
 			// Form_Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 12F );
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size( 464, 324 );
+			this.ClientSize = new System.Drawing.Size( 472, 333 );
 			this.Controls.Add( this.tabControl_Main );
 			this.Controls.Add( this.statusStrip_MainStatus );
 			this.Icon = ( (System.Drawing.Icon)( resources.GetObject( "$this.Icon" ) ) );
@@ -351,6 +427,12 @@
 		private System.Windows.Forms.Label label_setting_quality;
 		private System.Windows.Forms.Label label_setting_sequence;
 		private System.Windows.Forms.TextBox textBox_setting_quality;
+		private System.Windows.Forms.CheckBox checkBox_setting_split;
+		private System.Windows.Forms.Label label_setting_zip;
+		private System.Windows.Forms.RadioButton radioButton_setting_sequence_right;
+		private System.Windows.Forms.RadioButton radioButton_setting_sequence_left;
+		private System.Windows.Forms.CheckBox checkBox_setting_zip;
+		private System.Windows.Forms.Button button_deletePath;
 
 	}
 }
