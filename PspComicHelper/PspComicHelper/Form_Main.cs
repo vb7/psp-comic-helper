@@ -204,6 +204,46 @@ namespace PspComicHelper
 		}
 
 		/// <summary>
+		/// 添加路径
+		/// </summary>
+		/// <param name="path"></param>
+		private bool AddPath( string path )
+		{
+			bool success = false;
+			string ext;
+
+			if ( File.Exists( path ) )
+			{
+				ext = Path.GetExtension( path ).ToLower();
+				if ( ext == ".zip" || ext == ".rar" )
+				{
+					success = true;
+				}
+			}
+			else if ( Directory.Exists( path ) )
+			{
+				success = true;
+			}
+
+			if ( success )
+			{
+				foreach ( ListViewItem item in listView_FileList.Items )
+				{
+					if ( item.Text == path )
+					{
+						success = false;
+						break;
+					}
+				}
+			}
+
+			if( success )
+				listView_FileList.Items.Add( new ListViewItem( new string[] { path, "准备" } ) );
+
+			return success;
+		}
+
+		/// <summary>
 		/// 添加文件按钮点击
 		/// </summary>
 		/// <param name="sender"></param>
@@ -221,19 +261,8 @@ namespace PspComicHelper
 
 				foreach ( string file in openFileDialog_AddFile.FileNames )
 				{
-					duplicate = false;
-					foreach ( ListViewItem item in listView_FileList.Items )
-					{
-						if ( item.Text == file )
-						{
-							duplicate = true;
-						}
-					}
-					if( duplicate )
-						continue;
-
-					listView_FileList.Items.Add( new ListViewItem( new string[] { file, "准备" } ) );
-					addCount++;
+					if( AddPath( file ) )
+						addCount++;
 				}
 
 				if ( addCount == 0 )
@@ -256,21 +285,9 @@ namespace PspComicHelper
 			{
 				Setting.OpenInitialDirectory = folderBrowserDialog_AddFolder.SelectedPath;
 
-				bool duplicate = false;
-				foreach ( ListViewItem item in listView_FileList.Items )
-				{
-					if ( item.Text == folderBrowserDialog_AddFolder.SelectedPath )
-					{
-						duplicate = true;
-					}
-				}
-				if ( duplicate )
+				if ( !AddPath( folderBrowserDialog_AddFolder.SelectedPath ) )
 				{
 					MessageBox.Show( "请勿重复添加" );
-				}
-				else
-				{
-					listView_FileList.Items.Add( new ListViewItem( new string[] { folderBrowserDialog_AddFolder.SelectedPath, "准备" } ) );
 				}
 			}
 		}
@@ -375,6 +392,10 @@ namespace PspComicHelper
 		/// <param name="e"></param>
 		private void textBox_setting_width_KeyPress( object sender, KeyPressEventArgs e )
 		{
+			if ( e.KeyChar > 57 || ( e.KeyChar > 8 && e.KeyChar < 47 ) || e.KeyChar < 8 )
+			{
+				e.Handled = true;
+			}
 		}
 
 		/// <summary>
@@ -436,22 +457,11 @@ namespace PspComicHelper
 		{
 			//string path = ( (System.Array)e.Data.GetData( DataFormats.FileDrop ) ).GetValue( 0 ).ToString();
 			//MessageBox.Show( path );
-			string path, ext;
+			string path;
 			for( int i = 0; i < ( (System.Array)e.Data.GetData( DataFormats.FileDrop ) ).Length; i++ )
 			{
 				path = ( (System.Array)e.Data.GetData( DataFormats.FileDrop ) ).GetValue( i ).ToString();
-				if( File.Exists( path ) )
-				{
-					ext = Path.GetExtension( path ).ToLower();
-					if ( ext == ".zip" || ext == ".rar" )
-					{
-						listView_FileList.Items.Add( new ListViewItem( new string[] { path, "准备" } ) );
-					}
-				}
-				else if ( Directory.Exists( path ) )
-				{
-					listView_FileList.Items.Add( new ListViewItem( new string[] { path, "准备" } ) );
-				}
+				AddPath( path );
 			}
 		}
 

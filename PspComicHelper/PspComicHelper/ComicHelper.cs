@@ -147,9 +147,10 @@ namespace PspComicHelper
 		private static string ProgressComicFolder( string path, bool includeSubdirectory )
 		{
 			// 取得文件夹中所有图片文件
-			List<string> files = new List<string>(
-				Directory.GetFiles( path, "*.*", includeSubdirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly )
-			);
+			string [] filesArr = Directory.GetFiles( path, "*.*", includeSubdirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly );
+			Array.Sort( filesArr );
+
+			List<string> files = new List<string>( filesArr );
 			for ( int i = files.Count - 1; i >= 0; i-- )
 			{
 				if ( !imageExts.Contains( Path.GetExtension( files[i] ).ToLower() ) )
