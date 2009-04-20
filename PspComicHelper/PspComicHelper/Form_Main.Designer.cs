@@ -381,6 +381,7 @@
 			// 
 			// Form_Main
 			// 
+			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 12F );
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size( 472, 333 );
@@ -390,6 +391,8 @@
 			this.MinimumSize = new System.Drawing.Size( 480, 360 );
 			this.Name = "Form_Main";
 			this.Text = "PSP Comic Helper";
+			this.DragDrop += new System.Windows.Forms.DragEventHandler( this.Form_Main_DragDrop );
+			this.DragEnter += new System.Windows.Forms.DragEventHandler( this.Form_Main_DragEnter );
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler( this.Form_Main_FormClosing );
 			this.statusStrip_MainStatus.ResumeLayout( false );
 			this.statusStrip_MainStatus.PerformLayout();

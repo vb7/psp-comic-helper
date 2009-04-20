@@ -426,6 +426,49 @@ namespace PspComicHelper
 			textBox_setting_width.Text = ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItem ).Value.ToString();
 		}
 
+
+		/// <summary>
+		/// 文件拖拽
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Form_Main_DragDrop( object sender, DragEventArgs e )
+		{
+			//string path = ( (System.Array)e.Data.GetData( DataFormats.FileDrop ) ).GetValue( 0 ).ToString();
+			//MessageBox.Show( path );
+			string path, ext;
+			for( int i = 0; i < ( (System.Array)e.Data.GetData( DataFormats.FileDrop ) ).Length; i++ )
+			{
+				path = ( (System.Array)e.Data.GetData( DataFormats.FileDrop ) ).GetValue( i ).ToString();
+				if( File.Exists( path ) )
+				{
+					ext = Path.GetExtension( path ).ToLower();
+					if ( ext == ".zip" || ext == ".rar" )
+					{
+						listView_FileList.Items.Add( new ListViewItem( new string[] { path, "准备" } ) );
+					}
+				}
+				else if ( Directory.Exists( path ) )
+				{
+					listView_FileList.Items.Add( new ListViewItem( new string[] { path, "准备" } ) );
+				}
+			}
+		}
+
+		/// <summary>
+		/// 文件拖拽
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Form_Main_DragEnter( object sender, DragEventArgs e )
+		{
+			if ( e.Data.GetDataPresent( DataFormats.FileDrop ) )
+				e.Effect = DragDropEffects.Link;
+			else e.Effect = DragDropEffects.None;
+		}
+
+
+
 		/// <summary>
 		/// ComboBox选项
 		/// </summary>
@@ -434,7 +477,6 @@ namespace PspComicHelper
 			public string Name { get; set; }
 			public int Value { get; set; }
 		}
-
 		
 
 	}
