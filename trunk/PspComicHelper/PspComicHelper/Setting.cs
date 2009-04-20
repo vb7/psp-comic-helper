@@ -30,6 +30,11 @@ namespace PspComicHelper
 		}
 
 		/// <summary>
+		/// 打开文件对话框初始目录
+		/// </summary>
+		public static string OpenInitialDirectory { get; set; }
+
+		/// <summary>
 		/// 宽
 		/// </summary>
 		public static int Width { get; set; }
@@ -97,6 +102,7 @@ namespace PspComicHelper
 				try
 				{
 					OutputPath = reader.ReadLine();
+					OpenInitialDirectory = reader.ReadLine();
 					Width = Convert.ToInt32( reader.ReadLine() );
 					Quality = Convert.ToInt32( reader.ReadLine() );
 					SplitTowPage = Convert.ToBoolean( reader.ReadLine() );
@@ -127,6 +133,7 @@ namespace PspComicHelper
 		{
 			StreamWriter writer = new StreamWriter( Path.Combine( AppPath, SETTING_FILE ), false, System.Text.Encoding.Default );
 			writer.WriteLine( OutputPath );
+			writer.WriteLine( OpenInitialDirectory );
 			writer.WriteLine( Width );
 			writer.WriteLine( Quality );
 			writer.WriteLine( SplitTowPage );

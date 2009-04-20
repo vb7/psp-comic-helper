@@ -16,18 +16,39 @@ namespace PspComicHelper
 		// 定义漫画处理进度委托
 		private delegate void ComicProgressCallback( int index, string status );
 
+		// 完成委托
+		private delegate void ComicCompleteCallback();
+
 		// 处理进度回调
-		private ComicProgressCallback _callback;
+		private ComicProgressCallback _progressCallback;
+
+		// 完成回调
+		private ComicCompleteCallback _completeCallback;
 
 		// 需要处理的总数
 		private int _processCount;
 		// 处理完成的总数
 		private int _completeCount;
+
+		/// <summary>
+		/// 状态栏文字
+		/// </summary>
+		private List<string> _statusString = new List<string>()
+		{
+			"处理中... -",
+			"处理中... \\",
+			"处理中... |",
+			"处理中... /"
+		};
+
+		/// <summary>
+		/// 经过时间
+		/// </summary>
+		private int _timePass = 0;
 		
 		// 预设宽度
 		private List<ComboBoxItem> _widthDic = new List<ComboBoxItem>()
 		{
-			new ComboBoxItem() { Name = "请选择...", Value = 0 },
 			new ComboBoxItem() { Name = "PSP (480px)", Value = 480 },
 			new ComboBoxItem() { Name = "PSP*2 (960px)", Value = 960 },
 			new ComboBoxItem() { Name = "魅族M8 (720px)", Value = 720 }
@@ -37,7 +58,8 @@ namespace PspComicHelper
 		public Form_Main()
 		{
 			InitializeComponent();
-			_callback = new ComicProgressCallback( UpdateStatus );
+			_progressCallback = new ComicProgressCallback( UpdateStatus );
+			_completeCallback = new ComicCompleteCallback( SetFormStatus_Complete );
 			InitSetting();
 
 			comboBox_setting_presetWidth.DataSource = _widthDic;
@@ -61,10 +83,11 @@ namespace PspComicHelper
 					continue;
 				}
 
-				this.Invoke( _callback, new object[]{ i, "处理中..." } );
+				this.Invoke( _progressCallback, new object[]{ i, "处理中..." } );
 				result = ComicHelper.ProgressComicPath( list[i][0] );
-				this.Invoke( _callback, new object[]{ i, result } );
+				this.Invoke( _progressCallback, new object[]{ i, result } );
 			}
+			this.Invoke( _completeCallback );
 		}
 
 		/// <summary>
@@ -152,14 +175,47 @@ namespace PspComicHelper
 		}
 
 		/// <summary>
+		/// 设置窗体状态 开始
+		/// </summary>
+		private void SetFormStatus_Started()
+		{
+			button_AddFile.Enabled = false;
+			button_AddFolder.Enabled = false;
+			button_deletePath.Enabled = false;
+			button_SetOutput.Enabled =false;
+			button_Start.Enabled = false;
+			//toolStripStatusLabel_StatusLabel.Text = "处理中...";
+			_timePass = 0;
+			timer_processing.Start();
+		}
+
+		/// <summary>
+		/// 设置窗体状态 完成
+		/// </summary>
+		private void SetFormStatus_Complete()
+		{
+			button_AddFile.Enabled = true;
+			button_AddFolder.Enabled = true;
+			button_deletePath.Enabled = true;
+			button_SetOutput.Enabled = true;
+			button_Start.Enabled = true;
+			timer_processing.Stop();
+			toolStripStatusLabel_StatusLabel.Text = string.Format( "完成, 耗时{0}秒", _timePass );
+		}
+
+		/// <summary>
 		/// 添加文件按钮点击
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void button_AddFile_Click( object sender, EventArgs e )
 		{
+			openFileDialog_AddFile.InitialDirectory = Setting.OpenInitialDirectory;
+
 			if ( openFileDialog_AddFile.ShowDialog() == DialogResult.OK )
 			{
+				Setting.OpenInitialDirectory = Path.GetDirectoryName( openFileDialog_AddFile.FileName );
+
 				int addCount = 0;
 				bool duplicate = false;
 
@@ -194,8 +250,12 @@ namespace PspComicHelper
 		/// <param name="e"></param>
 		private void button_AddDir_Click( object sender, EventArgs e )
 		{
+			folderBrowserDialog_AddFolder.SelectedPath = Setting.OpenInitialDirectory;
+
 			if ( folderBrowserDialog_AddFolder.ShowDialog() == DialogResult.OK )
 			{
+				Setting.OpenInitialDirectory = folderBrowserDialog_AddFolder.SelectedPath;
+
 				bool duplicate = false;
 				foreach ( ListViewItem item in listView_FileList.Items )
 				{
@@ -278,6 +338,7 @@ namespace PspComicHelper
 			}
 
 			UpdateSetting();
+			SetFormStatus_Started();
 			StartComicProcess();
 		}
 
@@ -306,11 +367,6 @@ namespace PspComicHelper
 
 
 
-		private class ComboBoxItem
-		{
-			public string Name { get; set; }
-			public int Value { get; set; }
-		}
 
 		/// <summary>
 		/// 控制宽度只能是数字
@@ -348,6 +404,37 @@ namespace PspComicHelper
 				textbox.Text = "100";
 			}
 		}
+
+		/// <summary>
+		/// 定时器 更新状态栏文字
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void timer_processing_Tick( object sender, EventArgs e )
+		{
+			_timePass++;
+			toolStripStatusLabel_StatusLabel.Text = _statusString[ _timePass % _statusString.Count ];
+		}
+
+		/// <summary>
+		/// 下拉列表变更
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void comboBox_setting_presetWidth_SelectedIndexChanged( object sender, EventArgs e )
+		{
+			textBox_setting_width.Text = ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItem ).Value.ToString();
+		}
+
+		/// <summary>
+		/// ComboBox选项
+		/// </summary>
+		private class ComboBoxItem
+		{
+			public string Name { get; set; }
+			public int Value { get; set; }
+		}
+
 		
 
 	}
