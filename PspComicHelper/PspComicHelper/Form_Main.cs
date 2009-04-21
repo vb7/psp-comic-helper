@@ -51,7 +51,8 @@ namespace PspComicHelper
 		{
 			new ComboBoxItem() { Name = "PSP (480px)", Value = 480 },
 			new ComboBoxItem() { Name = "PSP*2 (960px)", Value = 960 },
-			new ComboBoxItem() { Name = "魅族M8 (720px)", Value = 720 }
+			new ComboBoxItem() { Name = "魅族M8 (720px)", Value = 720 },
+			new ComboBoxItem() { Name = "iPhone (480px)", Value = 480 }
 		};
 		
 
