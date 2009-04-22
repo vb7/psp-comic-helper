@@ -259,7 +259,7 @@
 			// checkBox_setting_zip
 			// 
 			this.checkBox_setting_zip.AutoSize = true;
-			this.checkBox_setting_zip.Location = new System.Drawing.Point( 78, 151 );
+			this.checkBox_setting_zip.Location = new System.Drawing.Point( 78, 153 );
 			this.checkBox_setting_zip.Name = "checkBox_setting_zip";
 			this.checkBox_setting_zip.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox_setting_zip.TabIndex = 11;
@@ -268,7 +268,7 @@
 			// radioButton_setting_sequence_right
 			// 
 			this.radioButton_setting_sequence_right.AutoSize = true;
-			this.radioButton_setting_sequence_right.Location = new System.Drawing.Point( 78, 116 );
+			this.radioButton_setting_sequence_right.Location = new System.Drawing.Point( 78, 117 );
 			this.radioButton_setting_sequence_right.Name = "radioButton_setting_sequence_right";
 			this.radioButton_setting_sequence_right.Size = new System.Drawing.Size( 59, 16 );
 			this.radioButton_setting_sequence_right.TabIndex = 10;
@@ -279,7 +279,7 @@
 			// radioButton_setting_sequence_left
 			// 
 			this.radioButton_setting_sequence_left.AutoSize = true;
-			this.radioButton_setting_sequence_left.Location = new System.Drawing.Point( 143, 116 );
+			this.radioButton_setting_sequence_left.Location = new System.Drawing.Point( 143, 117 );
 			this.radioButton_setting_sequence_left.Name = "radioButton_setting_sequence_left";
 			this.radioButton_setting_sequence_left.Size = new System.Drawing.Size( 59, 16 );
 			this.radioButton_setting_sequence_left.TabIndex = 9;
@@ -290,7 +290,7 @@
 			// checkBox_setting_split
 			// 
 			this.checkBox_setting_split.AutoSize = true;
-			this.checkBox_setting_split.Location = new System.Drawing.Point( 78, 82 );
+			this.checkBox_setting_split.Location = new System.Drawing.Point( 78, 84 );
 			this.checkBox_setting_split.Name = "checkBox_setting_split";
 			this.checkBox_setting_split.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox_setting_split.TabIndex = 8;
@@ -307,7 +307,7 @@
 			// 
 			// textBox_setting_quality
 			// 
-			this.textBox_setting_quality.Location = new System.Drawing.Point( 78, 40 );
+			this.textBox_setting_quality.Location = new System.Drawing.Point( 78, 43 );
 			this.textBox_setting_quality.MaxLength = 3;
 			this.textBox_setting_quality.Name = "textBox_setting_quality";
 			this.textBox_setting_quality.Size = new System.Drawing.Size( 50, 21 );
@@ -345,7 +345,7 @@
 			// comboBox_setting_presetWidth
 			// 
 			this.comboBox_setting_presetWidth.FormattingEnabled = true;
-			this.comboBox_setting_presetWidth.Location = new System.Drawing.Point( 134, 6 );
+			this.comboBox_setting_presetWidth.Location = new System.Drawing.Point( 134, 7 );
 			this.comboBox_setting_presetWidth.Name = "comboBox_setting_presetWidth";
 			this.comboBox_setting_presetWidth.Size = new System.Drawing.Size( 110, 20 );
 			this.comboBox_setting_presetWidth.TabIndex = 2;
@@ -353,7 +353,7 @@
 			// 
 			// textBox_setting_width
 			// 
-			this.textBox_setting_width.Location = new System.Drawing.Point( 78, 6 );
+			this.textBox_setting_width.Location = new System.Drawing.Point( 78, 7 );
 			this.textBox_setting_width.MaxLength = 4;
 			this.textBox_setting_width.Name = "textBox_setting_width";
 			this.textBox_setting_width.Size = new System.Drawing.Size( 50, 21 );
