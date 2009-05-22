@@ -244,12 +244,12 @@ namespace PspComicHelper
 
 					if ( Setting.ReadOrder == ReadOrderEnum.RightToLeft )
 					{
-						ImageHelper.SaveAsJpeg( right, dest, Setting.Quality );
+						ImageHelper.SaveAsJpeg( right, Regex.Replace( dest, "\\.jpg$", "a.jpg" ), Setting.Quality );
 						ImageHelper.SaveAsJpeg( left, Regex.Replace( dest, "\\.jpg$", "b.jpg" ), Setting.Quality );
 					}
 					else
 					{
-						ImageHelper.SaveAsJpeg( left, dest, Setting.Quality );
+						ImageHelper.SaveAsJpeg( left, Regex.Replace( dest, "\\.jpg$", "a.jpg" ), Setting.Quality );
 						ImageHelper.SaveAsJpeg( right, Regex.Replace( dest, "\\.jpg$", "b.jpg" ), Setting.Quality );
 					}
 					left.Dispose();
