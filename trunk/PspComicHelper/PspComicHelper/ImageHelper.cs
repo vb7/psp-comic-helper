@@ -160,6 +160,8 @@ namespace PspComicHelper
 			return bmpOut;
 		}
 
+		
+
 
 		/// <summary>
 		/// 图片缩放模式
