@@ -160,7 +160,20 @@ namespace PspComicHelper
 			return bmpOut;
 		}
 
-		
+
+		/// <summary>
+		/// 检测图像边缘
+		/// </summary>
+		/// <param name="bitmap"></param>
+		/// <param name="threshold"></param>
+		/// <returns></returns>
+		public static ImageMargin DetectMargin( Bitmap bitmap, int threshold )
+		{
+			if ( threshold > 255 || threshold < 0 )
+				threshold = 255;
+
+			return null;
+		}
 
 
 		/// <summary>

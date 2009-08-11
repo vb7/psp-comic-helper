@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PspComicHelper", "PspComicHelper\PspComicHelper.csproj", "{83ABAE63-C5C4-4EBD-BEB1-6E3F2E594A68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PspComicHelper.Test", "PspComicHelper.Test\PspComicHelper.Test.csproj", "{81CE599E-BEC5-4017-80CD-5AC04A6CEFDA}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -17,6 +19,10 @@ Global
 		{83ABAE63-C5C4-4EBD-BEB1-6E3F2E594A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83ABAE63-C5C4-4EBD-BEB1-6E3F2E594A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83ABAE63-C5C4-4EBD-BEB1-6E3F2E594A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81CE599E-BEC5-4017-80CD-5AC04A6CEFDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CE599E-BEC5-4017-80CD-5AC04A6CEFDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CE599E-BEC5-4017-80CD-5AC04A6CEFDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CE599E-BEC5-4017-80CD-5AC04A6CEFDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

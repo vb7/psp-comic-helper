@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
@@ -49,10 +47,18 @@ namespace PspComicHelper
 		// 预设宽度
 		private List<ComboBoxItem> _widthDic = new List<ComboBoxItem>()
 		{
-			new ComboBoxItem() { Name = "PSP (480px)", Value = 480 },
-			new ComboBoxItem() { Name = "PSP*2 (960px)", Value = 960 },
-			new ComboBoxItem() { Name = "魅族M8 (720px)", Value = 720 },
-			new ComboBoxItem() { Name = "iPhone (480px)", Value = 480 }
+			new ComboBoxItem { Name = "请选择...", Value = 0 },
+			new ComboBoxItem { Name = "PSP (480px)", Value = 480 },
+			new ComboBoxItem { Name = "PSP*2 (960px)", Value = 960 },
+			new ComboBoxItem { Name = "魅族M8 (720px)", Value = 720 },
+			new ComboBoxItem { Name = "iPhone (480px)", Value = 480 }
+		};
+
+		// 预设高度
+		private List<ComboBoxItem> _heightDic = new List<ComboBoxItem>()
+		{
+			new ComboBoxItem { Name = "请选择...", Value = 0 },
+			new ComboBoxItem { Name = "Sony Reader ?", Value = 754 }
 		};
 		
 
@@ -66,6 +72,10 @@ namespace PspComicHelper
 			comboBox_setting_presetWidth.DataSource = _widthDic;
 			comboBox_setting_presetWidth.DisplayMember = "Name";
 			comboBox_setting_presetWidth.ValueMember = "Value";
+
+			comboBox_setting_presetHeight.DataSource = _heightDic;
+			comboBox_setting_presetHeight.DisplayMember = "Name";
+			comboBox_setting_presetHeight.ValueMember = "Value";
 		}
 
 
@@ -134,7 +144,10 @@ namespace PspComicHelper
 			Setting.AppPath = Application.StartupPath;
 			Setting.Load();
 
-			textBox_setting_width.Text = Setting.Width.ToString();
+			checkBox_setting_witth.Checked = Setting.EnableWidth;
+			textBox_setting_width.Text = Setting.Width_Actual.ToString();
+			checkBox_setting_height.Checked = Setting.EnableHeight;
+			textBox_setting_height.Text = Setting.Height_Actual.ToString();
 			textBox_setting_quality.Text = Setting.Quality.ToString();
 			checkBox_setting_split.Checked = Setting.SplitTowPage;
 			radioButton_setting_sequence_right.Checked = ( Setting.ReadOrder == ReadOrderEnum.RightToLeft );
@@ -158,8 +171,13 @@ namespace PspComicHelper
 		/// </summary>
 		private void UpdateSetting()
 		{
+			Setting.EnableWidth = checkBox_setting_witth.Checked;
 			if( IsNumeric( textBox_setting_width.Text ) )
-				Setting.Width = Convert.ToInt32( textBox_setting_width.Text );
+				Setting.Width_Actual = Convert.ToInt32( textBox_setting_width.Text );
+
+			Setting.EnableHeight = checkBox_setting_height.Checked;
+			if( IsNumeric( textBox_setting_height.Text ) )
+				Setting.Height_Actual = Convert.ToInt32( textBox_setting_height.Text );
 
 			if( IsNumeric( textBox_setting_quality.Text ) )
 				Setting.Quality = Convert.ToInt32( textBox_setting_quality.Text );
@@ -202,6 +220,7 @@ namespace PspComicHelper
 			button_Start.Enabled = true;
 			timer_processing.Stop();
 			toolStripStatusLabel_StatusLabel.Text = string.Format( "完成, 耗时{0}秒", _timePass );
+			MinimizeMemory();
 		}
 
 		/// <summary>
@@ -242,6 +261,14 @@ namespace PspComicHelper
 				listView_FileList.Items.Add( new ListViewItem( new string[] { path, "准备" } ) );
 
 			return success;
+		}
+
+		/// <summary>
+		/// 释放内存
+		/// </summary>
+		private void MinimizeMemory()
+		{
+			System.Diagnostics.Process.GetCurrentProcess().MaxWorkingSet = new IntPtr( 750000 );
 		}
 
 		/// <summary>
@@ -439,13 +466,29 @@ namespace PspComicHelper
 		}
 
 		/// <summary>
-		/// 下拉列表变更
+		/// 宽度预设下拉列表变更
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void comboBox_setting_presetWidth_SelectedIndexChanged( object sender, EventArgs e )
 		{
-			textBox_setting_width.Text = ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItem ).Value.ToString();
+			if ( ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItem ).Value > 0 )
+			{
+				textBox_setting_width.Text = ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItem ).Value.ToString();
+			}
+		}
+
+		/// <summary>
+		/// 高度预设下拉列表变更
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void comboBox_setting_presetHeight_SelectedIndexChanged( object sender, EventArgs e )
+		{
+			if ( ( comboBox_setting_presetHeight.SelectedItem as ComboBoxItem ).Value > 0 )
+			{
+				textBox_setting_height.Text = ( comboBox_setting_presetHeight.SelectedItem as ComboBoxItem ).Value.ToString();
+			}
 		}
 
 
@@ -478,6 +521,15 @@ namespace PspComicHelper
 			else e.Effect = DragDropEffects.None;
 		}
 
+		/// <summary>
+		/// 窗体第一次显示
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Form_Main_Shown( object sender, EventArgs e )
+		{
+			MinimizeMemory();
+		}
 
 
 		/// <summary>

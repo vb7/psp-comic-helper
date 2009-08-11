@@ -35,10 +35,42 @@ namespace PspComicHelper
 		public static string OpenInitialDirectory { get; set; }
 
 		/// <summary>
+		/// 宽 实际设定
+		/// </summary>
+		public static int Width_Actual { get; set; }
+
+		/// <summary>
+		/// 是否限定宽度
+		/// </summary>
+		public static bool EnableWidth { get; set; }
+
+		/// <summary>
 		/// 宽
 		/// </summary>
-		public static int Width { get; set; }
+		public static int Width 
+		{
+			get { return EnableWidth ? Width_Actual : 0; }
+			set { Width_Actual = value; }
+		}
 
+		/// <summary>
+		/// 高 实际设定
+		/// </summary>
+		public static int Height_Actual { get; set; }
+
+		/// <summary>
+		/// 是否限定高度
+		/// </summary>
+		public static bool EnableHeight { get; set; }
+
+		/// <summary>
+		/// 高度
+		/// </summary>
+		public static int Height
+		{
+			get { return EnableHeight ? Height_Actual : 0; }
+			set { Height_Actual = value; }
+		}
 
 		public static int _quality = 89;
 		/// <summary>
@@ -84,7 +116,10 @@ namespace PspComicHelper
 		public static void Init()
 		{
 			OutputPath = "";
-			Width = 480;
+			EnableWidth = true;
+			Width_Actual = 480;
+			EnableHeight = false;
+			Height_Actual = 0;
 			Quality = 80;
 			SplitTowPage = true;
 			ReadOrder = ReadOrderEnum.RightToLeft;
@@ -103,7 +138,10 @@ namespace PspComicHelper
 				{
 					OutputPath = reader.ReadLine();
 					OpenInitialDirectory = reader.ReadLine();
-					Width = Convert.ToInt32( reader.ReadLine() );
+					EnableWidth = Convert.ToBoolean( reader.ReadLine() );
+					Width_Actual = Convert.ToInt32( reader.ReadLine() );
+					EnableHeight = Convert.ToBoolean( reader.ReadLine() );
+					Height_Actual = Convert.ToInt32( reader.ReadLine() );
 					Quality = Convert.ToInt32( reader.ReadLine() );
 					SplitTowPage = Convert.ToBoolean( reader.ReadLine() );
 					ReadOrder = (ReadOrderEnum)Convert.ToInt32( reader.ReadLine() );
@@ -134,7 +172,10 @@ namespace PspComicHelper
 			StreamWriter writer = new StreamWriter( Path.Combine( AppPath, SETTING_FILE ), false, System.Text.Encoding.Default );
 			writer.WriteLine( OutputPath );
 			writer.WriteLine( OpenInitialDirectory );
-			writer.WriteLine( Width );
+			writer.WriteLine( EnableWidth );
+			writer.WriteLine( Width_Actual );
+			writer.WriteLine( EnableHeight );
+			writer.WriteLine( Height_Actual );
 			writer.WriteLine( Quality );
 			writer.WriteLine( SplitTowPage );
 			writer.WriteLine( (int)ReadOrder );
