@@ -64,6 +64,11 @@
 			this.folderBrowserDialog_AddFolder = new System.Windows.Forms.FolderBrowserDialog();
 			this.folderBrowserDialog_Output = new System.Windows.Forms.FolderBrowserDialog();
 			this.timer_processing = new System.Windows.Forms.Timer( this.components );
+			this.checkBox_setting_witth = new System.Windows.Forms.CheckBox();
+			this.label_setting_height = new System.Windows.Forms.Label();
+			this.checkBox_setting_height = new System.Windows.Forms.CheckBox();
+			this.comboBox_setting_presetHeight = new System.Windows.Forms.ComboBox();
+			this.textBox_setting_height = new System.Windows.Forms.TextBox();
 			this.statusStrip_MainStatus.SuspendLayout();
 			this.tabControl_Main.SuspendLayout();
 			this.tabPage_App.SuspendLayout();
@@ -85,7 +90,7 @@
 			// toolStripStatusLabel_StatusLabel
 			// 
 			this.toolStripStatusLabel_StatusLabel.Name = "toolStripStatusLabel_StatusLabel";
-			this.toolStripStatusLabel_StatusLabel.Size = new System.Drawing.Size( 32, 17 );
+			this.toolStripStatusLabel_StatusLabel.Size = new System.Drawing.Size( 29, 17 );
 			this.toolStripStatusLabel_StatusLabel.Text = "就绪";
 			// 
 			// tabControl_Main
@@ -103,10 +108,10 @@
 			// 
 			this.tabPage_App.Controls.Add( this.panel_Left );
 			this.tabPage_App.Controls.Add( this.panel_right );
-			this.tabPage_App.Location = new System.Drawing.Point( 4, 22 );
+			this.tabPage_App.Location = new System.Drawing.Point( 4, 21 );
 			this.tabPage_App.Name = "tabPage_App";
 			this.tabPage_App.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tabPage_App.Size = new System.Drawing.Size( 464, 285 );
+			this.tabPage_App.Size = new System.Drawing.Size( 464, 286 );
 			this.tabPage_App.TabIndex = 0;
 			this.tabPage_App.Text = "操作";
 			this.tabPage_App.UseVisualStyleBackColor = true;
@@ -118,7 +123,7 @@
 			this.panel_Left.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel_Left.Location = new System.Drawing.Point( 3, 3 );
 			this.panel_Left.Name = "panel_Left";
-			this.panel_Left.Size = new System.Drawing.Size( 370, 279 );
+			this.panel_Left.Size = new System.Drawing.Size( 370, 280 );
 			this.panel_Left.TabIndex = 4;
 			// 
 			// listView_FileList
@@ -129,7 +134,7 @@
 			this.listView_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listView_FileList.Location = new System.Drawing.Point( 0, 0 );
 			this.listView_FileList.Name = "listView_FileList";
-			this.listView_FileList.Size = new System.Drawing.Size( 370, 245 );
+			this.listView_FileList.Size = new System.Drawing.Size( 370, 246 );
 			this.listView_FileList.TabIndex = 0;
 			this.listView_FileList.UseCompatibleStateImageBehavior = false;
 			this.listView_FileList.View = System.Windows.Forms.View.Details;
@@ -149,7 +154,7 @@
 			this.panel_Left_Bottom.Controls.Add( this.textBox_Output );
 			this.panel_Left_Bottom.Controls.Add( this.label_Output );
 			this.panel_Left_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel_Left_Bottom.Location = new System.Drawing.Point( 0, 245 );
+			this.panel_Left_Bottom.Location = new System.Drawing.Point( 0, 246 );
 			this.panel_Left_Bottom.Name = "panel_Left_Bottom";
 			this.panel_Left_Bottom.Size = new System.Drawing.Size( 370, 34 );
 			this.panel_Left_Bottom.TabIndex = 1;
@@ -181,7 +186,7 @@
 			this.panel_right.Dock = System.Windows.Forms.DockStyle.Right;
 			this.panel_right.Location = new System.Drawing.Point( 373, 3 );
 			this.panel_right.Name = "panel_right";
-			this.panel_right.Size = new System.Drawing.Size( 88, 279 );
+			this.panel_right.Size = new System.Drawing.Size( 88, 280 );
 			this.panel_right.TabIndex = 3;
 			// 
 			// button_deletePath
@@ -236,6 +241,11 @@
 			// 
 			// tabPage_Setting
 			// 
+			this.tabPage_Setting.Controls.Add( this.checkBox_setting_height );
+			this.tabPage_Setting.Controls.Add( this.comboBox_setting_presetHeight );
+			this.tabPage_Setting.Controls.Add( this.textBox_setting_height );
+			this.tabPage_Setting.Controls.Add( this.label_setting_height );
+			this.tabPage_Setting.Controls.Add( this.checkBox_setting_witth );
 			this.tabPage_Setting.Controls.Add( this.checkBox_setting_zip );
 			this.tabPage_Setting.Controls.Add( this.radioButton_setting_sequence_right );
 			this.tabPage_Setting.Controls.Add( this.radioButton_setting_sequence_left );
@@ -248,10 +258,10 @@
 			this.tabPage_Setting.Controls.Add( this.comboBox_setting_presetWidth );
 			this.tabPage_Setting.Controls.Add( this.textBox_setting_width );
 			this.tabPage_Setting.Controls.Add( this.label_setting_width );
-			this.tabPage_Setting.Location = new System.Drawing.Point( 4, 22 );
+			this.tabPage_Setting.Location = new System.Drawing.Point( 4, 21 );
 			this.tabPage_Setting.Name = "tabPage_Setting";
 			this.tabPage_Setting.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tabPage_Setting.Size = new System.Drawing.Size( 464, 285 );
+			this.tabPage_Setting.Size = new System.Drawing.Size( 464, 286 );
 			this.tabPage_Setting.TabIndex = 1;
 			this.tabPage_Setting.Text = "设置";
 			this.tabPage_Setting.UseVisualStyleBackColor = true;
@@ -259,7 +269,7 @@
 			// checkBox_setting_zip
 			// 
 			this.checkBox_setting_zip.AutoSize = true;
-			this.checkBox_setting_zip.Location = new System.Drawing.Point( 78, 153 );
+			this.checkBox_setting_zip.Location = new System.Drawing.Point( 78, 187 );
 			this.checkBox_setting_zip.Name = "checkBox_setting_zip";
 			this.checkBox_setting_zip.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox_setting_zip.TabIndex = 11;
@@ -268,7 +278,7 @@
 			// radioButton_setting_sequence_right
 			// 
 			this.radioButton_setting_sequence_right.AutoSize = true;
-			this.radioButton_setting_sequence_right.Location = new System.Drawing.Point( 78, 117 );
+			this.radioButton_setting_sequence_right.Location = new System.Drawing.Point( 78, 151 );
 			this.radioButton_setting_sequence_right.Name = "radioButton_setting_sequence_right";
 			this.radioButton_setting_sequence_right.Size = new System.Drawing.Size( 59, 16 );
 			this.radioButton_setting_sequence_right.TabIndex = 10;
@@ -279,7 +289,7 @@
 			// radioButton_setting_sequence_left
 			// 
 			this.radioButton_setting_sequence_left.AutoSize = true;
-			this.radioButton_setting_sequence_left.Location = new System.Drawing.Point( 143, 117 );
+			this.radioButton_setting_sequence_left.Location = new System.Drawing.Point( 143, 151 );
 			this.radioButton_setting_sequence_left.Name = "radioButton_setting_sequence_left";
 			this.radioButton_setting_sequence_left.Size = new System.Drawing.Size( 59, 16 );
 			this.radioButton_setting_sequence_left.TabIndex = 9;
@@ -290,7 +300,7 @@
 			// checkBox_setting_split
 			// 
 			this.checkBox_setting_split.AutoSize = true;
-			this.checkBox_setting_split.Location = new System.Drawing.Point( 78, 84 );
+			this.checkBox_setting_split.Location = new System.Drawing.Point( 78, 118 );
 			this.checkBox_setting_split.Name = "checkBox_setting_split";
 			this.checkBox_setting_split.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox_setting_split.TabIndex = 8;
@@ -299,7 +309,7 @@
 			// label_setting_zip
 			// 
 			this.label_setting_zip.AutoSize = true;
-			this.label_setting_zip.Location = new System.Drawing.Point( 6, 153 );
+			this.label_setting_zip.Location = new System.Drawing.Point( 6, 187 );
 			this.label_setting_zip.Name = "label_setting_zip";
 			this.label_setting_zip.Size = new System.Drawing.Size( 65, 12 );
 			this.label_setting_zip.TabIndex = 7;
@@ -307,7 +317,7 @@
 			// 
 			// textBox_setting_quality
 			// 
-			this.textBox_setting_quality.Location = new System.Drawing.Point( 78, 43 );
+			this.textBox_setting_quality.Location = new System.Drawing.Point( 78, 77 );
 			this.textBox_setting_quality.MaxLength = 3;
 			this.textBox_setting_quality.Name = "textBox_setting_quality";
 			this.textBox_setting_quality.Size = new System.Drawing.Size( 50, 21 );
@@ -318,7 +328,7 @@
 			// label_setting_sequence
 			// 
 			this.label_setting_sequence.AutoSize = true;
-			this.label_setting_sequence.Location = new System.Drawing.Point( 6, 118 );
+			this.label_setting_sequence.Location = new System.Drawing.Point( 6, 152 );
 			this.label_setting_sequence.Name = "label_setting_sequence";
 			this.label_setting_sequence.Size = new System.Drawing.Size( 53, 12 );
 			this.label_setting_sequence.TabIndex = 5;
@@ -327,7 +337,7 @@
 			// label_setting_split
 			// 
 			this.label_setting_split.AutoSize = true;
-			this.label_setting_split.Location = new System.Drawing.Point( 6, 84 );
+			this.label_setting_split.Location = new System.Drawing.Point( 6, 118 );
 			this.label_setting_split.Name = "label_setting_split";
 			this.label_setting_split.Size = new System.Drawing.Size( 53, 12 );
 			this.label_setting_split.TabIndex = 4;
@@ -336,7 +346,7 @@
 			// label_setting_quality
 			// 
 			this.label_setting_quality.AutoSize = true;
-			this.label_setting_quality.Location = new System.Drawing.Point( 6, 49 );
+			this.label_setting_quality.Location = new System.Drawing.Point( 6, 83 );
 			this.label_setting_quality.Name = "label_setting_quality";
 			this.label_setting_quality.Size = new System.Drawing.Size( 29, 12 );
 			this.label_setting_quality.TabIndex = 3;
@@ -345,7 +355,7 @@
 			// comboBox_setting_presetWidth
 			// 
 			this.comboBox_setting_presetWidth.FormattingEnabled = true;
-			this.comboBox_setting_presetWidth.Location = new System.Drawing.Point( 134, 7 );
+			this.comboBox_setting_presetWidth.Location = new System.Drawing.Point( 155, 6 );
 			this.comboBox_setting_presetWidth.Name = "comboBox_setting_presetWidth";
 			this.comboBox_setting_presetWidth.Size = new System.Drawing.Size( 110, 20 );
 			this.comboBox_setting_presetWidth.TabIndex = 2;
@@ -353,7 +363,7 @@
 			// 
 			// textBox_setting_width
 			// 
-			this.textBox_setting_width.Location = new System.Drawing.Point( 78, 7 );
+			this.textBox_setting_width.Location = new System.Drawing.Point( 99, 6 );
 			this.textBox_setting_width.MaxLength = 4;
 			this.textBox_setting_width.Name = "textBox_setting_width";
 			this.textBox_setting_width.Size = new System.Drawing.Size( 50, 21 );
@@ -363,11 +373,11 @@
 			// label_setting_width
 			// 
 			this.label_setting_width.AutoSize = true;
-			this.label_setting_width.Location = new System.Drawing.Point( 6, 11 );
+			this.label_setting_width.Location = new System.Drawing.Point( 7, 11 );
 			this.label_setting_width.Name = "label_setting_width";
 			this.label_setting_width.Size = new System.Drawing.Size( 53, 12 );
 			this.label_setting_width.TabIndex = 0;
-			this.label_setting_width.Text = "缩放宽度";
+			this.label_setting_width.Text = "限定宽度";
 			// 
 			// openFileDialog_AddFile
 			// 
@@ -378,6 +388,51 @@
 			// 
 			this.timer_processing.Interval = 1000;
 			this.timer_processing.Tick += new System.EventHandler( this.timer_processing_Tick );
+			// 
+			// checkBox_setting_witth
+			// 
+			this.checkBox_setting_witth.AutoSize = true;
+			this.checkBox_setting_witth.Location = new System.Drawing.Point( 78, 9 );
+			this.checkBox_setting_witth.Name = "checkBox_setting_witth";
+			this.checkBox_setting_witth.Size = new System.Drawing.Size( 15, 14 );
+			this.checkBox_setting_witth.TabIndex = 12;
+			this.checkBox_setting_witth.UseVisualStyleBackColor = true;
+			// 
+			// label_setting_height
+			// 
+			this.label_setting_height.AutoSize = true;
+			this.label_setting_height.Location = new System.Drawing.Point( 7, 46 );
+			this.label_setting_height.Name = "label_setting_height";
+			this.label_setting_height.Size = new System.Drawing.Size( 53, 12 );
+			this.label_setting_height.TabIndex = 13;
+			this.label_setting_height.Text = "限定高度";
+			// 
+			// checkBox_setting_height
+			// 
+			this.checkBox_setting_height.AutoSize = true;
+			this.checkBox_setting_height.Location = new System.Drawing.Point( 78, 45 );
+			this.checkBox_setting_height.Name = "checkBox_setting_height";
+			this.checkBox_setting_height.Size = new System.Drawing.Size( 15, 14 );
+			this.checkBox_setting_height.TabIndex = 16;
+			this.checkBox_setting_height.UseVisualStyleBackColor = true;
+			// 
+			// comboBox_setting_presetHeight
+			// 
+			this.comboBox_setting_presetHeight.FormattingEnabled = true;
+			this.comboBox_setting_presetHeight.Location = new System.Drawing.Point( 155, 42 );
+			this.comboBox_setting_presetHeight.Name = "comboBox_setting_presetHeight";
+			this.comboBox_setting_presetHeight.Size = new System.Drawing.Size( 110, 20 );
+			this.comboBox_setting_presetHeight.TabIndex = 15;
+			this.comboBox_setting_presetHeight.SelectedIndexChanged += new System.EventHandler( this.comboBox_setting_presetHeight_SelectedIndexChanged );
+			// 
+			// textBox_setting_height
+			// 
+			this.textBox_setting_height.Location = new System.Drawing.Point( 99, 42 );
+			this.textBox_setting_height.MaxLength = 4;
+			this.textBox_setting_height.Name = "textBox_setting_height";
+			this.textBox_setting_height.Size = new System.Drawing.Size( 50, 21 );
+			this.textBox_setting_height.TabIndex = 14;
+			this.textBox_setting_height.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_width_KeyPress );
 			// 
 			// Form_Main
 			// 
@@ -391,6 +446,7 @@
 			this.MinimumSize = new System.Drawing.Size( 480, 360 );
 			this.Name = "Form_Main";
 			this.Text = "PSP Comic Helper";
+			this.Shown += new System.EventHandler( this.Form_Main_Shown );
 			this.DragDrop += new System.Windows.Forms.DragEventHandler( this.Form_Main_DragDrop );
 			this.DragEnter += new System.Windows.Forms.DragEventHandler( this.Form_Main_DragEnter );
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler( this.Form_Main_FormClosing );
@@ -445,6 +501,11 @@
 		private System.Windows.Forms.CheckBox checkBox_setting_zip;
 		private System.Windows.Forms.Button button_deletePath;
 		private System.Windows.Forms.Timer timer_processing;
+		private System.Windows.Forms.CheckBox checkBox_setting_height;
+		private System.Windows.Forms.ComboBox comboBox_setting_presetHeight;
+		private System.Windows.Forms.TextBox textBox_setting_height;
+		private System.Windows.Forms.Label label_setting_height;
+		private System.Windows.Forms.CheckBox checkBox_setting_witth;
 
 	}
 }
