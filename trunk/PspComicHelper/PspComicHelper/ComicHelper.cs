@@ -233,6 +233,10 @@ namespace PspComicHelper
 		private static void ProgressComicFile( string source, string dest )
 		{
 			Bitmap bitmap = new Bitmap( source );
+			if ( Setting.AutoCutMargin )
+			{
+				bitmap = ImageHelper.CutMargin( bitmap, Setting.Threshold );
+			}
 			if ( Setting.Width > 0 )
 			{
 				if ( Setting.SplitTowPage && ( bitmap.Width > bitmap.Height ) )
