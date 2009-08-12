@@ -153,6 +153,8 @@ namespace PspComicHelper
 			radioButton_setting_sequence_right.Checked = ( Setting.ReadOrder == ReadOrderEnum.RightToLeft );
 			radioButton_setting_sequence_left.Checked = ( Setting.ReadOrder == ReadOrderEnum.LeftToRight );
 			checkBox_setting_zip.Checked = Setting.OutputZip;
+			checkBox_setting_cutMargin.Checked = Setting.AutoCutMargin;
+			textBox_setting_threshold.Text = Setting.Threshold.ToString();
 			textBox_Output.Text = Setting.OutputPath;
 		}
 
@@ -190,6 +192,9 @@ namespace PspComicHelper
 				Setting.ReadOrder = ReadOrderEnum.LeftToRight;
 
 			Setting.OutputZip = checkBox_setting_zip.Checked;
+			Setting.AutoCutMargin = checkBox_setting_cutMargin.Checked;
+			Setting.Threshold = Convert.ToInt32( textBox_setting_threshold.Text );
+
 			Setting.OutputPath = textBox_Output.Text;
 		}
 
@@ -455,6 +460,32 @@ namespace PspComicHelper
 		}
 
 		/// <summary>
+		/// 控制边界值只能是数字
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void textBox_setting_threshold_KeyPress( object sender, KeyPressEventArgs e )
+		{
+			if ( e.KeyChar > 57 || ( e.KeyChar > 8 && e.KeyChar < 47 ) || e.KeyChar < 8 )
+			{
+				e.Handled = true;
+			}
+		}
+
+		/// <summary>
+		/// 控制边界值不能大于255
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void textBox_setting_threshold_KeyUp( object sender, KeyEventArgs e )
+		{
+			TextBox textbox = sender as TextBox;
+			if ( ( textbox.Text.Length > 3 ) && ( Convert.ToInt32( textbox.Text ) > 255 ) )
+			{
+				textbox.Text = "255";
+			}
+		}
+		/// <summary>
 		/// 定时器 更新状态栏文字
 		/// </summary>
 		/// <param name="sender"></param>
@@ -539,8 +570,7 @@ namespace PspComicHelper
 		{
 			public string Name { get; set; }
 			public int Value { get; set; }
-		}
-		
+		}		
 
 	}
 

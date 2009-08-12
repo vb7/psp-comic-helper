@@ -110,6 +110,16 @@ namespace PspComicHelper
 		/// </summary>
 		public static bool OutputZip { get; set; }
 
+		/// <summary>
+		/// 自动裁边
+		/// </summary>
+		public static bool AutoCutMargin { get; set; }
+
+		/// <summary>
+		/// 裁边阈值
+		/// </summary>
+		public static int Threshold { get; set; }
+
 
 		private const string SETTING_FILE = "setting.ini";
 
@@ -124,6 +134,8 @@ namespace PspComicHelper
 			SplitTowPage = true;
 			ReadOrder = ReadOrderEnum.RightToLeft;
 			OutputZip = true;
+			AutoCutMargin = false;
+			Threshold = 240;
 		}
 
 		/// <summary>
@@ -146,6 +158,8 @@ namespace PspComicHelper
 					SplitTowPage = Convert.ToBoolean( reader.ReadLine() );
 					ReadOrder = (ReadOrderEnum)Convert.ToInt32( reader.ReadLine() );
 					OutputZip = Convert.ToBoolean( reader.ReadLine() );
+					AutoCutMargin = Convert.ToBoolean( reader.ReadLine() );
+					Threshold = Convert.ToInt32( reader.ReadLine() );
 				}
 				catch
 				{
@@ -180,6 +194,8 @@ namespace PspComicHelper
 			writer.WriteLine( SplitTowPage );
 			writer.WriteLine( (int)ReadOrder );
 			writer.WriteLine( OutputZip );
+			writer.WriteLine( AutoCutMargin );
+			writer.WriteLine( Threshold );
 			writer.Flush();
 			writer.Close();
 			writer.Dispose();

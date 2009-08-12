@@ -48,6 +48,15 @@
 			this.button_AddFile = new System.Windows.Forms.Button();
 			this.button_AddFolder = new System.Windows.Forms.Button();
 			this.tabPage_Setting = new System.Windows.Forms.TabPage();
+			this.textBox_setting_threshold = new System.Windows.Forms.TextBox();
+			this.label_setting_threshold = new System.Windows.Forms.Label();
+			this.label_setting_cutMargin = new System.Windows.Forms.Label();
+			this.checkBox_setting_cutMargin = new System.Windows.Forms.CheckBox();
+			this.checkBox_setting_height = new System.Windows.Forms.CheckBox();
+			this.comboBox_setting_presetHeight = new System.Windows.Forms.ComboBox();
+			this.textBox_setting_height = new System.Windows.Forms.TextBox();
+			this.label_setting_height = new System.Windows.Forms.Label();
+			this.checkBox_setting_witth = new System.Windows.Forms.CheckBox();
 			this.checkBox_setting_zip = new System.Windows.Forms.CheckBox();
 			this.radioButton_setting_sequence_right = new System.Windows.Forms.RadioButton();
 			this.radioButton_setting_sequence_left = new System.Windows.Forms.RadioButton();
@@ -64,11 +73,6 @@
 			this.folderBrowserDialog_AddFolder = new System.Windows.Forms.FolderBrowserDialog();
 			this.folderBrowserDialog_Output = new System.Windows.Forms.FolderBrowserDialog();
 			this.timer_processing = new System.Windows.Forms.Timer( this.components );
-			this.checkBox_setting_witth = new System.Windows.Forms.CheckBox();
-			this.label_setting_height = new System.Windows.Forms.Label();
-			this.checkBox_setting_height = new System.Windows.Forms.CheckBox();
-			this.comboBox_setting_presetHeight = new System.Windows.Forms.ComboBox();
-			this.textBox_setting_height = new System.Windows.Forms.TextBox();
 			this.statusStrip_MainStatus.SuspendLayout();
 			this.tabControl_Main.SuspendLayout();
 			this.tabPage_App.SuspendLayout();
@@ -241,6 +245,10 @@
 			// 
 			// tabPage_Setting
 			// 
+			this.tabPage_Setting.Controls.Add( this.textBox_setting_threshold );
+			this.tabPage_Setting.Controls.Add( this.label_setting_threshold );
+			this.tabPage_Setting.Controls.Add( this.label_setting_cutMargin );
+			this.tabPage_Setting.Controls.Add( this.checkBox_setting_cutMargin );
 			this.tabPage_Setting.Controls.Add( this.checkBox_setting_height );
 			this.tabPage_Setting.Controls.Add( this.comboBox_setting_presetHeight );
 			this.tabPage_Setting.Controls.Add( this.textBox_setting_height );
@@ -265,6 +273,87 @@
 			this.tabPage_Setting.TabIndex = 1;
 			this.tabPage_Setting.Text = "设置";
 			this.tabPage_Setting.UseVisualStyleBackColor = true;
+			// 
+			// textBox_setting_threshold
+			// 
+			this.textBox_setting_threshold.Location = new System.Drawing.Point( 175, 217 );
+			this.textBox_setting_threshold.Name = "textBox_setting_threshold";
+			this.textBox_setting_threshold.Size = new System.Drawing.Size( 30, 21 );
+			this.textBox_setting_threshold.TabIndex = 20;
+			this.textBox_setting_threshold.KeyUp += new System.Windows.Forms.KeyEventHandler( this.textBox_setting_threshold_KeyUp );
+			this.textBox_setting_threshold.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_threshold_KeyPress );
+			// 
+			// label_setting_threshold
+			// 
+			this.label_setting_threshold.AutoSize = true;
+			this.label_setting_threshold.Location = new System.Drawing.Point( 128, 221 );
+			this.label_setting_threshold.Name = "label_setting_threshold";
+			this.label_setting_threshold.Size = new System.Drawing.Size( 41, 12 );
+			this.label_setting_threshold.TabIndex = 19;
+			this.label_setting_threshold.Text = "边界值";
+			// 
+			// label_setting_cutMargin
+			// 
+			this.label_setting_cutMargin.AutoSize = true;
+			this.label_setting_cutMargin.Location = new System.Drawing.Point( 5, 221 );
+			this.label_setting_cutMargin.Name = "label_setting_cutMargin";
+			this.label_setting_cutMargin.Size = new System.Drawing.Size( 65, 12 );
+			this.label_setting_cutMargin.TabIndex = 18;
+			this.label_setting_cutMargin.Text = "自动裁白边";
+			// 
+			// checkBox_setting_cutMargin
+			// 
+			this.checkBox_setting_cutMargin.AutoSize = true;
+			this.checkBox_setting_cutMargin.Location = new System.Drawing.Point( 78, 220 );
+			this.checkBox_setting_cutMargin.Name = "checkBox_setting_cutMargin";
+			this.checkBox_setting_cutMargin.Size = new System.Drawing.Size( 15, 14 );
+			this.checkBox_setting_cutMargin.TabIndex = 17;
+			this.checkBox_setting_cutMargin.UseVisualStyleBackColor = true;
+			// 
+			// checkBox_setting_height
+			// 
+			this.checkBox_setting_height.AutoSize = true;
+			this.checkBox_setting_height.Location = new System.Drawing.Point( 78, 45 );
+			this.checkBox_setting_height.Name = "checkBox_setting_height";
+			this.checkBox_setting_height.Size = new System.Drawing.Size( 15, 14 );
+			this.checkBox_setting_height.TabIndex = 16;
+			this.checkBox_setting_height.UseVisualStyleBackColor = true;
+			// 
+			// comboBox_setting_presetHeight
+			// 
+			this.comboBox_setting_presetHeight.FormattingEnabled = true;
+			this.comboBox_setting_presetHeight.Location = new System.Drawing.Point( 155, 42 );
+			this.comboBox_setting_presetHeight.Name = "comboBox_setting_presetHeight";
+			this.comboBox_setting_presetHeight.Size = new System.Drawing.Size( 110, 20 );
+			this.comboBox_setting_presetHeight.TabIndex = 15;
+			this.comboBox_setting_presetHeight.SelectedIndexChanged += new System.EventHandler( this.comboBox_setting_presetHeight_SelectedIndexChanged );
+			// 
+			// textBox_setting_height
+			// 
+			this.textBox_setting_height.Location = new System.Drawing.Point( 99, 42 );
+			this.textBox_setting_height.MaxLength = 4;
+			this.textBox_setting_height.Name = "textBox_setting_height";
+			this.textBox_setting_height.Size = new System.Drawing.Size( 50, 21 );
+			this.textBox_setting_height.TabIndex = 14;
+			this.textBox_setting_height.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_width_KeyPress );
+			// 
+			// label_setting_height
+			// 
+			this.label_setting_height.AutoSize = true;
+			this.label_setting_height.Location = new System.Drawing.Point( 7, 46 );
+			this.label_setting_height.Name = "label_setting_height";
+			this.label_setting_height.Size = new System.Drawing.Size( 53, 12 );
+			this.label_setting_height.TabIndex = 13;
+			this.label_setting_height.Text = "限定高度";
+			// 
+			// checkBox_setting_witth
+			// 
+			this.checkBox_setting_witth.AutoSize = true;
+			this.checkBox_setting_witth.Location = new System.Drawing.Point( 78, 9 );
+			this.checkBox_setting_witth.Name = "checkBox_setting_witth";
+			this.checkBox_setting_witth.Size = new System.Drawing.Size( 15, 14 );
+			this.checkBox_setting_witth.TabIndex = 12;
+			this.checkBox_setting_witth.UseVisualStyleBackColor = true;
 			// 
 			// checkBox_setting_zip
 			// 
@@ -389,51 +478,6 @@
 			this.timer_processing.Interval = 1000;
 			this.timer_processing.Tick += new System.EventHandler( this.timer_processing_Tick );
 			// 
-			// checkBox_setting_witth
-			// 
-			this.checkBox_setting_witth.AutoSize = true;
-			this.checkBox_setting_witth.Location = new System.Drawing.Point( 78, 9 );
-			this.checkBox_setting_witth.Name = "checkBox_setting_witth";
-			this.checkBox_setting_witth.Size = new System.Drawing.Size( 15, 14 );
-			this.checkBox_setting_witth.TabIndex = 12;
-			this.checkBox_setting_witth.UseVisualStyleBackColor = true;
-			// 
-			// label_setting_height
-			// 
-			this.label_setting_height.AutoSize = true;
-			this.label_setting_height.Location = new System.Drawing.Point( 7, 46 );
-			this.label_setting_height.Name = "label_setting_height";
-			this.label_setting_height.Size = new System.Drawing.Size( 53, 12 );
-			this.label_setting_height.TabIndex = 13;
-			this.label_setting_height.Text = "限定高度";
-			// 
-			// checkBox_setting_height
-			// 
-			this.checkBox_setting_height.AutoSize = true;
-			this.checkBox_setting_height.Location = new System.Drawing.Point( 78, 45 );
-			this.checkBox_setting_height.Name = "checkBox_setting_height";
-			this.checkBox_setting_height.Size = new System.Drawing.Size( 15, 14 );
-			this.checkBox_setting_height.TabIndex = 16;
-			this.checkBox_setting_height.UseVisualStyleBackColor = true;
-			// 
-			// comboBox_setting_presetHeight
-			// 
-			this.comboBox_setting_presetHeight.FormattingEnabled = true;
-			this.comboBox_setting_presetHeight.Location = new System.Drawing.Point( 155, 42 );
-			this.comboBox_setting_presetHeight.Name = "comboBox_setting_presetHeight";
-			this.comboBox_setting_presetHeight.Size = new System.Drawing.Size( 110, 20 );
-			this.comboBox_setting_presetHeight.TabIndex = 15;
-			this.comboBox_setting_presetHeight.SelectedIndexChanged += new System.EventHandler( this.comboBox_setting_presetHeight_SelectedIndexChanged );
-			// 
-			// textBox_setting_height
-			// 
-			this.textBox_setting_height.Location = new System.Drawing.Point( 99, 42 );
-			this.textBox_setting_height.MaxLength = 4;
-			this.textBox_setting_height.Name = "textBox_setting_height";
-			this.textBox_setting_height.Size = new System.Drawing.Size( 50, 21 );
-			this.textBox_setting_height.TabIndex = 14;
-			this.textBox_setting_height.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_width_KeyPress );
-			// 
 			// Form_Main
 			// 
 			this.AllowDrop = true;
@@ -506,6 +550,10 @@
 		private System.Windows.Forms.TextBox textBox_setting_height;
 		private System.Windows.Forms.Label label_setting_height;
 		private System.Windows.Forms.CheckBox checkBox_setting_witth;
+		private System.Windows.Forms.CheckBox checkBox_setting_cutMargin;
+		private System.Windows.Forms.Label label_setting_cutMargin;
+		private System.Windows.Forms.TextBox textBox_setting_threshold;
+		private System.Windows.Forms.Label label_setting_threshold;
 
 	}
 }

@@ -169,10 +169,102 @@ namespace PspComicHelper
 		/// <returns></returns>
 		public static ImageMargin DetectMargin( Bitmap bitmap, int threshold )
 		{
+			
 			if ( threshold > 255 || threshold < 0 )
 				threshold = 255;
+			int left = -1 , top = -1, right = -1, bottom = -1;
+			int brightness;
 
-			return null;
+			// 检测左边缘
+			for ( int x = 0; x < bitmap.Width; x++ )
+			{
+				for ( int y = 0; y < bitmap.Height; y++ )
+				{
+					brightness = (int)( bitmap.GetPixel( x, y ).GetBrightness() * 255 );
+					if ( brightness <= threshold )
+					{
+						left = x;
+						break;
+					}
+				}
+				if( left >= 0 )
+					break;
+			}
+
+			// 检测上边缘
+			for ( int y = 0; y < bitmap.Height; y++ )
+			{
+				for ( int x = left; x < bitmap.Width; x++ )
+				{
+					brightness = (int)( bitmap.GetPixel( x, y ).GetBrightness() * 255 );
+					if ( brightness <= threshold )
+					{
+						top = y;
+						break;
+					}
+				}
+				if( top >= 0 )
+					break;
+			}
+
+			// 检测右边缘
+			for ( int x = bitmap.Width - 1; x > left; x-- )
+			{
+				for ( int y = top; y < bitmap.Height; y++ )
+				{
+					brightness = (int)( bitmap.GetPixel( x, y ).GetBrightness() * 255 );
+					if ( brightness <= threshold )
+					{
+						right = bitmap.Width - 1 - x;
+						break;
+					}
+				}
+				if( right >= 0 )
+					break;
+			}
+
+			// 检测下边缘
+			for ( int y = bitmap.Height - 1; y > top; y-- )
+			{
+				for ( int x = left; x < bitmap.Width - 1 - right; x++ )
+				{
+					brightness = (int)( bitmap.GetPixel( x, y ).GetBrightness() * 255 );
+					if ( brightness <= threshold )
+					{
+						bottom = bitmap.Height - 1 - y;
+						break;
+					}
+				}
+				if( bottom >= 0 )
+					break;
+			}
+
+			return new ImageMargin{ Left = left, Top = top, Right = right, Bottom = bottom };
+		}
+
+
+		/// <summary>
+		/// 裁剪边缘 指定边缘
+		/// </summary>
+		/// <param name="bitmap"></param>
+		/// <param name="margin"></param>
+		/// <returns></returns>
+		public static Bitmap CutMargin( Bitmap bitmap, ImageMargin margin )
+		{
+			return Cut( bitmap, margin.Left, margin.Top,
+				bitmap.Width - margin.Left - margin.Right,
+				bitmap.Height - margin.Top - margin.Bottom );
+		}
+
+		/// <summary>
+		/// 裁剪边缘 自动检测
+		/// </summary>
+		/// <param name="bitmap"></param>
+		/// <param name="threshold"></param>
+		/// <returns></returns>
+		public static Bitmap CutMargin( Bitmap bitmap, int threshold )
+		{
+			return CutMargin( bitmap, DetectMargin( bitmap, threshold ) );
 		}
 
 
