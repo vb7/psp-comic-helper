@@ -237,7 +237,7 @@ namespace PspComicHelper
 			{
 				bitmap = ImageHelper.CutMargin( bitmap, Setting.Threshold );
 			}
-			if ( Setting.Width > 0 )
+			if ( ( Setting.Width > 0 ) || ( Setting.Height > 0 ) )
 			{
 				if ( Setting.SplitTowPage && ( bitmap.Width > bitmap.Height ) )
 				{
