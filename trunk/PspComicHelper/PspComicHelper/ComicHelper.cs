@@ -23,17 +23,7 @@ namespace PspComicHelper
 		public static string ProgressComicPath( string path )
 		{
 			// 创建临时目录
-			if ( Directory.Exists( Setting.TempPath ) )
-			{
-				try
-				{
-					Directory.Delete( Setting.TempPath, true );
-				}
-				catch ( IOException )
-				{
-					// 删除临时目录失败
-				}
-			}
+			DeleteDirectory(Setting.TempPath);
 			Directory.CreateDirectory( Setting.TempPath );
 
 			string result;
@@ -54,17 +44,7 @@ namespace PspComicHelper
 			}
 
 			// 删除临时目录
-			if ( Directory.Exists( Setting.TempPath ) )
-			{
-				try
-				{
-					Directory.Delete( Setting.TempPath, true );
-				}
-				catch ( IOException )
-				{
-					// 删除临时目录失败
-				}
-			}
+			DeleteDirectory( Setting.TempPath );
 
 			return result;
 
@@ -88,10 +68,7 @@ namespace PspComicHelper
 
 			
 			// 创建解压临时目录
-			if ( Directory.Exists( unzipTempPath ) )
-			{
-				Directory.Delete( unzipTempPath );
-			}
+			DeleteDirectory( unzipTempPath );
 			Directory.CreateDirectory( unzipTempPath );
 
 			if ( ext == ".zip" )
@@ -125,17 +102,7 @@ namespace PspComicHelper
 			
 
 			// 删除解压临时目录
-			if ( Directory.Exists( unzipTempPath ) )
-			{
-				try
-				{
-					Directory.Delete( unzipTempPath, true );
-				}
-				catch( IOException )
-				{
-					// 删除临时目录失败
-				}
-			}
+			DeleteDirectory( unzipTempPath );
 
 			return result;
 		}
@@ -272,6 +239,49 @@ namespace PspComicHelper
 			{
 				File.Copy( source, dest );
 			}
+		}
+
+
+		/// <summary>
+		/// 删除文件夹
+		/// </summary>
+		/// <param name="path"></param>
+		/// <returns></returns>
+		public static bool DeleteDirectory( string path )
+		{
+			if ( Directory.Exists( path ) )
+			{
+				try
+				{
+					Directory.Delete( path, true );
+				}
+				catch ( IOException )
+				{
+					return false;
+				}
+				catch ( UnauthorizedAccessException )
+				{
+					foreach( string file in Directory.GetFiles( path, "*.*", SearchOption.AllDirectories ) )
+					{
+						FileInfo fi = new FileInfo(file);
+						if( fi.IsReadOnly )
+						{
+							fi.Attributes = FileAttributes.Normal;
+						}
+						File.Delete(file);
+					}
+					try
+					{
+						Directory.Delete(path, true);
+					}
+					catch
+					{
+						return false;
+					}
+
+				}
+			}
+			return true;
 		}
 
 

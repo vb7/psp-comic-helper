@@ -400,17 +400,9 @@ namespace PspComicHelper
 		private void Form_Main_FormClosing( object sender, FormClosingEventArgs e )
 		{
 			// 删除临时目录
-			if ( Directory.Exists( Setting.TempPath ) )
+			if( !ComicHelper.DeleteDirectory( Setting.TempPath ) )
 			{
-				try
-				{
-					Directory.Delete( Setting.TempPath, true );
-				}
-				catch ( IOException ioe )
-				{
-					// 删除临时目录失败
-					MessageBox.Show( "删除临时目录失败，您可以手工删除程序文件夹下的temp目录。" );
-				}
+				MessageBox.Show( "删除临时目录失败，您可以手工删除程序文件夹下的temp目录。" );
 			}
 			Setting.Save();
 		}
