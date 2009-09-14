@@ -120,6 +120,11 @@ namespace PspComicHelper
 		/// </summary>
 		public static int Threshold { get; set; }
 
+		/// <summary>
+		/// 缩放模式
+		/// </summary>
+		public static ImageHelper.ResizeMode Mode { get; set; }
+
 
 		private const string SETTING_FILE = "setting.ini";
 
@@ -136,6 +141,7 @@ namespace PspComicHelper
 			OutputZip = true;
 			AutoCutMargin = false;
 			Threshold = 240;
+			Mode = ImageHelper.ResizeMode.Scale;
 		}
 
 		/// <summary>
@@ -160,6 +166,7 @@ namespace PspComicHelper
 					OutputZip = Convert.ToBoolean( reader.ReadLine() );
 					AutoCutMargin = Convert.ToBoolean( reader.ReadLine() );
 					Threshold = Convert.ToInt32( reader.ReadLine() );
+					Mode =  (ImageHelper.ResizeMode)Enum.Parse( typeof(ImageHelper.ResizeMode), reader.ReadLine() );
 				}
 				catch
 				{
@@ -196,6 +203,7 @@ namespace PspComicHelper
 			writer.WriteLine( OutputZip );
 			writer.WriteLine( AutoCutMargin );
 			writer.WriteLine( Threshold );
+			writer.WriteLine( Mode.ToString() );
 			writer.Flush();
 			writer.Close();
 			writer.Dispose();
