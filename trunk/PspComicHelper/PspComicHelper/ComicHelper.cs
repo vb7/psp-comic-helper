@@ -210,8 +210,8 @@ namespace PspComicHelper
 				{
 					Bitmap left = ImageHelper.Cut( bitmap, 0, 0, bitmap.Width / 2, bitmap.Height );
 					Bitmap right = ImageHelper.Cut( bitmap, bitmap.Width / 2, 0, bitmap.Width / 2, bitmap.Height );
-					left = ImageHelper.Resize( left, Setting.Width, Setting.Height, ImageHelper.ResizeMode.Scale );
-					right = ImageHelper.Resize( right, Setting.Width, Setting.Height, ImageHelper.ResizeMode.Scale );
+					left = ImageHelper.Resize( left, Setting.Width, Setting.Height, Setting.Mode );
+					right = ImageHelper.Resize( right, Setting.Width, Setting.Height, Setting.Mode );
 
 					if ( Setting.ReadOrder == ReadOrderEnum.RightToLeft )
 					{
@@ -230,7 +230,7 @@ namespace PspComicHelper
 				}
 				else
 				{
-					bitmap = ImageHelper.Resize( bitmap, Setting.Width, Setting.Height, ImageHelper.ResizeMode.Scale );
+					bitmap = ImageHelper.Resize( bitmap, Setting.Width, Setting.Height, Setting.Mode );
 					ImageHelper.SaveAsJpeg( bitmap, dest, Setting.Quality );
 					bitmap.Dispose();
 				}

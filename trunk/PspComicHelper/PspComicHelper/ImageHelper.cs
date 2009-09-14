@@ -60,48 +60,12 @@ namespace PspComicHelper
 		{
 
 			int newWidth, newHeight;
-			switch ( mode )
+			CalcSize( bmp.Width, bmp.Height, width, height, out newWidth, out newHeight, mode );
+
+			// 如果使用等比缩放模式, 新的宽,高大于原图的宽,高,不做操作
+			if ( ( mode == ResizeMode.Scale || mode == ResizeMode.Center ) && ( newWidth > bmp.Width || newHeight > bmp.Height ) )
 			{
-				case ResizeMode.Stretch :
-					newWidth = width;
-					newHeight = height;
-					break;
-
-				case ResizeMode.Center :
-					throw new NotImplementedException( "缩放模式居中的方法暂未实现" );
-					break;
-
-				case ResizeMode.Scale :
-				default :
-					if ( width == 0 )
-					{
-						newWidth = (int)( (float)height * ( (float)bmp.Width / (float)bmp.Height ) );
-						newHeight = height;
-					}
-					else if( height == 0 )
-					{
-						newWidth = width;
-						newHeight = (int)( (float)width * ( (float)bmp.Height / (float)bmp.Width ) );
-					}
-					else if ( ( (float)width / (float)height ) > ( (float)bmp.Width / (float)bmp.Height ) )
-					{
-						newWidth = (int)( (float)height * ( (float)bmp.Width / (float)bmp.Height ) );
-						newHeight = height;
-					}
-					else
-					{
-						newWidth = width;
-						newHeight = (int)( (float)width * ( (float)bmp.Height / (float)bmp.Width ) );
-					}
-
-					// 如果使用等比缩放模式, 新的宽,高大于原图的宽,高,不做操作
-					if ( newWidth > bmp.Width || height > bmp.Height )
-					{
-						return bmp;
-					}
-
-					break;
-
+				return bmp;
 			}
 
 			Bitmap b = new Bitmap( newWidth, newHeight );
@@ -113,6 +77,11 @@ namespace PspComicHelper
 			g.DrawImage( bmp, new Rectangle( 0, 0, newWidth, newHeight ), new Rectangle( 0, 0, bmp.Width, bmp.Height ), GraphicsUnit.Pixel );
 			g.Dispose();
 
+			// 如果是居中模式, 则需要剪裁掉多余的边
+			if ( ( mode == ResizeMode.Center ) && ( ( newWidth != width || newHeight != height ) ) )
+			{
+				b = Cut( b, ( newWidth - width ) / 2, ( newHeight - height ) / 2, width, height );
+			}
 			return b;
 		}
 
@@ -269,6 +238,58 @@ namespace PspComicHelper
 
 
 		/// <summary>
+		/// 计算宽高
+		/// </summary>
+		public static void CalcSize( int sourceWidth, int sourceHeight, int destWidth, int destHeight, out int newWidth, out int newHeight, ResizeMode mode )
+		{
+			switch ( mode )
+			{
+				case ResizeMode.Stretch:
+					newWidth = destWidth;
+					newHeight = destHeight;
+					break;
+
+				case ResizeMode.Center:
+					if ( ( (float)sourceWidth / (float)destWidth ) < ( (float)sourceHeight / (float)destHeight ) )
+					{
+						newWidth = destWidth;
+						newHeight = sourceHeight * destWidth / sourceWidth;
+					}
+					else
+					{
+						newWidth = sourceWidth * destHeight / sourceHeight;
+						newHeight = destHeight;
+					}
+					break;
+
+				case ResizeMode.Scale:
+				default:
+					if ( destWidth == 0 )
+					{
+						newWidth = (int)( (float)destHeight * ( (float)sourceWidth / (float)sourceHeight ) );
+						newHeight = destHeight;
+					}
+					else if ( destHeight == 0 )
+					{
+						newWidth = destWidth;
+						newHeight = (int)( (float)destWidth * ( (float)sourceHeight / (float)sourceWidth ) );
+					}
+					else if ( ( (float)destWidth / (float)destHeight ) > ( (float)sourceWidth / (float)sourceHeight ) )
+					{
+						newWidth = (int)( (float)destHeight * ( (float)sourceWidth / (float)sourceHeight ) );
+						newHeight = destHeight;
+					}
+					else
+					{
+						newWidth = destWidth;
+						newHeight = (int)( (float)destWidth * ( (float)sourceHeight / (float)sourceWidth ) );
+					}
+					break;
+			}
+		}
+
+
+		/// <summary>
 		/// 图片缩放模式
 		/// </summary>
 		public enum ResizeMode
@@ -276,17 +297,17 @@ namespace PspComicHelper
 			/// <summary>
 			/// 等比
 			/// </summary>
-			Scale,
+			Scale = 0,
 
 			/// <summary>
 			/// 拉伸
 			/// </summary>
-			Stretch,
+			Stretch = 1,
 
 			/// <summary>
 			/// 居中
 			/// </summary>
-			Center
+			Center = 2
 		}
 
 

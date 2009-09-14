@@ -67,5 +67,44 @@ namespace PspComicHelper.Test
 			cutted.Dispose();
 		}
 
+		/// <summary>
+		/// º∆À„øÌ∏ﬂ ≤‚ ‘
+		/// </summary>
+		[Test]
+		public void CalcSize_Test()
+		{
+			int width, height, newWidth, newHeight;
+
+			width = 480;
+			height = 0;
+			ImageHelper.CalcSize( 2000, 3000, width, height, out newWidth, out newHeight, ImageHelper.ResizeMode.Scale );
+			Assert.AreEqual( 480, newWidth );
+			Assert.AreEqual( 720, newHeight );
+
+			width = 0;
+			height = 512;
+			ImageHelper.CalcSize( 2000, 3000, width, height, out newWidth, out newHeight, ImageHelper.ResizeMode.Scale );
+			Assert.AreEqual( 341, newWidth );
+			Assert.AreEqual( 512, newHeight );
+
+			width = 500;
+			height = 500;
+			ImageHelper.CalcSize( 1000, 2000, width, height, out newWidth, out newHeight, ImageHelper.ResizeMode.Scale );
+			Assert.AreEqual( 250, newWidth );
+			Assert.AreEqual( 500, newHeight );
+
+			width = 200;
+			height = 200;
+			ImageHelper.CalcSize( 5685, 3695, width, height, out newWidth, out newHeight, ImageHelper.ResizeMode.Stretch );
+			Assert.AreEqual( 200, newWidth );
+			Assert.AreEqual( 200, newHeight );
+
+			width = 500;
+			height = 500;
+			ImageHelper.CalcSize( 1000, 2000, width, height, out newWidth, out newHeight, ImageHelper.ResizeMode.Center );
+			Assert.AreEqual( 500, newWidth );
+			Assert.AreEqual( 1000, newHeight );
+		}
+
 	}
 }
