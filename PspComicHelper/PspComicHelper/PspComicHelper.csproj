@@ -19,7 +19,7 @@
     <ManifestKeyFile>PspComicHelper_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
-    <ApplicationIcon>Resource\icon.ico</ApplicationIcon>
+    <ApplicationIcon>resources\32.ico</ApplicationIcon>
     <PublishUrl>D:\Work\doc\PspComicHelper\Release\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -139,10 +139,14 @@
     <None Include="Rar.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Resource\icon.ico" />
     <None Include="使用说明.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\16.ico" />
+    <Content Include="resources\32.ico" />
+    <Content Include="resources\48.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
