@@ -89,6 +89,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -147,6 +148,9 @@
     <Content Include="resources\16.ico" />
     <Content Include="resources\32.ico" />
     <Content Include="resources\48.ico" />
+    <None Include="resources\Stretch.png" />
+    <None Include="resources\Center.png" />
+    <None Include="resources\Scale.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

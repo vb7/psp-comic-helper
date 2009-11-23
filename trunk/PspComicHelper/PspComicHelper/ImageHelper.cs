@@ -52,9 +52,9 @@ namespace PspComicHelper
 		/// 调整大小
 		/// </summary>
 		/// <param name="bmp">原始Bitmap</param>
-		/// <param name="newW">新的宽度</param>
-		/// <param name="newH">新的高度</param>
-		/// <param name="Mode">保留着，暂时未用</param>
+		/// <param name="width">新的宽度</param>
+		/// <param name="height">新的高度</param>
+		/// <param name="mode">保留着，暂时未用</param>
 		/// <returns>处理以后的图片</returns>
 		public static Bitmap Resize( Bitmap bmp, int width, int height, ResizeMode mode )
 		{
@@ -78,7 +78,7 @@ namespace PspComicHelper
 			g.Dispose();
 
 			// 如果是居中模式, 则需要剪裁掉多余的边
-			if ( ( mode == ResizeMode.Center ) && ( ( newWidth != width || newHeight != height ) ) )
+			if ( ( mode == ResizeMode.Center ) && ( ( newWidth != width || newHeight != height ) ) && ( width != 0 && height != 0 ) )
 			{
 				b = Cut( b, ( newWidth - width ) / 2, ( newHeight - height ) / 2, width, height );
 			}
@@ -242,6 +242,25 @@ namespace PspComicHelper
 		/// </summary>
 		public static void CalcSize( int sourceWidth, int sourceHeight, int destWidth, int destHeight, out int newWidth, out int newHeight, ResizeMode mode )
 		{
+			if( destWidth == 0 && destHeight == 0 )
+			{
+				newWidth = 0;
+				newHeight = 0;
+				return;
+			}
+			else if( destWidth == 0 )
+			{
+				newWidth = (int)( (float)destHeight * ( (float)sourceWidth / (float)sourceHeight ) );
+				newHeight = destHeight;
+				return;
+			}
+			else if( destHeight == 0 )
+			{
+				newWidth = destWidth;
+				newHeight = (int)( (float)destWidth * ( (float)sourceHeight / (float)sourceWidth ) );
+				return;
+			}
+
 			switch ( mode )
 			{
 				case ResizeMode.Stretch:
@@ -264,17 +283,7 @@ namespace PspComicHelper
 
 				case ResizeMode.Scale:
 				default:
-					if ( destWidth == 0 )
-					{
-						newWidth = (int)( (float)destHeight * ( (float)sourceWidth / (float)sourceHeight ) );
-						newHeight = destHeight;
-					}
-					else if ( destHeight == 0 )
-					{
-						newWidth = destWidth;
-						newHeight = (int)( (float)destWidth * ( (float)sourceHeight / (float)sourceWidth ) );
-					}
-					else if ( ( (float)destWidth / (float)destHeight ) > ( (float)sourceWidth / (float)sourceHeight ) )
+					if ( ( (float)destWidth / (float)destHeight ) > ( (float)sourceWidth / (float)sourceHeight ) )
 					{
 						newWidth = (int)( (float)destHeight * ( (float)sourceWidth / (float)sourceHeight ) );
 						newHeight = destHeight;
