@@ -16,12 +16,16 @@ namespace PspComicHelper
 		private static Microsoft.VisualBasic.Devices.Computer _computer = new Microsoft.VisualBasic.Devices.Computer();
 		private const string UNZIP_TEMP_FOLDER = "unzip_temp";
 
+		public static int RateOfProgress { get; set; }
+
 		/// <summary>
 		/// 处理图片路径
 		/// </summary>
 		/// <param name="path"></param>
 		public static string ProgressComicPath( string path )
 		{
+			RateOfProgress = 0;
+
 			// 创建临时目录
 			DeleteDirectory(Setting.TempPath);
 			Directory.CreateDirectory( Setting.TempPath );
@@ -46,6 +50,8 @@ namespace PspComicHelper
 			// 删除临时目录
 			DeleteDirectory( Setting.TempPath );
 
+			RateOfProgress = 100;
+
 			return result;
 
 		}
@@ -56,6 +62,7 @@ namespace PspComicHelper
 		/// <param name="path"></param>
 		private static string ProgressComicArchive( string path )
 		{
+			RateOfProgress = 5;
 
 			string unzipTempPath = Path.Combine( Setting.TempPath, UNZIP_TEMP_FOLDER );
 			unzipTempPath = Path.Combine( unzipTempPath, Path.GetFileNameWithoutExtension( path ) );
@@ -113,6 +120,8 @@ namespace PspComicHelper
 		/// <param name="path"></param>
 		private static string ProgressComicFolder( string path, bool includeSubdirectory )
 		{
+			RateOfProgress = 20;
+
 			// 取得文件夹中所有图片文件
 			string [] filesArr = Directory.GetFiles( path, "*.*", includeSubdirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly );
 			Array.Sort( filesArr );
@@ -146,9 +155,11 @@ namespace PspComicHelper
 			{
 				ProgressComicFile( files[i], Path.Combine( tempOutput, i.ToString( "d6" ) + ".jpg" ) );
 				//File.Copy( files[i], Path.Combine( output, Path.GetFileName( files[i] ) ) );
+				RateOfProgress = 20 + 60 * i / files.Count;
 			}
 
 			ProgressComicToOutput( tempOutput );
+			RateOfProgress = 99;
 
 			return "完成";
 		}
@@ -195,8 +206,6 @@ namespace PspComicHelper
 		/// <summary>
 		/// 处理单张图片
 		/// </summary>
-		/// <param name="p"></param>
-		/// <param name="p_2"></param>
 		private static void ProgressComicFile( string source, string dest )
 		{
 			Bitmap bitmap = new Bitmap( source );

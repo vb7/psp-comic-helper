@@ -31,6 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( Form_Main ) );
 			this.statusStrip_MainStatus = new System.Windows.Forms.StatusStrip();
+			this.toolStripProgressBar_progress = new System.Windows.Forms.ToolStripProgressBar();
 			this.toolStripStatusLabel_StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabControl_Main = new System.Windows.Forms.TabControl();
 			this.tabPage_App = new System.Windows.Forms.TabPage();
@@ -48,6 +49,7 @@
 			this.button_AddFile = new System.Windows.Forms.Button();
 			this.button_AddFolder = new System.Windows.Forms.Button();
 			this.tabPage_Setting = new System.Windows.Forms.TabPage();
+			this.label_setting_resizeMode = new System.Windows.Forms.Label();
 			this.textBox_setting_threshold = new System.Windows.Forms.TextBox();
 			this.label_setting_threshold = new System.Windows.Forms.Label();
 			this.label_setting_cutMargin = new System.Windows.Forms.Label();
@@ -73,6 +75,13 @@
 			this.folderBrowserDialog_AddFolder = new System.Windows.Forms.FolderBrowserDialog();
 			this.folderBrowserDialog_Output = new System.Windows.Forms.FolderBrowserDialog();
 			this.timer_processing = new System.Windows.Forms.Timer( this.components );
+			this.radioButton_setting_resizeMode_stretch = new System.Windows.Forms.RadioButton();
+			this.radioButton_setting_resizeMode_center = new System.Windows.Forms.RadioButton();
+			this.pictureBox_setting_resizeMode_center = new System.Windows.Forms.PictureBox();
+			this.radioButton_setting_resizeMode_scale = new System.Windows.Forms.RadioButton();
+			this.pictureBox_setting_resizeMode_stretch = new System.Windows.Forms.PictureBox();
+			this.pictureBox_setting_resizeMode_scale = new System.Windows.Forms.PictureBox();
+			this.panel_setting_resizeMode = new System.Windows.Forms.Panel();
 			this.statusStrip_MainStatus.SuspendLayout();
 			this.tabControl_Main.SuspendLayout();
 			this.tabPage_App.SuspendLayout();
@@ -80,16 +89,27 @@
 			this.panel_Left_Bottom.SuspendLayout();
 			this.panel_right.SuspendLayout();
 			this.tabPage_Setting.SuspendLayout();
+			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_center ) ).BeginInit();
+			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_stretch ) ).BeginInit();
+			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_scale ) ).BeginInit();
+			this.panel_setting_resizeMode.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// statusStrip_MainStatus
 			// 
 			this.statusStrip_MainStatus.Items.AddRange( new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar_progress,
             this.toolStripStatusLabel_StatusLabel} );
-			this.statusStrip_MainStatus.Location = new System.Drawing.Point( 0, 311 );
+			this.statusStrip_MainStatus.Location = new System.Drawing.Point( 0, 340 );
 			this.statusStrip_MainStatus.Name = "statusStrip_MainStatus";
 			this.statusStrip_MainStatus.Size = new System.Drawing.Size( 472, 22 );
 			this.statusStrip_MainStatus.TabIndex = 0;
+			// 
+			// toolStripProgressBar_progress
+			// 
+			this.toolStripProgressBar_progress.Name = "toolStripProgressBar_progress";
+			this.toolStripProgressBar_progress.Size = new System.Drawing.Size( 100, 16 );
+			this.toolStripProgressBar_progress.Visible = false;
 			// 
 			// toolStripStatusLabel_StatusLabel
 			// 
@@ -105,7 +125,7 @@
 			this.tabControl_Main.Location = new System.Drawing.Point( 0, 0 );
 			this.tabControl_Main.Name = "tabControl_Main";
 			this.tabControl_Main.SelectedIndex = 0;
-			this.tabControl_Main.Size = new System.Drawing.Size( 472, 311 );
+			this.tabControl_Main.Size = new System.Drawing.Size( 472, 340 );
 			this.tabControl_Main.TabIndex = 1;
 			// 
 			// tabPage_App
@@ -115,7 +135,7 @@
 			this.tabPage_App.Location = new System.Drawing.Point( 4, 22 );
 			this.tabPage_App.Name = "tabPage_App";
 			this.tabPage_App.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tabPage_App.Size = new System.Drawing.Size( 464, 285 );
+			this.tabPage_App.Size = new System.Drawing.Size( 464, 314 );
 			this.tabPage_App.TabIndex = 0;
 			this.tabPage_App.Text = "操作";
 			this.tabPage_App.UseVisualStyleBackColor = true;
@@ -127,7 +147,7 @@
 			this.panel_Left.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel_Left.Location = new System.Drawing.Point( 3, 3 );
 			this.panel_Left.Name = "panel_Left";
-			this.panel_Left.Size = new System.Drawing.Size( 370, 279 );
+			this.panel_Left.Size = new System.Drawing.Size( 370, 308 );
 			this.panel_Left.TabIndex = 4;
 			// 
 			// listView_FileList
@@ -138,7 +158,7 @@
 			this.listView_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listView_FileList.Location = new System.Drawing.Point( 0, 0 );
 			this.listView_FileList.Name = "listView_FileList";
-			this.listView_FileList.Size = new System.Drawing.Size( 370, 245 );
+			this.listView_FileList.Size = new System.Drawing.Size( 370, 274 );
 			this.listView_FileList.TabIndex = 0;
 			this.listView_FileList.UseCompatibleStateImageBehavior = false;
 			this.listView_FileList.View = System.Windows.Forms.View.Details;
@@ -158,7 +178,7 @@
 			this.panel_Left_Bottom.Controls.Add( this.textBox_Output );
 			this.panel_Left_Bottom.Controls.Add( this.label_Output );
 			this.panel_Left_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel_Left_Bottom.Location = new System.Drawing.Point( 0, 245 );
+			this.panel_Left_Bottom.Location = new System.Drawing.Point( 0, 274 );
 			this.panel_Left_Bottom.Name = "panel_Left_Bottom";
 			this.panel_Left_Bottom.Size = new System.Drawing.Size( 370, 34 );
 			this.panel_Left_Bottom.TabIndex = 1;
@@ -190,7 +210,7 @@
 			this.panel_right.Dock = System.Windows.Forms.DockStyle.Right;
 			this.panel_right.Location = new System.Drawing.Point( 373, 3 );
 			this.panel_right.Name = "panel_right";
-			this.panel_right.Size = new System.Drawing.Size( 88, 279 );
+			this.panel_right.Size = new System.Drawing.Size( 88, 308 );
 			this.panel_right.TabIndex = 3;
 			// 
 			// button_deletePath
@@ -245,6 +265,8 @@
 			// 
 			// tabPage_Setting
 			// 
+			this.tabPage_Setting.Controls.Add( this.panel_setting_resizeMode );
+			this.tabPage_Setting.Controls.Add( this.label_setting_resizeMode );
 			this.tabPage_Setting.Controls.Add( this.textBox_setting_threshold );
 			this.tabPage_Setting.Controls.Add( this.label_setting_threshold );
 			this.tabPage_Setting.Controls.Add( this.label_setting_cutMargin );
@@ -269,14 +291,23 @@
 			this.tabPage_Setting.Location = new System.Drawing.Point( 4, 22 );
 			this.tabPage_Setting.Name = "tabPage_Setting";
 			this.tabPage_Setting.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tabPage_Setting.Size = new System.Drawing.Size( 464, 285 );
+			this.tabPage_Setting.Size = new System.Drawing.Size( 464, 314 );
 			this.tabPage_Setting.TabIndex = 1;
 			this.tabPage_Setting.Text = "设置";
 			this.tabPage_Setting.UseVisualStyleBackColor = true;
 			// 
+			// label_setting_resizeMode
+			// 
+			this.label_setting_resizeMode.AutoSize = true;
+			this.label_setting_resizeMode.Location = new System.Drawing.Point( 7, 91 );
+			this.label_setting_resizeMode.Name = "label_setting_resizeMode";
+			this.label_setting_resizeMode.Size = new System.Drawing.Size( 53, 12 );
+			this.label_setting_resizeMode.TabIndex = 21;
+			this.label_setting_resizeMode.Text = "缩放模式";
+			// 
 			// textBox_setting_threshold
 			// 
-			this.textBox_setting_threshold.Location = new System.Drawing.Point( 175, 217 );
+			this.textBox_setting_threshold.Location = new System.Drawing.Point( 176, 275 );
 			this.textBox_setting_threshold.Name = "textBox_setting_threshold";
 			this.textBox_setting_threshold.Size = new System.Drawing.Size( 30, 21 );
 			this.textBox_setting_threshold.TabIndex = 20;
@@ -286,7 +317,7 @@
 			// label_setting_threshold
 			// 
 			this.label_setting_threshold.AutoSize = true;
-			this.label_setting_threshold.Location = new System.Drawing.Point( 128, 221 );
+			this.label_setting_threshold.Location = new System.Drawing.Point( 129, 279 );
 			this.label_setting_threshold.Name = "label_setting_threshold";
 			this.label_setting_threshold.Size = new System.Drawing.Size( 41, 12 );
 			this.label_setting_threshold.TabIndex = 19;
@@ -295,7 +326,7 @@
 			// label_setting_cutMargin
 			// 
 			this.label_setting_cutMargin.AutoSize = true;
-			this.label_setting_cutMargin.Location = new System.Drawing.Point( 5, 221 );
+			this.label_setting_cutMargin.Location = new System.Drawing.Point( 6, 279 );
 			this.label_setting_cutMargin.Name = "label_setting_cutMargin";
 			this.label_setting_cutMargin.Size = new System.Drawing.Size( 65, 12 );
 			this.label_setting_cutMargin.TabIndex = 18;
@@ -304,7 +335,7 @@
 			// checkBox_setting_cutMargin
 			// 
 			this.checkBox_setting_cutMargin.AutoSize = true;
-			this.checkBox_setting_cutMargin.Location = new System.Drawing.Point( 78, 220 );
+			this.checkBox_setting_cutMargin.Location = new System.Drawing.Point( 79, 278 );
 			this.checkBox_setting_cutMargin.Name = "checkBox_setting_cutMargin";
 			this.checkBox_setting_cutMargin.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox_setting_cutMargin.TabIndex = 17;
@@ -322,7 +353,7 @@
 			// comboBox_setting_presetHeight
 			// 
 			this.comboBox_setting_presetHeight.FormattingEnabled = true;
-			this.comboBox_setting_presetHeight.Location = new System.Drawing.Point( 155, 42 );
+			this.comboBox_setting_presetHeight.Location = new System.Drawing.Point( 155, 43 );
 			this.comboBox_setting_presetHeight.Name = "comboBox_setting_presetHeight";
 			this.comboBox_setting_presetHeight.Size = new System.Drawing.Size( 110, 20 );
 			this.comboBox_setting_presetHeight.TabIndex = 15;
@@ -358,7 +389,7 @@
 			// checkBox_setting_zip
 			// 
 			this.checkBox_setting_zip.AutoSize = true;
-			this.checkBox_setting_zip.Location = new System.Drawing.Point( 78, 187 );
+			this.checkBox_setting_zip.Location = new System.Drawing.Point( 79, 245 );
 			this.checkBox_setting_zip.Name = "checkBox_setting_zip";
 			this.checkBox_setting_zip.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox_setting_zip.TabIndex = 11;
@@ -367,7 +398,7 @@
 			// radioButton_setting_sequence_right
 			// 
 			this.radioButton_setting_sequence_right.AutoSize = true;
-			this.radioButton_setting_sequence_right.Location = new System.Drawing.Point( 78, 151 );
+			this.radioButton_setting_sequence_right.Location = new System.Drawing.Point( 79, 209 );
 			this.radioButton_setting_sequence_right.Name = "radioButton_setting_sequence_right";
 			this.radioButton_setting_sequence_right.Size = new System.Drawing.Size( 59, 16 );
 			this.radioButton_setting_sequence_right.TabIndex = 10;
@@ -378,7 +409,7 @@
 			// radioButton_setting_sequence_left
 			// 
 			this.radioButton_setting_sequence_left.AutoSize = true;
-			this.radioButton_setting_sequence_left.Location = new System.Drawing.Point( 143, 151 );
+			this.radioButton_setting_sequence_left.Location = new System.Drawing.Point( 144, 209 );
 			this.radioButton_setting_sequence_left.Name = "radioButton_setting_sequence_left";
 			this.radioButton_setting_sequence_left.Size = new System.Drawing.Size( 59, 16 );
 			this.radioButton_setting_sequence_left.TabIndex = 9;
@@ -389,7 +420,7 @@
 			// checkBox_setting_split
 			// 
 			this.checkBox_setting_split.AutoSize = true;
-			this.checkBox_setting_split.Location = new System.Drawing.Point( 78, 118 );
+			this.checkBox_setting_split.Location = new System.Drawing.Point( 79, 176 );
 			this.checkBox_setting_split.Name = "checkBox_setting_split";
 			this.checkBox_setting_split.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox_setting_split.TabIndex = 8;
@@ -398,7 +429,7 @@
 			// label_setting_zip
 			// 
 			this.label_setting_zip.AutoSize = true;
-			this.label_setting_zip.Location = new System.Drawing.Point( 6, 187 );
+			this.label_setting_zip.Location = new System.Drawing.Point( 7, 245 );
 			this.label_setting_zip.Name = "label_setting_zip";
 			this.label_setting_zip.Size = new System.Drawing.Size( 65, 12 );
 			this.label_setting_zip.TabIndex = 7;
@@ -406,7 +437,7 @@
 			// 
 			// textBox_setting_quality
 			// 
-			this.textBox_setting_quality.Location = new System.Drawing.Point( 78, 77 );
+			this.textBox_setting_quality.Location = new System.Drawing.Point( 79, 135 );
 			this.textBox_setting_quality.MaxLength = 3;
 			this.textBox_setting_quality.Name = "textBox_setting_quality";
 			this.textBox_setting_quality.Size = new System.Drawing.Size( 50, 21 );
@@ -417,7 +448,7 @@
 			// label_setting_sequence
 			// 
 			this.label_setting_sequence.AutoSize = true;
-			this.label_setting_sequence.Location = new System.Drawing.Point( 6, 152 );
+			this.label_setting_sequence.Location = new System.Drawing.Point( 7, 210 );
 			this.label_setting_sequence.Name = "label_setting_sequence";
 			this.label_setting_sequence.Size = new System.Drawing.Size( 53, 12 );
 			this.label_setting_sequence.TabIndex = 5;
@@ -426,7 +457,7 @@
 			// label_setting_split
 			// 
 			this.label_setting_split.AutoSize = true;
-			this.label_setting_split.Location = new System.Drawing.Point( 6, 118 );
+			this.label_setting_split.Location = new System.Drawing.Point( 7, 176 );
 			this.label_setting_split.Name = "label_setting_split";
 			this.label_setting_split.Size = new System.Drawing.Size( 53, 12 );
 			this.label_setting_split.TabIndex = 4;
@@ -435,7 +466,7 @@
 			// label_setting_quality
 			// 
 			this.label_setting_quality.AutoSize = true;
-			this.label_setting_quality.Location = new System.Drawing.Point( 6, 83 );
+			this.label_setting_quality.Location = new System.Drawing.Point( 7, 141 );
 			this.label_setting_quality.Name = "label_setting_quality";
 			this.label_setting_quality.Size = new System.Drawing.Size( 29, 12 );
 			this.label_setting_quality.TabIndex = 3;
@@ -478,16 +509,95 @@
 			this.timer_processing.Interval = 1000;
 			this.timer_processing.Tick += new System.EventHandler( this.timer_processing_Tick );
 			// 
+			// radioButton_setting_resizeMode_stretch
+			// 
+			this.radioButton_setting_resizeMode_stretch.AutoSize = true;
+			this.radioButton_setting_resizeMode_stretch.Location = new System.Drawing.Point( 134, 26 );
+			this.radioButton_setting_resizeMode_stretch.Name = "radioButton_setting_resizeMode_stretch";
+			this.radioButton_setting_resizeMode_stretch.Size = new System.Drawing.Size( 47, 16 );
+			this.radioButton_setting_resizeMode_stretch.TabIndex = 22;
+			this.radioButton_setting_resizeMode_stretch.TabStop = true;
+			this.radioButton_setting_resizeMode_stretch.Text = "拉伸";
+			this.radioButton_setting_resizeMode_stretch.UseVisualStyleBackColor = true;
+			// 
+			// radioButton_setting_resizeMode_center
+			// 
+			this.radioButton_setting_resizeMode_center.AutoSize = true;
+			this.radioButton_setting_resizeMode_center.Location = new System.Drawing.Point( 68, 26 );
+			this.radioButton_setting_resizeMode_center.Name = "radioButton_setting_resizeMode_center";
+			this.radioButton_setting_resizeMode_center.Size = new System.Drawing.Size( 47, 16 );
+			this.radioButton_setting_resizeMode_center.TabIndex = 22;
+			this.radioButton_setting_resizeMode_center.TabStop = true;
+			this.radioButton_setting_resizeMode_center.Text = "填充";
+			this.radioButton_setting_resizeMode_center.UseVisualStyleBackColor = true;
+			// 
+			// pictureBox_setting_resizeMode_center
+			// 
+			this.pictureBox_setting_resizeMode_center.Image = global::PspComicHelper.Properties.Resources.Center;
+			this.pictureBox_setting_resizeMode_center.InitialImage = null;
+			this.pictureBox_setting_resizeMode_center.Location = new System.Drawing.Point( 68, 3 );
+			this.pictureBox_setting_resizeMode_center.Name = "pictureBox_setting_resizeMode_center";
+			this.pictureBox_setting_resizeMode_center.Size = new System.Drawing.Size( 32, 21 );
+			this.pictureBox_setting_resizeMode_center.TabIndex = 23;
+			this.pictureBox_setting_resizeMode_center.TabStop = false;
+			this.pictureBox_setting_resizeMode_center.Click += new System.EventHandler( this.pictureBox_setting_resizeMode_center_Click );
+			// 
+			// radioButton_setting_resizeMode_scale
+			// 
+			this.radioButton_setting_resizeMode_scale.AutoSize = true;
+			this.radioButton_setting_resizeMode_scale.Location = new System.Drawing.Point( 2, 26 );
+			this.radioButton_setting_resizeMode_scale.Name = "radioButton_setting_resizeMode_scale";
+			this.radioButton_setting_resizeMode_scale.Size = new System.Drawing.Size( 47, 16 );
+			this.radioButton_setting_resizeMode_scale.TabIndex = 22;
+			this.radioButton_setting_resizeMode_scale.TabStop = true;
+			this.radioButton_setting_resizeMode_scale.Text = "适应";
+			this.radioButton_setting_resizeMode_scale.UseVisualStyleBackColor = true;
+			// 
+			// pictureBox_setting_resizeMode_stretch
+			// 
+			this.pictureBox_setting_resizeMode_stretch.Image = global::PspComicHelper.Properties.Resources.Stretch;
+			this.pictureBox_setting_resizeMode_stretch.InitialImage = null;
+			this.pictureBox_setting_resizeMode_stretch.Location = new System.Drawing.Point( 134, 3 );
+			this.pictureBox_setting_resizeMode_stretch.Name = "pictureBox_setting_resizeMode_stretch";
+			this.pictureBox_setting_resizeMode_stretch.Size = new System.Drawing.Size( 32, 21 );
+			this.pictureBox_setting_resizeMode_stretch.TabIndex = 23;
+			this.pictureBox_setting_resizeMode_stretch.TabStop = false;
+			this.pictureBox_setting_resizeMode_stretch.Click += new System.EventHandler( this.pictureBox_setting_resizeMode_stretch_Click );
+			// 
+			// pictureBox_setting_resizeMode_scale
+			// 
+			this.pictureBox_setting_resizeMode_scale.Image = global::PspComicHelper.Properties.Resources.Scale;
+			this.pictureBox_setting_resizeMode_scale.InitialImage = null;
+			this.pictureBox_setting_resizeMode_scale.Location = new System.Drawing.Point( 3, 3 );
+			this.pictureBox_setting_resizeMode_scale.Name = "pictureBox_setting_resizeMode_scale";
+			this.pictureBox_setting_resizeMode_scale.Size = new System.Drawing.Size( 32, 21 );
+			this.pictureBox_setting_resizeMode_scale.TabIndex = 23;
+			this.pictureBox_setting_resizeMode_scale.TabStop = false;
+			this.pictureBox_setting_resizeMode_scale.Click += new System.EventHandler( this.pictureBox_setting_resizeMode_scale_Click );
+			// 
+			// panel_setting_resizeMode
+			// 
+			this.panel_setting_resizeMode.Controls.Add( this.pictureBox_setting_resizeMode_scale );
+			this.panel_setting_resizeMode.Controls.Add( this.radioButton_setting_resizeMode_stretch );
+			this.panel_setting_resizeMode.Controls.Add( this.pictureBox_setting_resizeMode_stretch );
+			this.panel_setting_resizeMode.Controls.Add( this.radioButton_setting_resizeMode_center );
+			this.panel_setting_resizeMode.Controls.Add( this.pictureBox_setting_resizeMode_center );
+			this.panel_setting_resizeMode.Controls.Add( this.radioButton_setting_resizeMode_scale );
+			this.panel_setting_resizeMode.Location = new System.Drawing.Point( 76, 76 );
+			this.panel_setting_resizeMode.Name = "panel_setting_resizeMode";
+			this.panel_setting_resizeMode.Size = new System.Drawing.Size( 278, 44 );
+			this.panel_setting_resizeMode.TabIndex = 24;
+			// 
 			// Form_Main
 			// 
 			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 12F );
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size( 472, 333 );
+			this.ClientSize = new System.Drawing.Size( 472, 362 );
 			this.Controls.Add( this.tabControl_Main );
 			this.Controls.Add( this.statusStrip_MainStatus );
 			this.Icon = ( (System.Drawing.Icon)( resources.GetObject( "$this.Icon" ) ) );
-			this.MinimumSize = new System.Drawing.Size( 480, 360 );
+			this.MinimumSize = new System.Drawing.Size( 488, 400 );
 			this.Name = "Form_Main";
 			this.Text = "PSP Comic Helper";
 			this.Shown += new System.EventHandler( this.Form_Main_Shown );
@@ -504,6 +614,11 @@
 			this.panel_right.ResumeLayout( false );
 			this.tabPage_Setting.ResumeLayout( false );
 			this.tabPage_Setting.PerformLayout();
+			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_center ) ).EndInit();
+			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_stretch ) ).EndInit();
+			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_scale ) ).EndInit();
+			this.panel_setting_resizeMode.ResumeLayout( false );
+			this.panel_setting_resizeMode.PerformLayout();
 			this.ResumeLayout( false );
 			this.PerformLayout();
 
@@ -554,6 +669,15 @@
 		private System.Windows.Forms.Label label_setting_cutMargin;
 		private System.Windows.Forms.TextBox textBox_setting_threshold;
 		private System.Windows.Forms.Label label_setting_threshold;
+		private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar_progress;
+		private System.Windows.Forms.Label label_setting_resizeMode;
+		private System.Windows.Forms.Panel panel_setting_resizeMode;
+		private System.Windows.Forms.PictureBox pictureBox_setting_resizeMode_scale;
+		private System.Windows.Forms.RadioButton radioButton_setting_resizeMode_stretch;
+		private System.Windows.Forms.PictureBox pictureBox_setting_resizeMode_stretch;
+		private System.Windows.Forms.RadioButton radioButton_setting_resizeMode_center;
+		private System.Windows.Forms.PictureBox pictureBox_setting_resizeMode_center;
+		private System.Windows.Forms.RadioButton radioButton_setting_resizeMode_scale;
 
 	}
 }

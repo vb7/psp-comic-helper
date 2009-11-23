@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
@@ -27,6 +28,10 @@ namespace PspComicHelper
 		private int _processCount;
 		// 处理完成的总数
 		private int _completeCount;
+
+		// ListView列索引
+		private const int SUBITEM_INDEX_PATH = 0;
+		private const int SUBITEM_INDEX_STATUS = 1;
 
 		/// <summary>
 		/// 状态栏文字
@@ -108,7 +113,19 @@ namespace PspComicHelper
 		/// <param name="status"></param>
 		private void UpdateStatus( int index, string status )
 		{
-			listView_FileList.Items[index].SubItems[1].Text = status;
+			listView_FileList.Items[index].SubItems[SUBITEM_INDEX_STATUS].Text = status;
+			for( int i = 0; i < listView_FileList.Items.Count; i++ )
+			{
+				if( i == index && status != "完成" )
+				{
+					listView_FileList.Items[i].BackColor = Color.Pink;
+				}
+				else
+				{
+					listView_FileList.Items[i].BackColor = Color.White;
+				}
+
+			}
 		}
 
 		/// <summary>
@@ -122,10 +139,10 @@ namespace PspComicHelper
 
 			foreach ( ListViewItem item in listView_FileList.Items )
 			{
-				if ( item.SubItems[1].Text == "准备" )
+				if ( item.SubItems[SUBITEM_INDEX_STATUS].Text == "准备" )
 				{
 					_processCount++;
-					list.Add( new string[] { item.Text, item.SubItems[1].Text } );
+					list.Add( new string[] { item.Text, item.SubItems[SUBITEM_INDEX_STATUS].Text } );
 				}
 				else
 				{
@@ -155,6 +172,9 @@ namespace PspComicHelper
 			checkBox_setting_zip.Checked = Setting.OutputZip;
 			checkBox_setting_cutMargin.Checked = Setting.AutoCutMargin;
 			textBox_setting_threshold.Text = Setting.Threshold.ToString();
+			radioButton_setting_resizeMode_scale.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Scale );
+			radioButton_setting_resizeMode_center.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Center );
+			radioButton_setting_resizeMode_stretch.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Stretch );
 			textBox_Output.Text = Setting.OutputPath;
 		}
 
@@ -195,6 +215,13 @@ namespace PspComicHelper
 			Setting.AutoCutMargin = checkBox_setting_cutMargin.Checked;
 			Setting.Threshold = Convert.ToInt32( textBox_setting_threshold.Text );
 
+			if( radioButton_setting_resizeMode_scale.Checked )
+				Setting.Mode = ImageHelper.ResizeMode.Scale;
+			else if( radioButton_setting_resizeMode_center.Checked )
+				Setting.Mode = ImageHelper.ResizeMode.Center;
+			else if( radioButton_setting_resizeMode_stretch.Checked )
+				Setting.Mode = ImageHelper.ResizeMode.Stretch;
+
 			Setting.OutputPath = textBox_Output.Text;
 		}
 
@@ -210,6 +237,7 @@ namespace PspComicHelper
 			button_Start.Enabled = false;
 			//toolStripStatusLabel_StatusLabel.Text = "处理中...";
 			_timePass = 0;
+			toolStripProgressBar_progress.Visible = true;
 			timer_processing.Start();
 		}
 
@@ -225,6 +253,7 @@ namespace PspComicHelper
 			button_Start.Enabled = true;
 			timer_processing.Stop();
 			toolStripStatusLabel_StatusLabel.Text = string.Format( "完成, 耗时{0}秒", _timePass );
+			toolStripProgressBar_progress.Visible = false;
 			MinimizeMemory();
 		}
 
@@ -290,7 +319,6 @@ namespace PspComicHelper
 				Setting.OpenInitialDirectory = Path.GetDirectoryName( openFileDialog_AddFile.FileName );
 
 				int addCount = 0;
-				bool duplicate = false;
 
 				foreach ( string file in openFileDialog_AddFile.FileNames )
 				{
@@ -486,6 +514,7 @@ namespace PspComicHelper
 		{
 			_timePass++;
 			toolStripStatusLabel_StatusLabel.Text = _statusString[ _timePass % _statusString.Count ];
+			toolStripProgressBar_progress.Value = ComicHelper.RateOfProgress;
 		}
 
 		/// <summary>
@@ -562,7 +591,38 @@ namespace PspComicHelper
 		{
 			public string Name { get; set; }
 			public int Value { get; set; }
-		}		
+		}
+
+		/// <summary>
+		/// 缩放模式图片点击 适应
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void pictureBox_setting_resizeMode_scale_Click( object sender, EventArgs e )
+		{
+			radioButton_setting_resizeMode_scale.Checked = true;
+		}
+
+		/// <summary>
+		/// 缩放模式图片点击 填充
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void pictureBox_setting_resizeMode_center_Click( object sender, EventArgs e )
+		{
+			radioButton_setting_resizeMode_center.Checked = true;
+		}
+
+		/// <summary>
+		/// 缩放模式图片点击 拉伸
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void pictureBox_setting_resizeMode_stretch_Click( object sender, EventArgs e )
+		{
+			radioButton_setting_resizeMode_stretch.Checked = true;
+		}
+
 
 	}
 
