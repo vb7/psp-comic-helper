@@ -63,7 +63,11 @@ namespace PspComicHelper
 			CalcSize( bmp.Width, bmp.Height, width, height, out newWidth, out newHeight, mode );
 
 			// 如果使用等比缩放模式, 新的宽,高大于原图的宽,高,不做操作
-			if ( ( mode == ResizeMode.Scale || mode == ResizeMode.Center ) && ( newWidth > bmp.Width || newHeight > bmp.Height ) )
+			if ( ( mode == ResizeMode.Scale ) && ( newWidth > bmp.Width || newHeight > bmp.Height ) )
+			{
+				return bmp;
+			}
+			if( ( mode == ResizeMode.Center ) && ( width > bmp.Width && height > bmp.Height ) )
 			{
 				return bmp;
 			}
@@ -80,7 +84,17 @@ namespace PspComicHelper
 			// 如果是居中模式, 则需要剪裁掉多余的边
 			if ( ( mode == ResizeMode.Center ) && ( ( newWidth != width || newHeight != height ) ) && ( width != 0 && height != 0 ) )
 			{
-				b = Cut( b, ( newWidth - width ) / 2, ( newHeight - height ) / 2, width, height );
+				int startX, startY, cutWidth, cutHeight;
+				startX = ( newWidth - width ) / 2;
+				if( startX < 0 )
+					startX = 0;
+				startY = ( newHeight - height ) / 2;
+				if( startY < 0 )
+					startY = 0;
+				cutWidth = ( width < newWidth ) ? width : newWidth;
+				cutHeight = ( height < newHeight ) ? height : newHeight;
+
+				b = Cut( b, startX, startY, cutWidth, cutHeight );
 			}
 			return b;
 		}
@@ -271,11 +285,15 @@ namespace PspComicHelper
 				case ResizeMode.Center:
 					if ( ( (float)sourceWidth / (float)destWidth ) < ( (float)sourceHeight / (float)destHeight ) )
 					{
+						if( destWidth > sourceWidth )
+							destWidth = sourceWidth;
 						newWidth = destWidth;
 						newHeight = sourceHeight * destWidth / sourceWidth;
 					}
 					else
 					{
+						if( destHeight > sourceHeight )
+							destHeight = sourceHeight;
 						newWidth = sourceWidth * destHeight / sourceHeight;
 						newHeight = destHeight;
 					}
