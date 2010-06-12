@@ -8,7 +8,7 @@
 *如果运行程序出现 "应用程序正常初始化失败", 多半是因为没有安装 .NET Framework, 请到微软网站下载安装.
 http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5&displaylang=zh-cn
 
----- 使用方法 ----
+---- 使用方法 ----11
 
 运行 PspComicHelper.exe 后, 
 可以点右侧的按钮"添加压缩文档"来添加压缩包格式的电子漫画,
