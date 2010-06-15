@@ -94,7 +94,7 @@ namespace PspComicHelper
 
 			for ( int i = 0; i < list.Length; i++ )
 			{
-				if ( list[i][1] != "准备" )
+				if ( list[i][SUBITEM_INDEX_STATUS] != "准备" )
 				{
 					continue;
 				}
