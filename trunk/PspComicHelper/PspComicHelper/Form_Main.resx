@@ -120,8 +120,9 @@
   <data name="&gt;&gt;label_Output.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_AddFile.Text" xml:space="preserve">
-    <value>Add Archive</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label_setting_width.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;checkBox_setting_split.Name" xml:space="preserve">
     <value>checkBox_setting_split</value>
@@ -132,7 +133,6 @@
   <data name="&gt;&gt;checkBox_setting_zip.Parent" xml:space="preserve">
     <value>tabPage_Setting</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label_setting_threshold.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -188,9 +188,6 @@
   <data name="&gt;&gt;listView_FileList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPage_App.Text" xml:space="preserve">
-    <value>Operation</value>
-  </data>
   <data name="label_setting_quality.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 12</value>
   </data>
@@ -202,6 +199,9 @@
   </data>
   <data name="tabPage_App.Size" type="System.Drawing.Size, System.Drawing">
     <value>472, 325</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_witth.Parent" xml:space="preserve">
+    <value>tabPage_Setting</value>
   </data>
   <data name="panel_Left.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -230,8 +230,8 @@
   <data name="pictureBox_setting_resizeMode_stretch.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 21</value>
   </data>
-  <data name="&gt;&gt;radioButton_setting_sequence_left.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="&gt;&gt;label_setting_cutMargin.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="checkBox_setting_height.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -245,8 +245,8 @@
   <data name="&gt;&gt;label_setting_quality.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label_setting_threshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button_deletePath.Name" xml:space="preserve">
+    <value>button_deletePath</value>
   </data>
   <data name="textBox_setting_threshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 21</value>
@@ -296,6 +296,9 @@
   <data name="button_SetOutput.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="tabControl_Main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>480, 351</value>
+  </data>
   <data name="tabPage_App.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -308,8 +311,8 @@
   <data name="&gt;&gt;button_AddFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton_setting_sequence_left.Parent" xml:space="preserve">
-    <value>tabPage_Setting</value>
+  <data name="checkBox_setting_split.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;tabControl_Main.Parent" xml:space="preserve">
     <value>$this</value>
@@ -323,8 +326,8 @@
   <data name="radioButton_setting_resizeMode_stretch.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 16</value>
   </data>
-  <data name="radioButton_setting_resizeMode_scale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 16</value>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_stretch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBox_Output.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -337,9 +340,6 @@
   </data>
   <data name="&gt;&gt;radioButton_setting_sequence_right.Parent" xml:space="preserve">
     <value>tabPage_Setting</value>
-  </data>
-  <data name="&gt;&gt;button_deletePath.Name" xml:space="preserve">
-    <value>button_deletePath</value>
   </data>
   <data name="label_setting_split.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 12</value>
@@ -425,9 +425,6 @@
   <data name="&gt;&gt;radioButton_setting_resizeMode_center.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;radioButton_setting_resizeMode_stretch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tabControl_Main.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -449,6 +446,9 @@
   </data>
   <data name="textBox_setting_threshold.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 275</value>
+  </data>
+  <data name="&gt;&gt;statusStrip_MainStatus.Name" xml:space="preserve">
+    <value>statusStrip_MainStatus</value>
   </data>
   <data name="panel_Left.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -510,9 +510,6 @@
   <data name="tabPage_App.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;tabPage_Setting.Parent" xml:space="preserve">
-    <value>tabControl_Main</value>
-  </data>
   <data name="radioButton_setting_sequence_left.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 209</value>
   </data>
@@ -564,8 +561,8 @@
   <data name="&gt;&gt;checkBox_setting_height.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;statusStrip_MainStatus.Name" xml:space="preserve">
-    <value>statusStrip_MainStatus</value>
+  <data name="label_setting_width.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;label_setting_sequence.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -575,9 +572,6 @@
   </data>
   <data name="&gt;&gt;checkBox_setting_cutMargin.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="&gt;&gt;button_SetOutput.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="radioButton_setting_sequence_right.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -606,11 +600,11 @@
   <data name="&gt;&gt;panel_right.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="pictureBox_setting_resizeMode_scale.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+  <data name="&gt;&gt;label_setting_split.ZOrder" xml:space="preserve">
+    <value>18</value>
   </data>
-  <data name="checkBox_setting_height.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 45</value>
+  <data name="&gt;&gt;label_setting_height.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="label_setting_cutMargin.Text" xml:space="preserve">
     <value>Margin Cut</value>
@@ -623,9 +617,6 @@
   </data>
   <data name="label_setting_cutMargin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="label_setting_height.Text" xml:space="preserve">
-    <value>Height Limit</value>
   </data>
   <data name="label_setting_sequence.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 210</value>
@@ -653,6 +644,9 @@
   </data>
   <data name="&gt;&gt;openFileDialog_AddFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_left.ZOrder" xml:space="preserve">
+    <value>13</value>
   </data>
   <data name="label_setting_resizeMode.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -744,6 +738,9 @@
   <data name="button_AddFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <data name="checkBox_setting_height.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 45</value>
+  </data>
   <data name="radioButton_setting_resizeMode_center.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 16</value>
   </data>
@@ -774,11 +771,14 @@
   <data name="label_setting_split.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButton_setting_resizeMode_center.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="radioButton_setting_sequence_left.Text" xml:space="preserve">
+    <value>Left-&gt;Right</value>
   </data>
   <data name="&gt;&gt;label_setting_threshold.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="panel_Left_Bottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>378, 34</value>
   </data>
   <data name="label_setting_cutMargin.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 279</value>
@@ -807,9 +807,6 @@
   <data name="radioButton_setting_resizeMode_scale.Text" xml:space="preserve">
     <value>Scale</value>
   </data>
-  <data name="&gt;&gt;label_setting_height.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="label_setting_quality.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 141</value>
   </data>
@@ -821,9 +818,6 @@
   </data>
   <data name="radioButton_setting_sequence_left.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="checkBox_setting_witth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 9</value>
   </data>
   <data name="label_setting_split.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -884,9 +878,6 @@
   </data>
   <data name="checkBox_setting_split.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="radioButton_setting_sequence_left.Text" xml:space="preserve">
-    <value>Left-&gt;Right</value>
   </data>
   <data name="&gt;&gt;button_Start.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -960,26 +951,23 @@
   <data name="&gt;&gt;radioButton_setting_resizeMode_scale.Name" xml:space="preserve">
     <value>radioButton_setting_resizeMode_scale</value>
   </data>
-  <data name="label_setting_width.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;radioButton_setting_resizeMode_stretch.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;folderBrowserDialog_AddFolder.Name" xml:space="preserve">
     <value>folderBrowserDialog_AddFolder</value>
   </data>
+  <data name="&gt;&gt;label_setting_threshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="statusStrip_MainStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 351</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_setting_resizeMode_center.Name" xml:space="preserve">
-    <value>pictureBox_setting_resizeMode_center</value>
   </data>
   <data name="&gt;&gt;checkBox_setting_split.Parent" xml:space="preserve">
     <value>tabPage_Setting</value>
   </data>
-  <data name="&gt;&gt;button_AddFile.Parent" xml:space="preserve">
-    <value>panel_right</value>
+  <data name="tabPage_App.Text" xml:space="preserve">
+    <value>Operation</value>
   </data>
   <data name="textBox_setting_height.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 42</value>
@@ -1059,6 +1047,12 @@
   <data name="comboBox_setting_presetWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>166, 6</value>
   </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_scale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButton_setting_resizeMode_scale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 16</value>
+  </data>
   <data name="&gt;&gt;button_deletePath.Parent" xml:space="preserve">
     <value>panel_right</value>
   </data>
@@ -1071,11 +1065,14 @@
   <data name="&gt;&gt;comboBox_setting_presetWidth.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <data name="label_setting_cutMargin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+  <data name="button_AddFile.Text" xml:space="preserve">
+    <value>Add Archive</value>
   </data>
   <data name="&gt;&gt;textBox_setting_width.Name" xml:space="preserve">
     <value>textBox_setting_width</value>
+  </data>
+  <data name="label_setting_cutMargin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
   </data>
   <data name="&gt;&gt;panel_Left_Bottom.Parent" xml:space="preserve">
     <value>panel_Left</value>
@@ -1176,11 +1173,11 @@
   <data name="tabControl_Main.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="checkBox_setting_split.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="&gt;&gt;tabPage_Setting.Parent" xml:space="preserve">
+    <value>tabControl_Main</value>
   </data>
-  <data name="textBox_Output.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;button_AddFile.Parent" xml:space="preserve">
+    <value>panel_right</value>
   </data>
   <data name="button_AddFolder.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1188,8 +1185,8 @@
   <data name="button_deletePath.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="label_setting_width.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="radioButton_setting_resizeMode_center.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label_setting_split.Text" xml:space="preserve">
     <value>Split</value>
@@ -1221,11 +1218,14 @@
   <data name="toolStripProgressBar_progress.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 16</value>
   </data>
-  <data name="&gt;&gt;label_setting_cutMargin.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_center.Name" xml:space="preserve">
+    <value>pictureBox_setting_resizeMode_center</value>
   </data>
   <data name="&gt;&gt;textBox_setting_width.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_left.Parent" xml:space="preserve">
+    <value>tabPage_Setting</value>
   </data>
   <data name="label_setting_height.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1275,8 +1275,8 @@
   <data name="&gt;&gt;checkBox_setting_height.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabControl_Main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 351</value>
+  <data name="pictureBox_setting_resizeMode_scale.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
   </data>
   <data name="&gt;&gt;label_setting_resizeMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1296,8 +1296,8 @@
   <data name="columnHeader_Path.Text" xml:space="preserve">
     <value>Path</value>
   </data>
-  <data name="&gt;&gt;radioButton_setting_resizeMode_scale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_setting_witth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 9</value>
   </data>
   <data name="label_setting_width.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 11</value>
@@ -1305,14 +1305,14 @@
   <data name="&gt;&gt;pictureBox_setting_resizeMode_stretch.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Left_Bottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 34</value>
+  <data name="textBox_Output.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="panel_right.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 319</value>
   </data>
-  <data name="&gt;&gt;checkBox_setting_witth.Parent" xml:space="preserve">
-    <value>tabPage_Setting</value>
+  <data name="&gt;&gt;button_SetOutput.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label_setting_zip.Name" xml:space="preserve">
     <value>label_setting_zip</value>
@@ -1332,28 +1332,49 @@
   <data name="panel_Left_Bottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="&gt;&gt;label_setting_split.ZOrder" xml:space="preserve">
-    <value>18</value>
+  <data name="label_setting_height.Text" xml:space="preserve">
+    <value>Height Limit</value>
   </data>
-  <metadata name="folderBrowserDialog_AddFolder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>387, 8</value>
-  </metadata>
-  <metadata name="openFileDialog_AddFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>199, 8</value>
-  </metadata>
-  <metadata name="folderBrowserDialog_Output.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>618, 8</value>
-  </metadata>
-  <metadata name="statusStrip_MainStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="statusStrip_MainStatus.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>0, 351</value>
-  </metadata>
-  <metadata name="timer_processing.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>839, 8</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Chinese (Simplified)</value>
-  </metadata>
+  </data>
+  <data name="folderBrowserDialog_Output.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>618, 8</value>
+  </data>
+  <data name="openFileDialog_AddFile.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>199, 8</value>
+  </data>
+  <data name="folderBrowserDialog_AddFolder.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>387, 8</value>
+  </data>
+  <data name="timer_processing.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>839, 8</value>
+  </data>
+  <data name="Text_ComboBox_Select" xml:space="preserve">
+    <value>Select...</value>
+  </data>
+  <data name="Text_FileList_Complete" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Text_FileList_Processing" xml:space="preserve">
+    <value>Processing...</value>
+  </data>
+  <data name="Text_FileList_Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="Text_StatusBar_Processing_1" xml:space="preserve">
+    <value>Processing...-</value>
+  </data>
+  <data name="Text_StatusBar_Processing_2" xml:space="preserve">
+    <value>Processing...\</value>
+  </data>
+  <data name="Text_StatusBar_Processing_3" xml:space="preserve">
+    <value>Processing...|</value>
+  </data>
+  <data name="Text_StatusBar_Processing_4" xml:space="preserve">
+    <value>Processing.../</value>
+  </data>
 </root>

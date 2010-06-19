@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
@@ -33,16 +34,12 @@ namespace PspComicHelper
 		private const int SUBITEM_INDEX_PATH = 0;
 		private const int SUBITEM_INDEX_STATUS = 1;
 
+		
+
 		/// <summary>
 		/// 状态栏文字
 		/// </summary>
-		private List<string> _statusString = new List<string>()
-		{
-			"处理中... -",
-			"处理中... \\",
-			"处理中... |",
-			"处理中... /"
-		};
+		private List<string> _statusString;
 
 		/// <summary>
 		/// 经过时间
@@ -50,25 +47,17 @@ namespace PspComicHelper
 		private int _timePass = 0;
 		
 		// 预设宽度
-		private List<ComboBoxItem> _widthDic = new List<ComboBoxItem>()
-		{
-			new ComboBoxItem { Name = "请选择...", Value = 0 },
-			new ComboBoxItem { Name = "PSP (480px)", Value = 480 },
-			new ComboBoxItem { Name = "PSP*2 (960px)", Value = 960 },
-			new ComboBoxItem { Name = "魅族M8 (720px)", Value = 720 },
-			new ComboBoxItem { Name = "iPhone (480px)", Value = 480 }
-		};
+		private List<ComboBoxItem> _widthDic;
 
 		// 预设高度
-		private List<ComboBoxItem> _heightDic = new List<ComboBoxItem>()
-		{
-			new ComboBoxItem { Name = "请选择...", Value = 0 },
-			new ComboBoxItem { Name = "Sony Reader ?", Value = 754 }
-		};
+		private List<ComboBoxItem> _heightDic;
 		
+
+
 
 		public Form_Main()
 		{
+			InitResourceText();
 			InitializeComponent();
 			_progressCallback = new ComicProgressCallback( UpdateStatus );
 			_completeCallback = new ComicCompleteCallback( SetFormStatus_Complete );
@@ -81,6 +70,7 @@ namespace PspComicHelper
 			comboBox_setting_presetHeight.DataSource = _heightDic;
 			comboBox_setting_presetHeight.DisplayMember = "Name";
 			comboBox_setting_presetHeight.ValueMember = "Value";
+
 		}
 
 
@@ -94,12 +84,12 @@ namespace PspComicHelper
 
 			for ( int i = 0; i < list.Length; i++ )
 			{
-				if ( list[i][SUBITEM_INDEX_STATUS] != "准备" )
+				if ( list[i][SUBITEM_INDEX_STATUS] != _text_fileList_Ready )
 				{
 					continue;
 				}
 
-				this.Invoke( _progressCallback, new object[]{ i, "处理中..." } );
+				this.Invoke( _progressCallback, new object[]{ i, _text_fileList_Processing } );
 				result = ComicHelper.ProgressComicPath( list[i][0] );
 				this.Invoke( _progressCallback, new object[]{ i, result } );
 			}
@@ -116,7 +106,7 @@ namespace PspComicHelper
 			listView_FileList.Items[index].SubItems[SUBITEM_INDEX_STATUS].Text = status;
 			for( int i = 0; i < listView_FileList.Items.Count; i++ )
 			{
-				if( i == index && status != "完成" )
+				if( i == index && status != _text_fileList_Complete )
 				{
 					listView_FileList.Items[i].BackColor = Color.Pink;
 				}
@@ -139,7 +129,7 @@ namespace PspComicHelper
 
 			foreach ( ListViewItem item in listView_FileList.Items )
 			{
-				if ( item.SubItems[SUBITEM_INDEX_STATUS].Text == "准备" )
+				if ( item.SubItems[SUBITEM_INDEX_STATUS].Text == _text_fileList_Ready )
 				{
 					_processCount++;
 					list.Add( new string[] { item.Text, item.SubItems[SUBITEM_INDEX_STATUS].Text } );
@@ -292,7 +282,10 @@ namespace PspComicHelper
 			}
 
 			if( success )
-				listView_FileList.Items.Add( new ListViewItem( new string[] { path, "准备" } ) );
+			{
+				//listView_FileList.Items.Add( new ListViewItem( new string[] {path, "准备"} ) );
+				listView_FileList.Items.Add( new ListViewItem( new string[] { path, _text_fileList_Ready } ) );
+			}
 
 			return success;
 		}
@@ -624,6 +617,47 @@ namespace PspComicHelper
 		}
 
 
+
+		// 从资源文件读出的字符串
+		string _text_fileList_Ready;
+		string _text_fileList_Processing;
+		string _text_fileList_Complete;
+
+		/// <summary>
+		/// 初始化资源字符串
+		/// </summary>
+		private void InitResourceText()
+		{
+			ResourceManager rm = new ResourceManager( typeof( Form_Main ) );
+
+			_text_fileList_Ready		= rm.GetString( "Text_FileList_Ready" );
+			_text_fileList_Processing	= rm.GetString( "Text_FileList_Processing" );
+			_text_fileList_Complete		= rm.GetString( "Text_FileList_Complete" );
+
+			_statusString = new List<string>
+			{
+				rm.GetString( "Text_StatusBar_Processing_1" ),
+				rm.GetString( "Text_StatusBar_Processing_2" ),
+				rm.GetString( "Text_StatusBar_Processing_3" ),
+				rm.GetString( "Text_StatusBar_Processing_4" ),
+			};
+
+			_widthDic = new List<ComboBoxItem>()
+			{
+				new ComboBoxItem { Name = rm.GetString( "Text_ComboBox_Select" ), Value = 0 },
+				new ComboBoxItem { Name = "PSP (480px)", Value = 480 },
+				new ComboBoxItem { Name = "PSP*2 (960px)", Value = 960 },
+				new ComboBoxItem { Name = "Meizu M8 (720px)", Value = 720 },
+				new ComboBoxItem { Name = "iPhone (480px)", Value = 480 }
+			};
+
+			_heightDic = new List<ComboBoxItem>()
+			{
+				new ComboBoxItem { Name = rm.GetString( "Text_ComboBox_Select" ), Value = 0 },
+				new ComboBoxItem { Name = "Sony Reader ?", Value = 754 }
+			};
+
+		}
 	}
 
 	
