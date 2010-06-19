@@ -67,6 +67,15 @@ namespace PspComicHelper.Properties {
             }
         }
         
+        /// <summary>
+        ///   查找类似 Processing...- 的本地化字符串。
+        /// </summary>
+        internal static string Processing_1 {
+            get {
+                return ResourceManager.GetString("Processing_1", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap Scale {
             get {
                 object obj = ResourceManager.GetObject("Scale", resourceCulture);
