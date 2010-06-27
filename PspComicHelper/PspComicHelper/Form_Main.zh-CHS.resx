@@ -117,6 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripStatusLabel_StatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 17</value>
+  </data>
+  <data name="toolStripStatusLabel_StatusLabel.Text" xml:space="preserve">
+    <value>就绪</value>
+  </data>
+  <data name="tabPage_App.Text" xml:space="preserve">
+    <value>操作</value>
+  </data>
   <data name="columnHeader_Path.Text" xml:space="preserve">
     <value>路径</value>
   </data>
@@ -127,7 +137,6 @@
   <data name="label_Output.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label_Output.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
   </data>
@@ -164,8 +173,8 @@
   <data name="button_AddFolder.Text" xml:space="preserve">
     <value>添加目录</value>
   </data>
-  <data name="tabPage_App.Text" xml:space="preserve">
-    <value>操作</value>
+  <data name="tabPage_Setting.Text" xml:space="preserve">
+    <value>设置</value>
   </data>
   <data name="pictureBox_setting_resizeMode_scale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -311,9 +320,6 @@
   <data name="label_setting_width.Text" xml:space="preserve">
     <value>限制高度</value>
   </data>
-  <data name="tabPage_Setting.Text" xml:space="preserve">
-    <value>设置</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEACACoCAAAFgAAACgAAAAgAAAAQAAAAAEACAAAAAAAAAQAAAAAAAAAAAAAAAEAAAAA
@@ -355,8 +361,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
-  </data>
-  <data name="Text_FileList_Ready" xml:space="preserve">
-    <value>准备</value>
   </data>
 </root>
