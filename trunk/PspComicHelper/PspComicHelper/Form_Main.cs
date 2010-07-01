@@ -34,8 +34,6 @@ namespace PspComicHelper
 		private const int SUBITEM_INDEX_PATH = 0;
 		private const int SUBITEM_INDEX_STATUS = 1;
 
-		
-
 		/// <summary>
 		/// 状态栏文字
 		/// </summary>
@@ -51,8 +49,15 @@ namespace PspComicHelper
 
 		// 预设高度
 		private List<ComboBoxItem> _heightDic;
-		
 
+		// 从资源文件读出的字符串
+		string _text_fileList_Ready;
+		string _text_fileList_Processing;
+		string _text_fileList_Complete;
+
+		string _text_message_Complete;// = "完成, 耗时{0}秒。";
+		string _text_message_Duplication;// = "请勿重复添加。";
+		string _text_message_DeleteFail;// = "可能还残存一些临时文件，您可以手工删除程序文件夹下的temp目录。";
 
 
 		public Form_Main()
@@ -242,7 +247,7 @@ namespace PspComicHelper
 			button_SetOutput.Enabled = true;
 			button_Start.Enabled = true;
 			timer_processing.Stop();
-			toolStripStatusLabel_StatusLabel.Text = string.Format( "完成, 耗时{0}秒", _timePass );
+			toolStripStatusLabel_StatusLabel.Text = string.Format( _text_message_Complete, _timePass );
 			toolStripProgressBar_progress.Visible = false;
 			MinimizeMemory();
 		}
@@ -321,7 +326,7 @@ namespace PspComicHelper
 
 				if ( addCount == 0 )
 				{
-					MessageBox.Show( "请勿重复添加" );
+					MessageBox.Show( _text_message_Duplication );
 				}
 			}
 		}
@@ -341,7 +346,7 @@ namespace PspComicHelper
 
 				if ( !AddPath( folderBrowserDialog_AddFolder.SelectedPath ) )
 				{
-					MessageBox.Show( "请勿重复添加" );
+					MessageBox.Show( _text_message_Duplication );
 				}
 			}
 		}
@@ -423,7 +428,7 @@ namespace PspComicHelper
 			// 删除临时目录
 			if( !ComicHelper.DeleteDirectory( Setting.TempPath ) )
 			{
-				MessageBox.Show( "删除临时目录失败，您可以手工删除程序文件夹下的temp目录。" );
+				MessageBox.Show( _text_message_DeleteFail );
 			}
 			Setting.Save();
 		}
@@ -618,21 +623,21 @@ namespace PspComicHelper
 
 
 
-		// 从资源文件读出的字符串
-		string _text_fileList_Ready;
-		string _text_fileList_Processing;
-		string _text_fileList_Complete;
 
 		/// <summary>
 		/// 初始化资源字符串
 		/// </summary>
 		private void InitResourceText()
 		{
-			ResourceManager rm = new ResourceManager( typeof( Form_Main ) );
+			ResourceManager rm = new ResourceManager( typeof( TextResource ) );
 
 			_text_fileList_Ready		= rm.GetString( "Text_FileList_Ready" );
 			_text_fileList_Processing	= rm.GetString( "Text_FileList_Processing" );
 			_text_fileList_Complete		= rm.GetString( "Text_FileList_Complete" );
+
+			_text_message_Complete		= rm.GetString( "Text_Message_Complete" );
+			_text_message_Duplication	= rm.GetString( "Text_Message_Duplication" );
+			_text_message_DeleteFail	= rm.GetString( "Text_Message_DeleteFail" );
 
 			_statusString = new List<string>
 			{
