@@ -68,7 +68,7 @@ namespace PspComicHelper
 			unzipTempPath = Path.Combine( unzipTempPath, Path.GetFileNameWithoutExtension( path ) );
 			string ext = Path.GetExtension( path ).ToLower();
 			string result;
-			if ( ext != ".zip" && ext != ".rar" )
+			if ( ext != ".zip" && ext != ".rar" && ext != ".cbr" && ext != ".cbz" )
 			{
 				return "不支持的压缩格式";
 			}
@@ -78,7 +78,8 @@ namespace PspComicHelper
 			DeleteDirectory( unzipTempPath );
 			Directory.CreateDirectory( unzipTempPath );
 
-			if ( ext == ".zip" )
+
+			if ( ext == ".zip" || ext == ".cbz" )
 			{
 				// 使用SharpZipLib解压缩zip
 				FastZip fz = new FastZip();
@@ -87,7 +88,7 @@ namespace PspComicHelper
 				fz = null;
 				result = ProgressComicFolder( unzipTempPath, true );
 			}
-			else if ( ext == ".rar" )
+			else if ( ext == ".rar" || ext == ".cbr" )
 			{
 				// 使用unrar.exe解压缩rar
 				string args = string.Format( "x -o+ \"{0}\" \"{1}\\\"", path, unzipTempPath );

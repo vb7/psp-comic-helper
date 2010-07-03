@@ -264,7 +264,11 @@ namespace PspComicHelper
 			if ( File.Exists( path ) )
 			{
 				ext = Path.GetExtension( path ).ToLower();
-				if ( ext == ".zip" || ext == ".rar" )
+				if ( ext == ".zip" 
+					|| ext == ".rar"
+					|| ext == ".cbr"
+					|| ext == ".cbz"
+					)
 				{
 					success = true;
 				}

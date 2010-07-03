@@ -165,7 +165,7 @@
     <value>Complete, used {0} seconds.</value>
   </data>
   <data name="Text_Message_DeleteFail" xml:space="preserve">
-    <value>There may be some trash temporary files, you can delete the temp directory manually.</value>
+    <value>Maybe some temporary files are still left, you can delete temp folder under the program folder manually.</value>
   </data>
   <data name="Text_Message_Duplication" xml:space="preserve">
     <value>Please don't add reduplicate.</value>
