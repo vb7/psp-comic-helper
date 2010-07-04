@@ -121,25 +121,13 @@
     <value>0, 351</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripProgressBar_progress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="toolStripProgressBar_progress.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripStatusLabel_StatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 17</value>
-  </data>
-  <data name="toolStripStatusLabel_StatusLabel.Text" xml:space="preserve">
-    <value>Ready</value>
-  </data>
   <data name="statusStrip_MainStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 351</value>
   </data>
   <data name="statusStrip_MainStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>480, 22</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip_MainStatus.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -155,19 +143,178 @@
   <data name="&gt;&gt;statusStrip_MainStatus.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="columnHeader_Path.Text" xml:space="preserve">
-    <value>Path</value>
+  <data name="toolStripProgressBar_progress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 16</value>
   </data>
-  <data name="columnHeader_Path.Width" type="System.Int32, mscorlib">
-    <value>300</value>
+  <data name="toolStripProgressBar_progress.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="columnHeader_Status.Text" xml:space="preserve">
-    <value>Status</value>
+  <data name="toolStripStatusLabel_StatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
   </data>
-  <data name="columnHeader_Status.Width" type="System.Int32, mscorlib">
-    <value>66</value>
+  <data name="toolStripStatusLabel_StatusLabel.Text" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.Name" xml:space="preserve">
+    <value>tabPage_App</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.Parent" xml:space="preserve">
+    <value>tabControl_Main</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting1.Name" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting1.Parent" xml:space="preserve">
+    <value>tabControl_Main</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting2.Name" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting2.Parent" xml:space="preserve">
+    <value>tabControl_Main</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting2.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl_Main.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl_Main.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl_Main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>480, 351</value>
+  </data>
+  <data name="tabControl_Main.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControl_Main.Name" xml:space="preserve">
+    <value>tabControl_Main</value>
+  </data>
+  <data name="&gt;&gt;tabControl_Main.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl_Main.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl_Main.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.Name" xml:space="preserve">
+    <value>panel_Left</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.Parent" xml:space="preserve">
+    <value>tabPage_App</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_right.Name" xml:space="preserve">
+    <value>panel_right</value>
+  </data>
+  <data name="&gt;&gt;panel_right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_right.Parent" xml:space="preserve">
+    <value>tabPage_App</value>
+  </data>
+  <data name="&gt;&gt;panel_right.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPage_App.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="tabPage_App.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage_App.Size" type="System.Drawing.Size, System.Drawing">
+    <value>472, 326</value>
+  </data>
+  <data name="tabPage_App.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage_App.Text" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.Name" xml:space="preserve">
+    <value>tabPage_App</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.Parent" xml:space="preserve">
+    <value>tabControl_Main</value>
+  </data>
+  <data name="&gt;&gt;tabPage_App.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;listView_FileList.Name" xml:space="preserve">
+    <value>listView_FileList</value>
+  </data>
+  <data name="&gt;&gt;listView_FileList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listView_FileList.Parent" xml:space="preserve">
+    <value>panel_Left</value>
+  </data>
+  <data name="&gt;&gt;listView_FileList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.Name" xml:space="preserve">
+    <value>panel_Left_Bottom</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.Parent" xml:space="preserve">
+    <value>panel_Left</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel_Left.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_Left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel_Left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>378, 320</value>
+  </data>
+  <data name="panel_Left.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.Name" xml:space="preserve">
+    <value>panel_Left</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.Parent" xml:space="preserve">
+    <value>tabPage_App</value>
+  </data>
+  <data name="&gt;&gt;panel_Left.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="listView_FileList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -191,6 +338,66 @@
   </data>
   <data name="&gt;&gt;listView_FileList.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="columnHeader_Path.Text" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="columnHeader_Path.Width" type="System.Int32, mscorlib">
+    <value>300</value>
+  </data>
+  <data name="columnHeader_Status.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="columnHeader_Status.Width" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="&gt;&gt;textBox_Output.Name" xml:space="preserve">
+    <value>textBox_Output</value>
+  </data>
+  <data name="&gt;&gt;textBox_Output.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_Output.Parent" xml:space="preserve">
+    <value>panel_Left_Bottom</value>
+  </data>
+  <data name="&gt;&gt;textBox_Output.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label_Output.Name" xml:space="preserve">
+    <value>label_Output</value>
+  </data>
+  <data name="&gt;&gt;label_Output.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_Output.Parent" xml:space="preserve">
+    <value>panel_Left_Bottom</value>
+  </data>
+  <data name="&gt;&gt;label_Output.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel_Left_Bottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel_Left_Bottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 286</value>
+  </data>
+  <data name="panel_Left_Bottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>378, 34</value>
+  </data>
+  <data name="panel_Left_Bottom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.Name" xml:space="preserve">
+    <value>panel_Left_Bottom</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.Parent" xml:space="preserve">
+    <value>panel_Left</value>
+  </data>
+  <data name="&gt;&gt;panel_Left_Bottom.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="textBox_Output.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 8</value>
@@ -240,53 +447,89 @@
   <data name="&gt;&gt;label_Output.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel_Left_Bottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="&gt;&gt;button_deletePath.Name" xml:space="preserve">
+    <value>button_deletePath</value>
   </data>
-  <data name="panel_Left_Bottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 286</value>
+  <data name="&gt;&gt;button_deletePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Left_Bottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 34</value>
+  <data name="&gt;&gt;button_deletePath.Parent" xml:space="preserve">
+    <value>panel_right</value>
   </data>
-  <data name="panel_Left_Bottom.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;button_deletePath.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button_SetOutput.Name" xml:space="preserve">
+    <value>button_SetOutput</value>
+  </data>
+  <data name="&gt;&gt;button_SetOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_SetOutput.Parent" xml:space="preserve">
+    <value>panel_right</value>
+  </data>
+  <data name="&gt;&gt;button_SetOutput.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;panel_Left_Bottom.Name" xml:space="preserve">
-    <value>panel_Left_Bottom</value>
+  <data name="&gt;&gt;button_Start.Name" xml:space="preserve">
+    <value>button_Start</value>
   </data>
-  <data name="&gt;&gt;panel_Left_Bottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button_Start.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Left_Bottom.Parent" xml:space="preserve">
-    <value>panel_Left</value>
+  <data name="&gt;&gt;button_Start.Parent" xml:space="preserve">
+    <value>panel_right</value>
   </data>
-  <data name="&gt;&gt;panel_Left_Bottom.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;button_Start.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="panel_Left.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;button_AddFile.Name" xml:space="preserve">
+    <value>button_AddFile</value>
   </data>
-  <data name="panel_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;button_AddFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 320</value>
+  <data name="&gt;&gt;button_AddFile.Parent" xml:space="preserve">
+    <value>panel_right</value>
   </data>
-  <data name="panel_Left.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;button_AddFile.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;button_AddFolder.Name" xml:space="preserve">
+    <value>button_AddFolder</value>
+  </data>
+  <data name="&gt;&gt;button_AddFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_AddFolder.Parent" xml:space="preserve">
+    <value>panel_right</value>
+  </data>
+  <data name="&gt;&gt;button_AddFolder.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;panel_Left.Name" xml:space="preserve">
-    <value>panel_Left</value>
+  <data name="panel_right.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="&gt;&gt;panel_Left.Type" xml:space="preserve">
+  <data name="panel_right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>381, 3</value>
+  </data>
+  <data name="panel_right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 320</value>
+  </data>
+  <data name="panel_right.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel_right.Name" xml:space="preserve">
+    <value>panel_right</value>
+  </data>
+  <data name="&gt;&gt;panel_right.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Left.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panel_right.Parent" xml:space="preserve">
     <value>tabPage_App</value>
   </data>
-  <data name="&gt;&gt;panel_Left.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;panel_right.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="button_deletePath.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 61</value>
@@ -408,55 +651,316 @@
   <data name="&gt;&gt;button_AddFolder.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="panel_right.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
+  <data name="&gt;&gt;panel_setting_resizeMode.Name" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
   </data>
-  <data name="panel_right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>381, 3</value>
-  </data>
-  <data name="panel_right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 320</value>
-  </data>
-  <data name="panel_right.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;panel_right.Name" xml:space="preserve">
-    <value>panel_right</value>
-  </data>
-  <data name="&gt;&gt;panel_right.Type" xml:space="preserve">
+  <data name="&gt;&gt;panel_setting_resizeMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_right.Parent" xml:space="preserve">
-    <value>tabPage_App</value>
+  <data name="&gt;&gt;panel_setting_resizeMode.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
   </data>
-  <data name="&gt;&gt;panel_right.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPage_App.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 21</value>
-  </data>
-  <data name="tabPage_App.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage_App.Size" type="System.Drawing.Size, System.Drawing">
-    <value>472, 326</value>
-  </data>
-  <data name="tabPage_App.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;panel_setting_resizeMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPage_App.Text" xml:space="preserve">
-    <value>Operation</value>
+  <data name="&gt;&gt;label_setting_resizeMode.Name" xml:space="preserve">
+    <value>label_setting_resizeMode</value>
   </data>
-  <data name="&gt;&gt;tabPage_App.Name" xml:space="preserve">
-    <value>tabPage_App</value>
+  <data name="&gt;&gt;label_setting_resizeMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage_App.Type" xml:space="preserve">
+  <data name="&gt;&gt;label_setting_resizeMode.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;label_setting_resizeMode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_threshold.Name" xml:space="preserve">
+    <value>textBox_setting_threshold</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_threshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_threshold.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_threshold.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label_setting_threshold.Name" xml:space="preserve">
+    <value>label_setting_threshold</value>
+  </data>
+  <data name="&gt;&gt;label_setting_threshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_threshold.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;label_setting_threshold.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label_setting_cutMargin.Name" xml:space="preserve">
+    <value>label_setting_cutMargin</value>
+  </data>
+  <data name="&gt;&gt;label_setting_cutMargin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_cutMargin.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;label_setting_cutMargin.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_cutMargin.Name" xml:space="preserve">
+    <value>checkBox_setting_cutMargin</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_cutMargin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_cutMargin.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_cutMargin.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_height.Name" xml:space="preserve">
+    <value>checkBox_setting_height</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_height.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_height.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_height.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetHeight.Name" xml:space="preserve">
+    <value>comboBox_setting_presetHeight</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetHeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetHeight.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetHeight.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_height.Name" xml:space="preserve">
+    <value>textBox_setting_height</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_height.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_height.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_height.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label_setting_height.Name" xml:space="preserve">
+    <value>label_setting_height</value>
+  </data>
+  <data name="&gt;&gt;label_setting_height.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_height.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;label_setting_height.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_witth.Name" xml:space="preserve">
+    <value>checkBox_setting_witth</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_witth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_witth.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_witth.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_quality.Name" xml:space="preserve">
+    <value>textBox_setting_quality</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_quality.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_quality.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_quality.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label_setting_quality.Name" xml:space="preserve">
+    <value>label_setting_quality</value>
+  </data>
+  <data name="&gt;&gt;label_setting_quality.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_quality.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;label_setting_quality.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetWidth.Name" xml:space="preserve">
+    <value>comboBox_setting_presetWidth</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetWidth.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_presetWidth.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_width.Name" xml:space="preserve">
+    <value>textBox_setting_width</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_width.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_width.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;textBox_setting_width.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label_setting_width.Name" xml:space="preserve">
+    <value>label_setting_width</value>
+  </data>
+  <data name="&gt;&gt;label_setting_width.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_width.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;label_setting_width.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="tabPage_Setting1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="tabPage_Setting1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage_Setting1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>472, 326</value>
+  </data>
+  <data name="tabPage_Setting1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPage_Setting1.Text" xml:space="preserve">
+    <value>Setting 1</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting1.Name" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;tabPage_Setting1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage_App.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPage_Setting1.Parent" xml:space="preserve">
     <value>tabControl_Main</value>
   </data>
-  <data name="&gt;&gt;tabPage_App.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPage_Setting1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_scale.Name" xml:space="preserve">
+    <value>pictureBox_setting_resizeMode_scale</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_scale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_scale.Parent" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_scale.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_stretch.Name" xml:space="preserve">
+    <value>radioButton_setting_resizeMode_stretch</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_stretch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_stretch.Parent" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_stretch.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_stretch.Name" xml:space="preserve">
+    <value>pictureBox_setting_resizeMode_stretch</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_stretch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_stretch.Parent" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_stretch.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_center.Name" xml:space="preserve">
+    <value>radioButton_setting_resizeMode_center</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_center.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_center.Parent" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_center.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_center.Name" xml:space="preserve">
+    <value>pictureBox_setting_resizeMode_center</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_center.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_center.Parent" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_setting_resizeMode_center.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_scale.Name" xml:space="preserve">
+    <value>radioButton_setting_resizeMode_scale</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_scale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_scale.Parent" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_resizeMode_scale.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panel_setting_resizeMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 76</value>
+  </data>
+  <data name="panel_setting_resizeMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 44</value>
+  </data>
+  <data name="panel_setting_resizeMode.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;panel_setting_resizeMode.Name" xml:space="preserve">
+    <value>panel_setting_resizeMode</value>
+  </data>
+  <data name="&gt;&gt;panel_setting_resizeMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_setting_resizeMode.Parent" xml:space="preserve">
+    <value>tabPage_Setting1</value>
+  </data>
+  <data name="&gt;&gt;panel_setting_resizeMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="pictureBox_setting_resizeMode_scale.Location" type="System.Drawing.Point, System.Drawing">
@@ -602,27 +1106,6 @@
   </data>
   <data name="&gt;&gt;radioButton_setting_resizeMode_scale.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="panel_setting_resizeMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 76</value>
-  </data>
-  <data name="panel_setting_resizeMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 44</value>
-  </data>
-  <data name="panel_setting_resizeMode.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;panel_setting_resizeMode.Name" xml:space="preserve">
-    <value>panel_setting_resizeMode</value>
-  </data>
-  <data name="&gt;&gt;panel_setting_resizeMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel_setting_resizeMode.Parent" xml:space="preserve">
-    <value>tabPage_Setting1</value>
-  </data>
-  <data name="&gt;&gt;panel_setting_resizeMode.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label_setting_resizeMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -996,32 +1479,149 @@
   <data name="&gt;&gt;label_setting_width.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="tabPage_Setting1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;checkBox_setting_zip.Name" xml:space="preserve">
+    <value>checkBox_setting_zip</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_zip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_zip.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_zip.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_right.Name" xml:space="preserve">
+    <value>radioButton_setting_sequence_right</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_right.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_right.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_left.Name" xml:space="preserve">
+    <value>radioButton_setting_sequence_left</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_left.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;radioButton_setting_sequence_left.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_split.Name" xml:space="preserve">
+    <value>checkBox_setting_split</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_split.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_split.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_setting_split.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label_setting_zip.Name" xml:space="preserve">
+    <value>label_setting_zip</value>
+  </data>
+  <data name="&gt;&gt;label_setting_zip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_zip.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;label_setting_zip.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label_setting_sequence.Name" xml:space="preserve">
+    <value>label_setting_sequence</value>
+  </data>
+  <data name="&gt;&gt;label_setting_sequence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_sequence.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;label_setting_sequence.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label_setting_split.Name" xml:space="preserve">
+    <value>label_setting_split</value>
+  </data>
+  <data name="&gt;&gt;label_setting_split.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_split.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;label_setting_split.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label_setting_languagePrompt.Name" xml:space="preserve">
+    <value>label_setting_languagePrompt</value>
+  </data>
+  <data name="&gt;&gt;label_setting_languagePrompt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_languagePrompt.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;label_setting_languagePrompt.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_language.Name" xml:space="preserve">
+    <value>comboBox_setting_language</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_language.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;comboBox_setting_language.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label_setting_language.Name" xml:space="preserve">
+    <value>label_setting_language</value>
+  </data>
+  <data name="&gt;&gt;label_setting_language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_setting_language.Parent" xml:space="preserve">
+    <value>tabPage_Setting2</value>
+  </data>
+  <data name="&gt;&gt;label_setting_language.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tabPage_Setting2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 21</value>
   </data>
-  <data name="tabPage_Setting1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage_Setting1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPage_Setting2.Size" type="System.Drawing.Size, System.Drawing">
     <value>472, 326</value>
   </data>
-  <data name="tabPage_Setting1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="tabPage_Setting2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="tabPage_Setting1.Text" xml:space="preserve">
-    <value>Setting 1</value>
+  <data name="tabPage_Setting2.Text" xml:space="preserve">
+    <value>Setting 2</value>
   </data>
-  <data name="&gt;&gt;tabPage_Setting1.Name" xml:space="preserve">
-    <value>tabPage_Setting1</value>
+  <data name="&gt;&gt;tabPage_Setting2.Name" xml:space="preserve">
+    <value>tabPage_Setting2</value>
   </data>
-  <data name="&gt;&gt;tabPage_Setting1.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPage_Setting2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage_Setting1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPage_Setting2.Parent" xml:space="preserve">
     <value>tabControl_Main</value>
   </data>
-  <data name="&gt;&gt;tabPage_Setting1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabPage_Setting2.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="checkBox_setting_zip.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1302,54 +1902,6 @@
   <data name="&gt;&gt;label_setting_language.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="tabPage_Setting2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 21</value>
-  </data>
-  <data name="tabPage_Setting2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>472, 326</value>
-  </data>
-  <data name="tabPage_Setting2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPage_Setting2.Text" xml:space="preserve">
-    <value>Setting 2</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Setting2.Name" xml:space="preserve">
-    <value>tabPage_Setting2</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Setting2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Setting2.Parent" xml:space="preserve">
-    <value>tabControl_Main</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Setting2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl_Main.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControl_Main.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabControl_Main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 351</value>
-  </data>
-  <data name="tabControl_Main.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControl_Main.Name" xml:space="preserve">
-    <value>tabControl_Main</value>
-  </data>
-  <data name="&gt;&gt;tabControl_Main.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl_Main.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl_Main.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="openFileDialog_AddFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>199, 8</value>
   </metadata>
@@ -1420,7 +1972,7 @@
     <value>488, 400</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>PSP Comic Helper 0.1.7 beta</value>
+    <value>PSP Comic Helper 0.1.8 beta</value>
   </data>
   <data name="&gt;&gt;toolStripProgressBar_progress.Name" xml:space="preserve">
     <value>toolStripProgressBar_progress</value>

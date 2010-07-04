@@ -71,14 +71,14 @@ namespace PspComicHelper
 
 		public Form_Main()
 		{
-			InitResourceText();
 			InitSetting();
 			SetCulture();
+			InitResourceText();
 			InitializeComponent();
 			_progressCallback = new ComicProgressCallback( UpdateStatus );
 			_completeCallback = new ComicCompleteCallback( SetFormStatus_Complete );
-			UpdateSettingUI();
 			InitComboBox();
+			UpdateSettingUI();
 		}
 
 
@@ -219,6 +219,7 @@ namespace PspComicHelper
 			radioButton_setting_resizeMode_stretch.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Stretch );
 			textBox_Output.Text = Setting.OutputPath;
 			comboBox_setting_language.SelectedValue = Setting.Language;
+			//SetLanguageComboBox();
 
 		}
 
@@ -285,7 +286,9 @@ namespace PspComicHelper
 		{
 			if ( !string.IsNullOrEmpty( Setting.Language ) )
 			{
-				Thread.CurrentThread.CurrentUICulture = new CultureInfo( Setting.Language );
+				CultureInfo culture = new CultureInfo( Setting.Language );
+				Thread.CurrentThread.CurrentUICulture = culture;
+				//Thread.CurrentThread.CurrentCulture = culture;
 			}
 		}
 
