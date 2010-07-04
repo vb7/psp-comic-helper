@@ -125,23 +125,29 @@ namespace PspComicHelper
 		/// </summary>
 		public static ImageHelper.ResizeMode Mode { get; set; }
 
+		/// <summary>
+		/// 语言设定
+		/// </summary>
+		public static string Language { get; set; }
+
 
 		private const string SETTING_FILE = "setting.ini";
 
 		public static void Init()
 		{
-			OutputPath = "";
-			EnableWidth = true;
-			Width_Actual = 480;
-			EnableHeight = false;
-			Height_Actual = 0;
-			Quality = 80;
-			SplitTowPage = true;
-			ReadOrder = ReadOrderEnum.RightToLeft;
-			OutputZip = true;
-			AutoCutMargin = false;
-			Threshold = 240;
-			Mode = ImageHelper.ResizeMode.Scale;
+			OutputPath		= "";
+			EnableWidth		= true;
+			Width_Actual	= 480;
+			EnableHeight	= false;
+			Height_Actual	= 0;
+			Quality			= 80;
+			SplitTowPage	= true;
+			ReadOrder		= ReadOrderEnum.RightToLeft;
+			OutputZip		= true;
+			AutoCutMargin	= false;
+			Threshold		= 240;
+			Mode			= ImageHelper.ResizeMode.Scale;
+			Language		= "";
 		}
 
 		/// <summary>
@@ -154,19 +160,20 @@ namespace PspComicHelper
 				StreamReader reader = new StreamReader( Path.Combine( AppPath, SETTING_FILE ), System.Text.Encoding.Default );
 				try
 				{
-					OutputPath = reader.ReadLine();
-					OpenInitialDirectory = reader.ReadLine();
-					EnableWidth = Convert.ToBoolean( reader.ReadLine() );
-					Width_Actual = Convert.ToInt32( reader.ReadLine() );
-					EnableHeight = Convert.ToBoolean( reader.ReadLine() );
-					Height_Actual = Convert.ToInt32( reader.ReadLine() );
-					Quality = Convert.ToInt32( reader.ReadLine() );
-					SplitTowPage = Convert.ToBoolean( reader.ReadLine() );
-					ReadOrder = (ReadOrderEnum)Convert.ToInt32( reader.ReadLine() );
-					OutputZip = Convert.ToBoolean( reader.ReadLine() );
-					AutoCutMargin = Convert.ToBoolean( reader.ReadLine() );
-					Threshold = Convert.ToInt32( reader.ReadLine() );
-					Mode =  (ImageHelper.ResizeMode)Enum.Parse( typeof(ImageHelper.ResizeMode), reader.ReadLine() );
+					OutputPath				= reader.ReadLine();
+					OpenInitialDirectory	= reader.ReadLine();
+					EnableWidth				= Convert.ToBoolean( reader.ReadLine() );
+					Width_Actual			= Convert.ToInt32( reader.ReadLine() );
+					EnableHeight			= Convert.ToBoolean( reader.ReadLine() );
+					Height_Actual			= Convert.ToInt32( reader.ReadLine() );
+					Quality					= Convert.ToInt32( reader.ReadLine() );
+					SplitTowPage			= Convert.ToBoolean( reader.ReadLine() );
+					ReadOrder				= (ReadOrderEnum)Enum.Parse( typeof( ReadOrderEnum ), reader.ReadLine() );
+					OutputZip				= Convert.ToBoolean( reader.ReadLine() );
+					AutoCutMargin			= Convert.ToBoolean( reader.ReadLine() );
+					Threshold				= Convert.ToInt32( reader.ReadLine() );
+					Mode					= (ImageHelper.ResizeMode)Enum.Parse( typeof(ImageHelper.ResizeMode), reader.ReadLine() );
+					Language				= reader.ReadLine();
 				}
 				catch
 				{
@@ -199,11 +206,12 @@ namespace PspComicHelper
 			writer.WriteLine( Height_Actual );
 			writer.WriteLine( Quality );
 			writer.WriteLine( SplitTowPage );
-			writer.WriteLine( (int)ReadOrder );
+			writer.WriteLine( ReadOrder );
 			writer.WriteLine( OutputZip );
 			writer.WriteLine( AutoCutMargin );
 			writer.WriteLine( Threshold );
 			writer.WriteLine( Mode.ToString() );
+			writer.WriteLine( Language );
 			writer.Flush();
 			writer.Close();
 			writer.Dispose();

@@ -5,6 +5,7 @@ using System.Resources;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using System.Globalization;
 
 namespace PspComicHelper
 {
@@ -45,10 +46,15 @@ namespace PspComicHelper
 		private int _timePass = 0;
 		
 		// 预设宽度
-		private List<ComboBoxItem> _widthDic;
+		private List<ComboBoxItemInt> _widthDic;
 
 		// 预设高度
-		private List<ComboBoxItem> _heightDic;
+		private List<ComboBoxItemInt> _heightDic;
+
+		/// <summary>
+		/// 预设可设置语言
+		/// </summary>
+		private List<ComboBoxItemString> _languageDic;
 
 		// 从资源文件读出的字符串
 		string _text_fileList_Ready;
@@ -58,25 +64,25 @@ namespace PspComicHelper
 		string _text_message_Complete;// = "完成, 耗时{0}秒。";
 		string _text_message_Duplication;// = "请勿重复添加。";
 		string _text_message_DeleteFail;// = "可能还残存一些临时文件，您可以手工删除程序文件夹下的temp目录。";
+		string _text_message_languageChange; // = "语言修改将会在下次启动时生效";
+
+		IDictionary<ComicProgressResult,string> _text_comicProgressResult_Dict;
 
 
 		public Form_Main()
 		{
 			InitResourceText();
+			InitSetting();
+			SetCulture();
 			InitializeComponent();
 			_progressCallback = new ComicProgressCallback( UpdateStatus );
 			_completeCallback = new ComicCompleteCallback( SetFormStatus_Complete );
-			InitSetting();
-
-			comboBox_setting_presetWidth.DataSource = _widthDic;
-			comboBox_setting_presetWidth.DisplayMember = "Name";
-			comboBox_setting_presetWidth.ValueMember = "Value";
-
-			comboBox_setting_presetHeight.DataSource = _heightDic;
-			comboBox_setting_presetHeight.DisplayMember = "Name";
-			comboBox_setting_presetHeight.ValueMember = "Value";
-
+			UpdateSettingUI();
+			InitComboBox();
 		}
+
+
+		#region 漫画处理
 
 
 		/// <summary>
@@ -84,7 +90,8 @@ namespace PspComicHelper
 		/// </summary>
 		private void ComicProcess( object arg )
 		{
-			string result;
+			ComicProgressResult result;
+			string resultStr;
 			string[][] list = arg as string[][];
 
 			for ( int i = 0; i < list.Length; i++ )
@@ -96,32 +103,12 @@ namespace PspComicHelper
 
 				this.Invoke( _progressCallback, new object[]{ i, _text_fileList_Processing } );
 				result = ComicHelper.ProgressComicPath( list[i][0] );
-				this.Invoke( _progressCallback, new object[]{ i, result } );
+				resultStr = GetComicProgressResultString( result );
+				this.Invoke( _progressCallback, new object[]{ i, resultStr } );
 			}
 			this.Invoke( _completeCallback );
 		}
 
-		/// <summary>
-		/// 更新UI
-		/// </summary>
-		/// <param name="index"></param>
-		/// <param name="status"></param>
-		private void UpdateStatus( int index, string status )
-		{
-			listView_FileList.Items[index].SubItems[SUBITEM_INDEX_STATUS].Text = status;
-			for( int i = 0; i < listView_FileList.Items.Count; i++ )
-			{
-				if( i == index && status != _text_fileList_Complete )
-				{
-					listView_FileList.Items[i].BackColor = Color.Pink;
-				}
-				else
-				{
-					listView_FileList.Items[i].BackColor = Color.White;
-				}
-
-			}
-		}
 
 		/// <summary>
 		/// 开始漫画处理进程
@@ -149,110 +136,6 @@ namespace PspComicHelper
 
 
 		/// <summary>
-		/// 初始化设置
-		/// </summary>
-		private void InitSetting()
-		{
-			Setting.AppPath = Application.StartupPath;
-			Setting.Load();
-
-			checkBox_setting_witth.Checked = Setting.EnableWidth;
-			textBox_setting_width.Text = Setting.Width_Actual.ToString();
-			checkBox_setting_height.Checked = Setting.EnableHeight;
-			textBox_setting_height.Text = Setting.Height_Actual.ToString();
-			textBox_setting_quality.Text = Setting.Quality.ToString();
-			checkBox_setting_split.Checked = Setting.SplitTowPage;
-			radioButton_setting_sequence_right.Checked = ( Setting.ReadOrder == ReadOrderEnum.RightToLeft );
-			radioButton_setting_sequence_left.Checked = ( Setting.ReadOrder == ReadOrderEnum.LeftToRight );
-			checkBox_setting_zip.Checked = Setting.OutputZip;
-			checkBox_setting_cutMargin.Checked = Setting.AutoCutMargin;
-			textBox_setting_threshold.Text = Setting.Threshold.ToString();
-			radioButton_setting_resizeMode_scale.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Scale );
-			radioButton_setting_resizeMode_center.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Center );
-			radioButton_setting_resizeMode_stretch.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Stretch );
-			textBox_Output.Text = Setting.OutputPath;
-		}
-
-		/// <summary>
-		/// 判断是否数字
-		/// </summary>
-		/// <param name="text"></param>
-		/// <returns></returns>
-		private bool IsNumeric( string text )
-		{
-			return System.Text.RegularExpressions.Regex.IsMatch( text, "^\\d+$" );
-		}
-
-		/// <summary>
-		/// 更新设置
-		/// </summary>
-		private void UpdateSetting()
-		{
-			Setting.EnableWidth = checkBox_setting_witth.Checked;
-			if( IsNumeric( textBox_setting_width.Text ) )
-				Setting.Width_Actual = Convert.ToInt32( textBox_setting_width.Text );
-
-			Setting.EnableHeight = checkBox_setting_height.Checked;
-			if( IsNumeric( textBox_setting_height.Text ) )
-				Setting.Height_Actual = Convert.ToInt32( textBox_setting_height.Text );
-
-			if( IsNumeric( textBox_setting_quality.Text ) )
-				Setting.Quality = Convert.ToInt32( textBox_setting_quality.Text );
-
-			Setting.SplitTowPage = checkBox_setting_split.Checked;
-
-			if( radioButton_setting_sequence_right.Checked )
-				Setting.ReadOrder = ReadOrderEnum.RightToLeft;
-			else if( radioButton_setting_sequence_left.Checked )
-				Setting.ReadOrder = ReadOrderEnum.LeftToRight;
-
-			Setting.OutputZip = checkBox_setting_zip.Checked;
-			Setting.AutoCutMargin = checkBox_setting_cutMargin.Checked;
-			Setting.Threshold = Convert.ToInt32( textBox_setting_threshold.Text );
-
-			if( radioButton_setting_resizeMode_scale.Checked )
-				Setting.Mode = ImageHelper.ResizeMode.Scale;
-			else if( radioButton_setting_resizeMode_center.Checked )
-				Setting.Mode = ImageHelper.ResizeMode.Center;
-			else if( radioButton_setting_resizeMode_stretch.Checked )
-				Setting.Mode = ImageHelper.ResizeMode.Stretch;
-
-			Setting.OutputPath = textBox_Output.Text;
-		}
-
-		/// <summary>
-		/// 设置窗体状态 开始
-		/// </summary>
-		private void SetFormStatus_Started()
-		{
-			button_AddFile.Enabled = false;
-			button_AddFolder.Enabled = false;
-			button_deletePath.Enabled = false;
-			button_SetOutput.Enabled =false;
-			button_Start.Enabled = false;
-			//toolStripStatusLabel_StatusLabel.Text = "处理中...";
-			_timePass = 0;
-			toolStripProgressBar_progress.Visible = true;
-			timer_processing.Start();
-		}
-
-		/// <summary>
-		/// 设置窗体状态 完成
-		/// </summary>
-		private void SetFormStatus_Complete()
-		{
-			button_AddFile.Enabled = true;
-			button_AddFolder.Enabled = true;
-			button_deletePath.Enabled = true;
-			button_SetOutput.Enabled = true;
-			button_Start.Enabled = true;
-			timer_processing.Stop();
-			toolStripStatusLabel_StatusLabel.Text = string.Format( _text_message_Complete, _timePass );
-			toolStripProgressBar_progress.Visible = false;
-			MinimizeMemory();
-		}
-
-		/// <summary>
 		/// 添加路径
 		/// </summary>
 		/// <param name="path"></param>
@@ -264,7 +147,7 @@ namespace PspComicHelper
 			if ( File.Exists( path ) )
 			{
 				ext = Path.GetExtension( path ).ToLower();
-				if ( ext == ".zip" 
+				if ( ext == ".zip"
 					|| ext == ".rar"
 					|| ext == ".cbr"
 					|| ext == ".cbz"
@@ -290,7 +173,7 @@ namespace PspComicHelper
 				}
 			}
 
-			if( success )
+			if ( success )
 			{
 				//listView_FileList.Items.Add( new ListViewItem( new string[] {path, "准备"} ) );
 				listView_FileList.Items.Add( new ListViewItem( new string[] { path, _text_fileList_Ready } ) );
@@ -299,6 +182,195 @@ namespace PspComicHelper
 			return success;
 		}
 
+
+		#endregion 漫画处理
+
+		#region 设置
+
+
+		/// <summary>
+		/// 初始化设置
+		/// </summary>
+		private void InitSetting()
+		{
+			Setting.AppPath = Application.StartupPath;
+			Setting.Load();
+
+		}
+
+		/// <summary>
+		/// 更新设置UI
+		/// </summary>
+		private void UpdateSettingUI()
+		{
+			checkBox_setting_witth.Checked = Setting.EnableWidth;
+			textBox_setting_width.Text = Setting.Width_Actual.ToString();
+			checkBox_setting_height.Checked = Setting.EnableHeight;
+			textBox_setting_height.Text = Setting.Height_Actual.ToString();
+			textBox_setting_quality.Text = Setting.Quality.ToString();
+			checkBox_setting_split.Checked = Setting.SplitTowPage;
+			radioButton_setting_sequence_right.Checked = ( Setting.ReadOrder == ReadOrderEnum.RightToLeft );
+			radioButton_setting_sequence_left.Checked = ( Setting.ReadOrder == ReadOrderEnum.LeftToRight );
+			checkBox_setting_zip.Checked = Setting.OutputZip;
+			checkBox_setting_cutMargin.Checked = Setting.AutoCutMargin;
+			textBox_setting_threshold.Text = Setting.Threshold.ToString();
+			radioButton_setting_resizeMode_scale.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Scale );
+			radioButton_setting_resizeMode_center.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Center );
+			radioButton_setting_resizeMode_stretch.Checked = ( Setting.Mode == ImageHelper.ResizeMode.Stretch );
+			textBox_Output.Text = Setting.OutputPath;
+			comboBox_setting_language.SelectedValue = Setting.Language;
+
+		}
+
+		/// <summary>
+		/// 更新设置
+		/// </summary>
+		private void UpdateSetting()
+		{
+			Setting.EnableWidth = checkBox_setting_witth.Checked;
+			if ( IsNumeric( textBox_setting_width.Text ) )
+				Setting.Width_Actual = Convert.ToInt32( textBox_setting_width.Text );
+
+			Setting.EnableHeight = checkBox_setting_height.Checked;
+			if ( IsNumeric( textBox_setting_height.Text ) )
+				Setting.Height_Actual = Convert.ToInt32( textBox_setting_height.Text );
+
+			if ( IsNumeric( textBox_setting_quality.Text ) )
+				Setting.Quality = Convert.ToInt32( textBox_setting_quality.Text );
+
+			Setting.SplitTowPage = checkBox_setting_split.Checked;
+
+			if ( radioButton_setting_sequence_right.Checked )
+				Setting.ReadOrder = ReadOrderEnum.RightToLeft;
+			else if ( radioButton_setting_sequence_left.Checked )
+				Setting.ReadOrder = ReadOrderEnum.LeftToRight;
+
+			Setting.OutputZip = checkBox_setting_zip.Checked;
+			Setting.AutoCutMargin = checkBox_setting_cutMargin.Checked;
+			Setting.Threshold = Convert.ToInt32( textBox_setting_threshold.Text );
+
+			if ( radioButton_setting_resizeMode_scale.Checked )
+				Setting.Mode = ImageHelper.ResizeMode.Scale;
+			else if ( radioButton_setting_resizeMode_center.Checked )
+				Setting.Mode = ImageHelper.ResizeMode.Center;
+			else if ( radioButton_setting_resizeMode_stretch.Checked )
+				Setting.Mode = ImageHelper.ResizeMode.Stretch;
+
+			Setting.OutputPath = textBox_Output.Text;
+			Setting.Language = comboBox_setting_language.SelectedValue.ToString();
+		}
+
+		/// <summary>
+		/// 设置语言下拉框
+		/// </summary>
+		private void SetLanguageComboBox()
+		{
+			foreach ( var item in comboBox_setting_language.Items )
+			{
+				var cbi = item as ComboBoxItemString;
+				if( cbi == null )
+					continue;
+				if ( cbi.Value == Setting.Language )
+				{
+					comboBox_setting_language.SelectedItem = item;
+					break;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 设置语言
+		/// </summary>
+		private void SetCulture()
+		{
+			if ( !string.IsNullOrEmpty( Setting.Language ) )
+			{
+				Thread.CurrentThread.CurrentUICulture = new CultureInfo( Setting.Language );
+			}
+		}
+
+
+		#endregion 设置
+
+		#region 更新UI
+
+
+		/// <summary>
+		/// 更新UI
+		/// </summary>
+		/// <param name="index"></param>
+		/// <param name="status"></param>
+		private void UpdateStatus( int index, string status )
+		{
+			listView_FileList.Items[index].SubItems[SUBITEM_INDEX_STATUS].Text = status;
+			for ( int i = 0; i < listView_FileList.Items.Count; i++ )
+			{
+				if ( i == index && status != _text_fileList_Complete )
+				{
+					listView_FileList.Items[i].BackColor = Color.Pink;
+				}
+				else
+				{
+					listView_FileList.Items[i].BackColor = Color.White;
+				}
+
+			}
+		}
+
+
+
+
+		/// <summary>
+		/// 设置窗体状态 开始
+		/// </summary>
+		private void SetFormStatus_Started()
+		{
+			button_AddFile.Enabled = false;
+			button_AddFolder.Enabled = false;
+			button_deletePath.Enabled = false;
+			button_SetOutput.Enabled = false;
+			button_Start.Enabled = false;
+			//toolStripStatusLabel_StatusLabel.Text = "处理中...";
+			_timePass = 0;
+			toolStripProgressBar_progress.Visible = true;
+			timer_processing.Start();
+		}
+
+		/// <summary>
+		/// 设置窗体状态 完成
+		/// </summary>
+		private void SetFormStatus_Complete()
+		{
+			button_AddFile.Enabled = true;
+			button_AddFolder.Enabled = true;
+			button_deletePath.Enabled = true;
+			button_SetOutput.Enabled = true;
+			button_Start.Enabled = true;
+			timer_processing.Stop();
+			toolStripStatusLabel_StatusLabel.Text = string.Format( _text_message_Complete, _timePass );
+			toolStripProgressBar_progress.Visible = false;
+			MinimizeMemory();
+		}
+
+
+
+		#endregion
+
+		#region 通用方法
+
+		/// <summary>
+		/// 判断是否数字
+		/// </summary>
+		/// <param name="text"></param>
+		/// <returns></returns>
+		private bool IsNumeric( string text )
+		{
+			return System.Text.RegularExpressions.Regex.IsMatch( text, "^\\d+$" );
+		}
+
+
+
+
 		/// <summary>
 		/// 释放内存
 		/// </summary>
@@ -306,6 +378,11 @@ namespace PspComicHelper
 		{
 			System.Diagnostics.Process.GetCurrentProcess().MaxWorkingSet = new IntPtr( 750000 );
 		}
+
+
+		#endregion 通用方法
+
+		#region 控件事件响应
 
 		/// <summary>
 		/// 添加文件按钮点击
@@ -434,6 +511,7 @@ namespace PspComicHelper
 			{
 				MessageBox.Show( _text_message_DeleteFail );
 			}
+			UpdateSetting();
 			Setting.Save();
 		}
 
@@ -526,9 +604,9 @@ namespace PspComicHelper
 		/// <param name="e"></param>
 		private void comboBox_setting_presetWidth_SelectedIndexChanged( object sender, EventArgs e )
 		{
-			if ( ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItem ).Value > 0 )
+			if ( ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItemInt ).Value > 0 )
 			{
-				textBox_setting_width.Text = ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItem ).Value.ToString();
+				textBox_setting_width.Text = ( comboBox_setting_presetWidth.SelectedItem as ComboBoxItemInt ).Value.ToString();
 			}
 		}
 
@@ -539,9 +617,9 @@ namespace PspComicHelper
 		/// <param name="e"></param>
 		private void comboBox_setting_presetHeight_SelectedIndexChanged( object sender, EventArgs e )
 		{
-			if ( ( comboBox_setting_presetHeight.SelectedItem as ComboBoxItem ).Value > 0 )
+			if ( ( comboBox_setting_presetHeight.SelectedItem as ComboBoxItemInt ).Value > 0 )
 			{
-				textBox_setting_height.Text = ( comboBox_setting_presetHeight.SelectedItem as ComboBoxItem ).Value.ToString();
+				textBox_setting_height.Text = ( comboBox_setting_presetHeight.SelectedItem as ComboBoxItemInt ).Value.ToString();
 			}
 		}
 
@@ -587,15 +665,6 @@ namespace PspComicHelper
 
 
 		/// <summary>
-		/// ComboBox选项
-		/// </summary>
-		private class ComboBoxItem
-		{
-			public string Name { get; set; }
-			public int Value { get; set; }
-		}
-
-		/// <summary>
 		/// 缩放模式图片点击 适应
 		/// </summary>
 		/// <param name="sender"></param>
@@ -626,6 +695,27 @@ namespace PspComicHelper
 		}
 
 
+		#endregion 控件事件响应
+
+		#region 初始化 资源 多语言
+
+		/// <summary>
+		/// 初始化下拉选单
+		/// </summary>
+		private void InitComboBox()
+		{
+			comboBox_setting_presetWidth.DataSource		= _widthDic;
+			comboBox_setting_presetWidth.DisplayMember	= "Name";
+			comboBox_setting_presetWidth.ValueMember	= "Value";
+
+			comboBox_setting_presetHeight.DataSource	= _heightDic;
+			comboBox_setting_presetHeight.DisplayMember = "Name";
+			comboBox_setting_presetHeight.ValueMember	= "Value";
+
+			comboBox_setting_language.DataSource		= _languageDic;
+			comboBox_setting_language.DisplayMember		= "Name";
+			comboBox_setting_language.ValueMember		= "Value";
+		}
 
 
 		/// <summary>
@@ -651,22 +741,75 @@ namespace PspComicHelper
 				rm.GetString( "Text_StatusBar_Processing_4" ),
 			};
 
-			_widthDic = new List<ComboBoxItem>()
+			_widthDic = new List<ComboBoxItemInt>()
 			{
-				new ComboBoxItem { Name = rm.GetString( "Text_ComboBox_Select" ), Value = 0 },
-				new ComboBoxItem { Name = "PSP (480px)", Value = 480 },
-				new ComboBoxItem { Name = "PSP*2 (960px)", Value = 960 },
-				new ComboBoxItem { Name = "Meizu M8 (720px)", Value = 720 },
-				new ComboBoxItem { Name = "iPhone (480px)", Value = 480 }
+				new ComboBoxItemInt { Name = rm.GetString( "Text_ComboBox_Select" ), Value = 0 },
+				new ComboBoxItemInt { Name = "PSP (480px)", Value = 480 },
+				new ComboBoxItemInt { Name = "PSP*2 (960px)", Value = 960 },
+				new ComboBoxItemInt { Name = "Meizu M8 (720px)", Value = 720 },
+				new ComboBoxItemInt { Name = "iPhone (480px)", Value = 480 }
 			};
 
-			_heightDic = new List<ComboBoxItem>()
+			_heightDic = new List<ComboBoxItemInt>()
 			{
-				new ComboBoxItem { Name = rm.GetString( "Text_ComboBox_Select" ), Value = 0 },
-				new ComboBoxItem { Name = "Sony Reader ?", Value = 754 }
+				new ComboBoxItemInt { Name = rm.GetString( "Text_ComboBox_Select" ), Value = 0 },
+				new ComboBoxItemInt { Name = "Sony Reader ?", Value = 754 }
+			};
+
+			_languageDic = new List<ComboBoxItemString>
+			{
+				new ComboBoxItemString { Name = "Auto", Value = "" },
+				new ComboBoxItemString { Name = "English", Value = "en" },
+				new ComboBoxItemString { Name = "简体中文", Value = "zh-CHS" }
+			};
+
+			_text_comicProgressResult_Dict = new Dictionary<ComicProgressResult,string> {
+				{ ComicProgressResult.Complete,				rm.GetString( "Text_ProgressResult_Complete" ) },
+				{ ComicProgressResult.PathError,			rm.GetString( "Text_ProgressResult_PathError" ) },
+				{ ComicProgressResult.UnsupportedArchive,	rm.GetString( "Text_ProgressResult_UnsupportedArchive" ) },
+				{ ComicProgressResult.NoneImageInFolder,	rm.GetString( "Text_ProgressResult_NoneImageInFolder" ) }
 			};
 
 		}
+
+		/// <summary>
+		/// 取得漫画处理结果的字符串
+		/// </summary>
+		/// <param name="result"></param>
+		/// <returns></returns>
+		public string GetComicProgressResultString( ComicProgressResult result )
+		{
+			if ( _text_comicProgressResult_Dict.Keys.Contains( result ) )
+				return _text_comicProgressResult_Dict[result];
+			else
+				return "";
+		}
+
+		#endregion 初始化 资源 多语言
+
+
+		#region ComboBox选项内部类
+
+		/// <summary>
+		/// ComboBox选项 数字
+		/// </summary>
+		private class ComboBoxItemInt
+		{
+			public string Name { get; set; }
+			public int Value { get; set; }
+		}
+
+		/// <summary>
+		/// ComboBox选项 字符串
+		/// </summary>
+		private class ComboBoxItemString
+		{
+			public string Name { get; set; }
+			public string Value { get; set; }
+		}
+
+		#endregion
+
 	}
 
 	

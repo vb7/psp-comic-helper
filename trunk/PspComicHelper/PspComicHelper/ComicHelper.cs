@@ -22,7 +22,7 @@ namespace PspComicHelper
 		/// 处理图片路径
 		/// </summary>
 		/// <param name="path"></param>
-		public static string ProgressComicPath( string path )
+		public static ComicProgressResult ProgressComicPath( string path )
 		{
 			RateOfProgress = 0;
 
@@ -30,7 +30,7 @@ namespace PspComicHelper
 			DeleteDirectory(Setting.TempPath);
 			Directory.CreateDirectory( Setting.TempPath );
 
-			string result;
+			ComicProgressResult result;
 
 			if ( File.Exists( path ) )
 			{
@@ -44,7 +44,7 @@ namespace PspComicHelper
 			}
 			else
 			{
-				result = "路径错误";
+				result = ComicProgressResult.PathError;
 			}
 
 			// 删除临时目录
@@ -60,17 +60,17 @@ namespace PspComicHelper
 		/// 处理图片路径 压缩文档
 		/// </summary>
 		/// <param name="path"></param>
-		private static string ProgressComicArchive( string path )
+		private static ComicProgressResult ProgressComicArchive( string path )
 		{
 			RateOfProgress = 5;
 
 			string unzipTempPath = Path.Combine( Setting.TempPath, UNZIP_TEMP_FOLDER );
 			unzipTempPath = Path.Combine( unzipTempPath, Path.GetFileNameWithoutExtension( path ) );
 			string ext = Path.GetExtension( path ).ToLower();
-			string result;
+			ComicProgressResult result;
 			if ( ext != ".zip" && ext != ".rar" && ext != ".cbr" && ext != ".cbz" )
 			{
-				return "不支持的压缩格式";
+				return ComicProgressResult.UnsupportedArchive;
 			}
 
 			
@@ -105,7 +105,7 @@ namespace PspComicHelper
 			}
 			else
 			{
-				result = "不支持的压缩格式";
+				result = ComicProgressResult.UnsupportedArchive;
 			}
 			
 
@@ -119,7 +119,7 @@ namespace PspComicHelper
 		/// 处理图片路径 文件夹
 		/// </summary>
 		/// <param name="path"></param>
-		private static string ProgressComicFolder( string path, bool includeSubdirectory )
+		private static ComicProgressResult ProgressComicFolder( string path, bool includeSubdirectory )
 		{
 			RateOfProgress = 20;
 
@@ -138,7 +138,7 @@ namespace PspComicHelper
 
 			if ( files.Count == 0 )
 			{
-				return "目录内无图片";
+				return ComicProgressResult.NoneImageInFolder;
 			}
 
 			// 输出文件夹
@@ -162,10 +162,10 @@ namespace PspComicHelper
 			ProgressComicToOutput( tempOutput );
 			RateOfProgress = 99;
 
-			return "完成";
+			return ComicProgressResult.Complete;
 		}
 
-		private static string ProgressComicFolder( string path )
+		private static ComicProgressResult ProgressComicFolder( string path )
 		{
 			return ProgressComicFolder( path, false );
 		}

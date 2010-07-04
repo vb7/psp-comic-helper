@@ -48,7 +48,7 @@
 			this.button_Start = new System.Windows.Forms.Button();
 			this.button_AddFile = new System.Windows.Forms.Button();
 			this.button_AddFolder = new System.Windows.Forms.Button();
-			this.tabPage_Setting = new System.Windows.Forms.TabPage();
+			this.tabPage_Setting1 = new System.Windows.Forms.TabPage();
 			this.panel_setting_resizeMode = new System.Windows.Forms.Panel();
 			this.pictureBox_setting_resizeMode_scale = new System.Windows.Forms.PictureBox();
 			this.radioButton_setting_resizeMode_stretch = new System.Windows.Forms.RadioButton();
@@ -66,18 +66,22 @@
 			this.textBox_setting_height = new System.Windows.Forms.TextBox();
 			this.label_setting_height = new System.Windows.Forms.Label();
 			this.checkBox_setting_witth = new System.Windows.Forms.CheckBox();
+			this.textBox_setting_quality = new System.Windows.Forms.TextBox();
+			this.label_setting_quality = new System.Windows.Forms.Label();
+			this.comboBox_setting_presetWidth = new System.Windows.Forms.ComboBox();
+			this.textBox_setting_width = new System.Windows.Forms.TextBox();
+			this.label_setting_width = new System.Windows.Forms.Label();
+			this.tabPage_Setting2 = new System.Windows.Forms.TabPage();
 			this.checkBox_setting_zip = new System.Windows.Forms.CheckBox();
 			this.radioButton_setting_sequence_right = new System.Windows.Forms.RadioButton();
 			this.radioButton_setting_sequence_left = new System.Windows.Forms.RadioButton();
 			this.checkBox_setting_split = new System.Windows.Forms.CheckBox();
 			this.label_setting_zip = new System.Windows.Forms.Label();
-			this.textBox_setting_quality = new System.Windows.Forms.TextBox();
 			this.label_setting_sequence = new System.Windows.Forms.Label();
 			this.label_setting_split = new System.Windows.Forms.Label();
-			this.label_setting_quality = new System.Windows.Forms.Label();
-			this.comboBox_setting_presetWidth = new System.Windows.Forms.ComboBox();
-			this.textBox_setting_width = new System.Windows.Forms.TextBox();
-			this.label_setting_width = new System.Windows.Forms.Label();
+			this.label_setting_languagePrompt = new System.Windows.Forms.Label();
+			this.comboBox_setting_language = new System.Windows.Forms.ComboBox();
+			this.label_setting_language = new System.Windows.Forms.Label();
 			this.openFileDialog_AddFile = new System.Windows.Forms.OpenFileDialog();
 			this.folderBrowserDialog_AddFolder = new System.Windows.Forms.FolderBrowserDialog();
 			this.folderBrowserDialog_Output = new System.Windows.Forms.FolderBrowserDialog();
@@ -88,11 +92,12 @@
 			this.panel_Left.SuspendLayout();
 			this.panel_Left_Bottom.SuspendLayout();
 			this.panel_right.SuspendLayout();
-			this.tabPage_Setting.SuspendLayout();
+			this.tabPage_Setting1.SuspendLayout();
 			this.panel_setting_resizeMode.SuspendLayout();
 			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_scale ) ).BeginInit();
 			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_stretch ) ).BeginInit();
 			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_center ) ).BeginInit();
+			this.tabPage_Setting2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// statusStrip_MainStatus
@@ -116,7 +121,8 @@
 			// tabControl_Main
 			// 
 			this.tabControl_Main.Controls.Add( this.tabPage_App );
-			this.tabControl_Main.Controls.Add( this.tabPage_Setting );
+			this.tabControl_Main.Controls.Add( this.tabPage_Setting1 );
+			this.tabControl_Main.Controls.Add( this.tabPage_Setting2 );
 			resources.ApplyResources( this.tabControl_Main, "tabControl_Main" );
 			this.tabControl_Main.Name = "tabControl_Main";
 			this.tabControl_Main.SelectedIndex = 0;
@@ -217,34 +223,27 @@
 			this.button_AddFolder.UseVisualStyleBackColor = true;
 			this.button_AddFolder.Click += new System.EventHandler( this.button_AddDir_Click );
 			// 
-			// tabPage_Setting
+			// tabPage_Setting1
 			// 
-			this.tabPage_Setting.Controls.Add( this.panel_setting_resizeMode );
-			this.tabPage_Setting.Controls.Add( this.label_setting_resizeMode );
-			this.tabPage_Setting.Controls.Add( this.textBox_setting_threshold );
-			this.tabPage_Setting.Controls.Add( this.label_setting_threshold );
-			this.tabPage_Setting.Controls.Add( this.label_setting_cutMargin );
-			this.tabPage_Setting.Controls.Add( this.checkBox_setting_cutMargin );
-			this.tabPage_Setting.Controls.Add( this.checkBox_setting_height );
-			this.tabPage_Setting.Controls.Add( this.comboBox_setting_presetHeight );
-			this.tabPage_Setting.Controls.Add( this.textBox_setting_height );
-			this.tabPage_Setting.Controls.Add( this.label_setting_height );
-			this.tabPage_Setting.Controls.Add( this.checkBox_setting_witth );
-			this.tabPage_Setting.Controls.Add( this.checkBox_setting_zip );
-			this.tabPage_Setting.Controls.Add( this.radioButton_setting_sequence_right );
-			this.tabPage_Setting.Controls.Add( this.radioButton_setting_sequence_left );
-			this.tabPage_Setting.Controls.Add( this.checkBox_setting_split );
-			this.tabPage_Setting.Controls.Add( this.label_setting_zip );
-			this.tabPage_Setting.Controls.Add( this.textBox_setting_quality );
-			this.tabPage_Setting.Controls.Add( this.label_setting_sequence );
-			this.tabPage_Setting.Controls.Add( this.label_setting_split );
-			this.tabPage_Setting.Controls.Add( this.label_setting_quality );
-			this.tabPage_Setting.Controls.Add( this.comboBox_setting_presetWidth );
-			this.tabPage_Setting.Controls.Add( this.textBox_setting_width );
-			this.tabPage_Setting.Controls.Add( this.label_setting_width );
-			resources.ApplyResources( this.tabPage_Setting, "tabPage_Setting" );
-			this.tabPage_Setting.Name = "tabPage_Setting";
-			this.tabPage_Setting.UseVisualStyleBackColor = true;
+			this.tabPage_Setting1.Controls.Add( this.panel_setting_resizeMode );
+			this.tabPage_Setting1.Controls.Add( this.label_setting_resizeMode );
+			this.tabPage_Setting1.Controls.Add( this.textBox_setting_threshold );
+			this.tabPage_Setting1.Controls.Add( this.label_setting_threshold );
+			this.tabPage_Setting1.Controls.Add( this.label_setting_cutMargin );
+			this.tabPage_Setting1.Controls.Add( this.checkBox_setting_cutMargin );
+			this.tabPage_Setting1.Controls.Add( this.checkBox_setting_height );
+			this.tabPage_Setting1.Controls.Add( this.comboBox_setting_presetHeight );
+			this.tabPage_Setting1.Controls.Add( this.textBox_setting_height );
+			this.tabPage_Setting1.Controls.Add( this.label_setting_height );
+			this.tabPage_Setting1.Controls.Add( this.checkBox_setting_witth );
+			this.tabPage_Setting1.Controls.Add( this.textBox_setting_quality );
+			this.tabPage_Setting1.Controls.Add( this.label_setting_quality );
+			this.tabPage_Setting1.Controls.Add( this.comboBox_setting_presetWidth );
+			this.tabPage_Setting1.Controls.Add( this.textBox_setting_width );
+			this.tabPage_Setting1.Controls.Add( this.label_setting_width );
+			resources.ApplyResources( this.tabPage_Setting1, "tabPage_Setting1" );
+			this.tabPage_Setting1.Name = "tabPage_Setting1";
+			this.tabPage_Setting1.UseVisualStyleBackColor = true;
 			// 
 			// panel_setting_resizeMode
 			// 
@@ -363,6 +362,52 @@
 			this.checkBox_setting_witth.Name = "checkBox_setting_witth";
 			this.checkBox_setting_witth.UseVisualStyleBackColor = true;
 			// 
+			// textBox_setting_quality
+			// 
+			resources.ApplyResources( this.textBox_setting_quality, "textBox_setting_quality" );
+			this.textBox_setting_quality.Name = "textBox_setting_quality";
+			this.textBox_setting_quality.KeyUp += new System.Windows.Forms.KeyEventHandler( this.textBox_setting_quality_KeyUp );
+			this.textBox_setting_quality.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_quality_KeyPress );
+			// 
+			// label_setting_quality
+			// 
+			resources.ApplyResources( this.label_setting_quality, "label_setting_quality" );
+			this.label_setting_quality.Name = "label_setting_quality";
+			// 
+			// comboBox_setting_presetWidth
+			// 
+			this.comboBox_setting_presetWidth.FormattingEnabled = true;
+			resources.ApplyResources( this.comboBox_setting_presetWidth, "comboBox_setting_presetWidth" );
+			this.comboBox_setting_presetWidth.Name = "comboBox_setting_presetWidth";
+			this.comboBox_setting_presetWidth.SelectedIndexChanged += new System.EventHandler( this.comboBox_setting_presetWidth_SelectedIndexChanged );
+			// 
+			// textBox_setting_width
+			// 
+			resources.ApplyResources( this.textBox_setting_width, "textBox_setting_width" );
+			this.textBox_setting_width.Name = "textBox_setting_width";
+			this.textBox_setting_width.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_width_KeyPress );
+			// 
+			// label_setting_width
+			// 
+			resources.ApplyResources( this.label_setting_width, "label_setting_width" );
+			this.label_setting_width.Name = "label_setting_width";
+			// 
+			// tabPage_Setting2
+			// 
+			this.tabPage_Setting2.Controls.Add( this.checkBox_setting_zip );
+			this.tabPage_Setting2.Controls.Add( this.radioButton_setting_sequence_right );
+			this.tabPage_Setting2.Controls.Add( this.radioButton_setting_sequence_left );
+			this.tabPage_Setting2.Controls.Add( this.checkBox_setting_split );
+			this.tabPage_Setting2.Controls.Add( this.label_setting_zip );
+			this.tabPage_Setting2.Controls.Add( this.label_setting_sequence );
+			this.tabPage_Setting2.Controls.Add( this.label_setting_split );
+			this.tabPage_Setting2.Controls.Add( this.label_setting_languagePrompt );
+			this.tabPage_Setting2.Controls.Add( this.comboBox_setting_language );
+			this.tabPage_Setting2.Controls.Add( this.label_setting_language );
+			resources.ApplyResources( this.tabPage_Setting2, "tabPage_Setting2" );
+			this.tabPage_Setting2.Name = "tabPage_Setting2";
+			this.tabPage_Setting2.UseVisualStyleBackColor = true;
+			// 
 			// checkBox_setting_zip
 			// 
 			resources.ApplyResources( this.checkBox_setting_zip, "checkBox_setting_zip" );
@@ -394,13 +439,6 @@
 			resources.ApplyResources( this.label_setting_zip, "label_setting_zip" );
 			this.label_setting_zip.Name = "label_setting_zip";
 			// 
-			// textBox_setting_quality
-			// 
-			resources.ApplyResources( this.textBox_setting_quality, "textBox_setting_quality" );
-			this.textBox_setting_quality.Name = "textBox_setting_quality";
-			this.textBox_setting_quality.KeyUp += new System.Windows.Forms.KeyEventHandler( this.textBox_setting_quality_KeyUp );
-			this.textBox_setting_quality.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_quality_KeyPress );
-			// 
 			// label_setting_sequence
 			// 
 			resources.ApplyResources( this.label_setting_sequence, "label_setting_sequence" );
@@ -411,28 +449,21 @@
 			resources.ApplyResources( this.label_setting_split, "label_setting_split" );
 			this.label_setting_split.Name = "label_setting_split";
 			// 
-			// label_setting_quality
+			// label_setting_languagePrompt
 			// 
-			resources.ApplyResources( this.label_setting_quality, "label_setting_quality" );
-			this.label_setting_quality.Name = "label_setting_quality";
+			resources.ApplyResources( this.label_setting_languagePrompt, "label_setting_languagePrompt" );
+			this.label_setting_languagePrompt.Name = "label_setting_languagePrompt";
 			// 
-			// comboBox_setting_presetWidth
+			// comboBox_setting_language
 			// 
-			this.comboBox_setting_presetWidth.FormattingEnabled = true;
-			resources.ApplyResources( this.comboBox_setting_presetWidth, "comboBox_setting_presetWidth" );
-			this.comboBox_setting_presetWidth.Name = "comboBox_setting_presetWidth";
-			this.comboBox_setting_presetWidth.SelectedIndexChanged += new System.EventHandler( this.comboBox_setting_presetWidth_SelectedIndexChanged );
+			this.comboBox_setting_language.FormattingEnabled = true;
+			resources.ApplyResources( this.comboBox_setting_language, "comboBox_setting_language" );
+			this.comboBox_setting_language.Name = "comboBox_setting_language";
 			// 
-			// textBox_setting_width
+			// label_setting_language
 			// 
-			resources.ApplyResources( this.textBox_setting_width, "textBox_setting_width" );
-			this.textBox_setting_width.Name = "textBox_setting_width";
-			this.textBox_setting_width.KeyPress += new System.Windows.Forms.KeyPressEventHandler( this.textBox_setting_width_KeyPress );
-			// 
-			// label_setting_width
-			// 
-			resources.ApplyResources( this.label_setting_width, "label_setting_width" );
-			this.label_setting_width.Name = "label_setting_width";
+			resources.ApplyResources( this.label_setting_language, "label_setting_language" );
+			this.label_setting_language.Name = "label_setting_language";
 			// 
 			// openFileDialog_AddFile
 			// 
@@ -464,13 +495,15 @@
 			this.panel_Left_Bottom.ResumeLayout( false );
 			this.panel_Left_Bottom.PerformLayout();
 			this.panel_right.ResumeLayout( false );
-			this.tabPage_Setting.ResumeLayout( false );
-			this.tabPage_Setting.PerformLayout();
+			this.tabPage_Setting1.ResumeLayout( false );
+			this.tabPage_Setting1.PerformLayout();
 			this.panel_setting_resizeMode.ResumeLayout( false );
 			this.panel_setting_resizeMode.PerformLayout();
 			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_scale ) ).EndInit();
 			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_stretch ) ).EndInit();
 			( (System.ComponentModel.ISupportInitialize)( this.pictureBox_setting_resizeMode_center ) ).EndInit();
+			this.tabPage_Setting2.ResumeLayout( false );
+			this.tabPage_Setting2.PerformLayout();
 			this.ResumeLayout( false );
 			this.PerformLayout();
 
@@ -483,7 +516,7 @@
 		private System.Windows.Forms.TabControl tabControl_Main;
 		private System.Windows.Forms.TabPage tabPage_App;
 		private System.Windows.Forms.ListView listView_FileList;
-		private System.Windows.Forms.TabPage tabPage_Setting;
+		private System.Windows.Forms.TabPage tabPage_Setting1;
 		private System.Windows.Forms.Button button_AddFolder;
 		private System.Windows.Forms.Button button_AddFile;
 		private System.Windows.Forms.OpenFileDialog openFileDialog_AddFile;
@@ -498,18 +531,10 @@
 		private System.Windows.Forms.TextBox textBox_Output;
 		private System.Windows.Forms.Button button_SetOutput;
 		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_Output;
-		private System.Windows.Forms.Label label_setting_width;
 		private System.Windows.Forms.TextBox textBox_setting_width;
 		private System.Windows.Forms.ComboBox comboBox_setting_presetWidth;
-		private System.Windows.Forms.Label label_setting_split;
 		private System.Windows.Forms.Label label_setting_quality;
-		private System.Windows.Forms.Label label_setting_sequence;
 		private System.Windows.Forms.TextBox textBox_setting_quality;
-		private System.Windows.Forms.CheckBox checkBox_setting_split;
-		private System.Windows.Forms.Label label_setting_zip;
-		private System.Windows.Forms.RadioButton radioButton_setting_sequence_right;
-		private System.Windows.Forms.RadioButton radioButton_setting_sequence_left;
-		private System.Windows.Forms.CheckBox checkBox_setting_zip;
 		private System.Windows.Forms.Button button_deletePath;
 		private System.Windows.Forms.Timer timer_processing;
 		private System.Windows.Forms.CheckBox checkBox_setting_height;
@@ -530,6 +555,18 @@
 		private System.Windows.Forms.RadioButton radioButton_setting_resizeMode_center;
 		private System.Windows.Forms.PictureBox pictureBox_setting_resizeMode_center;
 		private System.Windows.Forms.RadioButton radioButton_setting_resizeMode_scale;
+		private System.Windows.Forms.TabPage tabPage_Setting2;
+		private System.Windows.Forms.Label label_setting_width;
+		private System.Windows.Forms.Label label_setting_language;
+		private System.Windows.Forms.ComboBox comboBox_setting_language;
+		private System.Windows.Forms.Label label_setting_languagePrompt;
+		private System.Windows.Forms.CheckBox checkBox_setting_zip;
+		private System.Windows.Forms.RadioButton radioButton_setting_sequence_right;
+		private System.Windows.Forms.RadioButton radioButton_setting_sequence_left;
+		private System.Windows.Forms.CheckBox checkBox_setting_split;
+		private System.Windows.Forms.Label label_setting_zip;
+		private System.Windows.Forms.Label label_setting_sequence;
+		private System.Windows.Forms.Label label_setting_split;
 
 	}
 }

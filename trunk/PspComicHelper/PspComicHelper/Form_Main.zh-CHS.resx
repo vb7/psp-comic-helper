@@ -173,8 +173,8 @@
   <data name="button_AddFolder.Text" xml:space="preserve">
     <value>添加目录</value>
   </data>
-  <data name="tabPage_Setting.Text" xml:space="preserve">
-    <value>设置</value>
+  <data name="tabPage_Setting1.Text" xml:space="preserve">
+    <value>设置 1</value>
   </data>
   <data name="pictureBox_setting_resizeMode_scale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -311,14 +311,26 @@
   <data name="label_setting_quality.Text" xml:space="preserve">
     <value>质量</value>
   </data>
-  <data name="label_setting_width.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="label_setting_width.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
   </data>
   <data name="label_setting_width.Text" xml:space="preserve">
     <value>限制高度</value>
+  </data>
+  <data name="tabPage_Setting2.Text" xml:space="preserve">
+    <value>设置 2</value>
+  </data>
+  <data name="label_setting_languagePrompt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label_setting_languagePrompt.Text" xml:space="preserve">
+    <value>* 下次启动生效</value>
+  </data>
+  <data name="label_setting_language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label_setting_language.Text" xml:space="preserve">
+    <value>语言</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
