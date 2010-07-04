@@ -120,6 +120,9 @@
   <data name="$this.Text" xml:space="preserve">
     <value>文本资源</value>
   </data>
+  <data name="Text_ComboBox_Select" xml:space="preserve">
+    <value>请选择</value>
+  </data>
   <data name="Text_FileList_Complete" xml:space="preserve">
     <value>完成</value>
   </data>
@@ -137,6 +140,21 @@
   </data>
   <data name="Text_Message_Duplication" xml:space="preserve">
     <value>请勿重复添加。</value>
+  </data>
+  <data name="Text_Message_LanguageChange" xml:space="preserve">
+    <value>语言修改将会在下次启动时生效。</value>
+  </data>
+  <data name="Text_ProgressResult_Complete" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="Text_ProgressResult_NoneImageInFolder" xml:space="preserve">
+    <value>目录内无图片</value>
+  </data>
+  <data name="Text_ProgressResult_PathError" xml:space="preserve">
+    <value>路径错误</value>
+  </data>
+  <data name="Text_ProgressResult_UnsupportedArchive" xml:space="preserve">
+    <value>不支持的压缩格式</value>
   </data>
   <data name="Text_StatusBar_Processing_1" xml:space="preserve">
     <value>处理中...-</value>

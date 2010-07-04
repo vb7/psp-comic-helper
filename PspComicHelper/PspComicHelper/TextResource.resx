@@ -170,4 +170,22 @@
   <data name="Text_Message_Duplication" xml:space="preserve">
     <value>Please don't add reduplicate.</value>
   </data>
+  <data name="Text_ProgressResult_Complete" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Text_ProgressResult_NoneImageInFolder" xml:space="preserve">
+    <value>None image in folder</value>
+  </data>
+  <data name="Text_ProgressResult_PathError" xml:space="preserve">
+    <value>Path error</value>
+  </data>
+  <data name="Text_ProgressResult_UnsupportedArchive" xml:space="preserve">
+    <value>Unsupported achive</value>
+  </data>
+  <data name="Text_ComboBox_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Text_Message_LanguageChange" xml:space="preserve">
+    <value>Language change will be effected next time.</value>
+  </data>
 </root>
