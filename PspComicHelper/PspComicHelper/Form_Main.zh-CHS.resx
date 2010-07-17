@@ -249,58 +249,10 @@
     <value>53, 12</value>
   </data>
   <data name="label_setting_height.Text" xml:space="preserve">
-    <value>限制宽度</value>
+    <value>限制高度</value>
   </data>
   <data name="checkBox_setting_witth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="checkBox_setting_zip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButton_setting_sequence_right.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButton_setting_sequence_right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 16</value>
-  </data>
-  <data name="radioButton_setting_sequence_right.Text" xml:space="preserve">
-    <value>左←右</value>
-  </data>
-  <data name="radioButton_setting_sequence_left.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButton_setting_sequence_left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 16</value>
-  </data>
-  <data name="radioButton_setting_sequence_left.Text" xml:space="preserve">
-    <value>左→右</value>
-  </data>
-  <data name="checkBox_setting_split.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_setting_zip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_setting_zip.Text" xml:space="preserve">
-    <value>输出压缩包</value>
-  </data>
-  <data name="label_setting_sequence.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_setting_sequence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label_setting_sequence.Text" xml:space="preserve">
-    <value>阅读顺序</value>
-  </data>
-  <data name="label_setting_split.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label_setting_split.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label_setting_split.Text" xml:space="preserve">
-    <value>分割双页</value>
   </data>
   <data name="label_setting_quality.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -315,10 +267,37 @@
     <value>53, 12</value>
   </data>
   <data name="label_setting_width.Text" xml:space="preserve">
-    <value>限制高度</value>
+    <value>限制宽度</value>
   </data>
   <data name="tabPage_Setting2.Text" xml:space="preserve">
     <value>设置 2</value>
+  </data>
+  <data name="radioButton_setting_sequence_right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 16</value>
+  </data>
+  <data name="radioButton_setting_sequence_right.Text" xml:space="preserve">
+    <value>左←右</value>
+  </data>
+  <data name="radioButton_setting_sequence_left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 16</value>
+  </data>
+  <data name="radioButton_setting_sequence_left.Text" xml:space="preserve">
+    <value>左→右</value>
+  </data>
+  <data name="label_setting_zip.Text" xml:space="preserve">
+    <value>输出压缩包</value>
+  </data>
+  <data name="label_setting_sequence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label_setting_sequence.Text" xml:space="preserve">
+    <value>阅读顺序</value>
+  </data>
+  <data name="label_setting_split.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label_setting_split.Text" xml:space="preserve">
+    <value>分割双页</value>
   </data>
   <data name="label_setting_languagePrompt.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 12</value>
@@ -373,5 +352,8 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>PSP Comic Helper 0.20</value>
   </data>
 </root>
