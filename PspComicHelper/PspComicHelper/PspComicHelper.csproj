@@ -59,6 +59,10 @@
       <HintPath>..\..\Assembly\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SharedLibs\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -77,6 +81,8 @@
     </Compile>
     <Compile Include="ImageHelper.cs" />
     <Compile Include="ImageMargin.cs" />
+    <Compile Include="OutputFileProcessor\IOutputFileProcessor.cs" />
+    <Compile Include="OutputFileProcessor\OutputFileProcessorPdf.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_Main.resx">
@@ -168,6 +174,9 @@
     <None Include="resources\Stretch.png" />
     <None Include="resources\Center.png" />
     <None Include="resources\Scale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interface\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
